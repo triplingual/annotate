@@ -17,3 +17,5 @@ include: [feed.xml]
 webrick:
   headers:
     "Access-Control-Allow-Origin": "*"
+plugins:
+  - jekyll-admin
