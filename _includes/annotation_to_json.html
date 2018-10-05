@@ -2,7 +2,7 @@
   .anno{max-width:800;overflow:scroll;padding:10px;margin-top:10px;}
 </style>
 <br>
-<button type="button" id="anno_button">View cached annotation JSON</button>
+<button type="button" id="anno_button">Load All Annotations</button>
 <div id="anno_results"></div>
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -11,31 +11,7 @@
 <script type="text/jscript">
   var canvas_regex = /.+canvas\/([^.]+)/;
 
-  function download(filename, text) {
-    var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('download', filename);
-    element.style.display = 'none';
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
-  }
-  var safetext = function(text){
-  	var table = {
-  		'<': 'lt',
-  		'>': 'gt',
-  		'"': 'quot',
-  		'\'': 'apos',
-  		'&': 'amp',
-  		'\r': '#10',
-  		'\n': '#13'
-  	};
-
-  	return text.toString().replace(/[<>"'\r\n&]/g, function(chr){
-  		return '&' + table[chr] + ';';
-  	});
-  };
-
+ 
   $(document).ready(function(){
     $( "#anno_button" ).click(function() {
       $( "#anno_results" ).empty()
@@ -46,20 +22,24 @@
           var canvas = matches[1];
           var fileName = canvas + '.json';
           var fileContent = localStorage.getItem(key);
-          if (fileContent.length > 2) {
-            $("#anno_results").append("<div class='anno'></div>" )
-                              .append("<h1 class='file'>" + canvas + "</h1>")
-                              .append("<textarea rows='30' cols='100' id='" + canvas + "-content'>"+ safetext(fileContent))
-                              .append("<br><button type='button' id='" + canvas +"' class='download-button'>Download " + fileName + "</button>");
-          }
-        }
+          var jsonparse = JSON.parse(fileContent);
+          $.ajax({
+		    url: 'http://127.0.0.1:5000/annotations/',
+		    dataType: 'json',
+		    type: 'POST',
+		    contentType: 'application/json',
+		    data: JSON.stringify(jsonparse),
+		    processData: false,
+		    success: function( data, textStatus, jQxhr ){
+		        $('#response pre').html( JSON.stringify( data ) );
+		    },
+		    error: function( jqXhr, textStatus, errorThrown ){
+		        console.log( errorThrown );
+		    }
+		});
+ 
       }
-      $(".download-button").click(function(){
-        var content_id = this.id + "-content";
-        var text = document.getElementById(content_id).value;
-        var file = this.id + ".json"
-        download(file, text);
-      });
+  }
     });
-  });
+ });
 </script>

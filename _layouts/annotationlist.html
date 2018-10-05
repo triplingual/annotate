@@ -1,0 +1,29 @@
+---
+layout: page
+---
+
+{% include head.html %}
+
+{% for annotation in site.annotations %}
+<table> <tbody>
+  <tr>
+  	{% assign annoidsplit = annotation.id | split: '/'  %}
+{% assign annoid = annoidsplit.last %}
+{% capture url %}
+{{site.url}}{{site.baseurl}}{{annotation.id}}.json
+{% endcapture %}
+ {% if annotation.id contains 'list' %}
+<td><iiif-annotation annotationlist="{{url}}"></iiif-annotation></td>
+<td><button id="{{annoid}}_button" onclick="make_embed_code('{{annoid}}')">Show embed code</button>
+<button id="{{annoid}}_edit" onclick="delete_items('{{annoid}}')">Delete</button>
+<div id="{{annoid}}_embedcode" style="display: none;">&lt;iiif-annotation annotationlist="{{url}}"&gt;&lt;iiif-annotation&gt;</div></td>
+</tr>
+{% else %}
+<td><iiif-annotation annotationurl="{{url}}"></iiif-annotation></td>
+<td><button id="{{annoid}}_button" onclick="make_embed_code('{{annoid}}')">Show embed code</button>
+	<button id="{{annoid}}_edit" onclick="delete_items('{{annoid}}')">Delete</button>
+<div id="{{annoid}}_embedcode" style="display: none;">&lt;iiif-annotation annotationurl="{{url}}"&gt;&lt;iiif-annotation&gt;</div></td>
+</tr>
+{% endif %}
+</tbody> </table> 
+{% endfor %}

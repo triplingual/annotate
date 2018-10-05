@@ -8,7 +8,14 @@
 
   {% assign user_url = site.url | append: site.baseurl %}
   {% assign full_base_url = user_url | default: site.github.url %}
+  <script src="https://unpkg.com/vue"></script>
+
+  <script src="{{ '/assets/js/iiif-annotation.js' | prepend: site.baseurl }}"></script>
+    <script src="{{ '/assets/js/local-functions.js' | prepend: site.baseurl }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+  <link rel="stylesheet" href="{{ '/assets/css/iiif-annotation.css' | prepend: site.baseurl }}">
   <link rel="stylesheet" href="{{ "/assets/style.css" | prepend: full_base_url }}">
+
 
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 

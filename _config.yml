@@ -1,7 +1,7 @@
-title: IIIF Annotation Demo
+title: Local IIIF Annotation Server
 description: ""
 baseurl: "/annotate"
-url: "http://marii.info"
+url: "http://dnoneill.github.io"
 
 markdown: kramdown
 permalink: pretty
@@ -14,6 +14,10 @@ theme: jekyll-swiss
 exclude: [Rakefile, Gemfile*, vendor]
 include: [feed.xml]
 
+collections:
+    annotations: 
+        output: true
+        permalink: /annotations/:name
 webrick:
   headers:
     "Access-Control-Allow-Origin": "*"
