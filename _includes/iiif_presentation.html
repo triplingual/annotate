@@ -1,8 +1,10 @@
 {% capture data %}
-{% for m in page.manifests %}
-	{ manifestUri: '{{ site.url }}{{ site.baseurl }}/iiif/{{ m }}/manifest.json' }{% unless forloop.last %}, {% endunless %}
+{% for m in site.data.preloadedmanifests %}
+	{ manifestUri: '{{m}}' }{% unless forloop.last %}, {% endunless %}
+
 {% endfor %}
 {% endcapture %}
+{% assign list_data = [{{ data }}] | jsonify %}
 {% for annotation in site.annotations %}
 <script>
   {% if annotation.id contains 'list' %}
@@ -21,9 +23,9 @@
    $(function() {
      myMiradorInstance = Mirador({
        id: 'viewer',
-       data: [{{ data }}],
+       data: [{{data}}],
        windowObjects: [{
-           loadedManifest: '{{ site.url }}{{ site.baseurl }}/iiif/{{ page.loaded_manifest }}/manifest.json',
+           loadedManifest: '{{site.data.preloadedmanifests[0]}}',
            canvasID: '{{ page.canvas_id }}',
            bottomPanelVisible: {{ page.bottom_panel | default: 'true' }}
        }],

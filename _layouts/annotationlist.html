@@ -13,16 +13,16 @@ layout: page
 {{site.url}}{{site.baseurl}}{{annotation.id}}.json
 {% endcapture %}
  {% if annotation.id contains 'list' %}
-<td><iiif-annotation annotationlist="{{url}}"></iiif-annotation></td>
+<td><iiif-annotation annotationlist="{{url | strip }}"></iiif-annotation></td>
 <td><button id="{{annoid}}_button" onclick="make_embed_code('{{annoid}}')">Show embed code</button>
 <button id="{{annoid}}_edit" onclick="delete_items('{{annoid}}')">Delete</button>
-<div id="{{annoid}}_embedcode" style="display: none;">&lt;iiif-annotation annotationlist="{{url}}"&gt;&lt;iiif-annotation&gt;</div></td>
+<div id="{{annoid}}_embedcode" style="display: none;">&lt;iiif-annotation annotationlist="{{url| strip }}"&gt;&lt;iiif-annotation&gt;</div></td>
 </tr>
 {% else %}
-<td><iiif-annotation annotationurl="{{url}}"></iiif-annotation></td>
+<td><iiif-annotation annotationurl="{{url | strip }}"></iiif-annotation></td>
 <td><button id="{{annoid}}_button" onclick="make_embed_code('{{annoid}}')">Show embed code</button>
 	<button id="{{annoid}}_edit" onclick="delete_items('{{annoid}}')">Delete</button>
-<div id="{{annoid}}_embedcode" style="display: none;">&lt;iiif-annotation annotationurl="{{url}}"&gt;&lt;iiif-annotation&gt;</div></td>
+<div id="{{annoid}}_embedcode" style="display: none;">&lt;iiif-annotation annotationurl="{{url| strip }}"&gt;&lt;iiif-annotation&gt;</div></td>
 </tr>
 {% endif %}
 </tbody> </table> 
