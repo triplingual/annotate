@@ -130,3 +130,10 @@ figcaption {
   font-weight: bold;
   cursor: pointer;
 }
+
+.container {
+	max-width: none;
+}
+.prose p, .prose ol, .prose ul {
+	width: 100%;
+}
