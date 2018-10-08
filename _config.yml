@@ -6,9 +6,6 @@ url: "http://dnoneill.github.io"
 markdown: kramdown
 permalink: pretty
 
-github_username: mnyrop
-social_username: mariinyrop
-
 theme: jekyll-swiss
 
 exclude: [Rakefile, Gemfile*, vendor]
