@@ -1,7 +1,7 @@
 title: Local IIIF Annotation Server
 description: ""
 baseurl: "/annotate"
-url: "http://dnoneill.github.io"
+url: "https://dnoneill.github.io"
 
 markdown: kramdown
 permalink: pretty
