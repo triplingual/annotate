@@ -18,12 +18,10 @@ def create_anno():
     "@type": "sc:AnnotationList", "@id": "%s%s/%s-list.json"% (origin_url, filepath[1:], id) } 
     formated_annotation['resources'] = annotation
     
-    print("{}.json".format(os.path.join(filepath, id)))
     with open("{}-list.json".format(os.path.join(filepath, id)), 'w') as outfile:
         outfile.write("---\nlayout: null\n---\n")
         outfile.write(json.dumps(formated_annotation))
     index = 1
-    print(annotation)
     for anno in annotation:
         with open("{}-{}.json".format(os.path.join(filepath, id), index), 'w') as outfile:
             outfile.write("---\nlayout: null\n---\n")
@@ -33,7 +31,6 @@ def create_anno():
     
 @app.route('/annotations/', methods=['DELETE'])
 def delete_anno():
-    print(request.data)
     delete_path = os.path.join(filepath, request.data) + ".json"
     os.remove(delete_path)
     return "File Removed", 201

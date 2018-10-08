@@ -13,6 +13,15 @@
 
  
   $(document).ready(function(){
+    localStorage.clear();
+  	{% for annotation in site.annotations %}
+  		{% if annotation.path contains 'list' %}
+
+  			var json = JSON.stringify({{annotation}}.resources)
+  			var url = {{annotation}}.resources[0].on[0].full
+  			localStorage.setItem(url, json)
+  		{% endif %}
+  	{% endfor %}
     $( "#anno_button" ).click(function() {
       $( "#anno_results" ).empty()
       for(var i =0; i < localStorage.length; i++){

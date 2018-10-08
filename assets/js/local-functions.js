@@ -1,10 +1,3 @@
-function load_annotations(ident, annotation){
-//var unescape_json = $.parseHTML(annotation)[0].textContent
-annotation = annotation.replace("***", "'")
-localStorage.setItem(ident, annotation)
-console.log(ident)
-console.log(localStorage)
-}
 function make_embed_code(id){
 	console.log(id)
 	if ($("#" + id + "_embedcode").css("display") == 'none'){
@@ -17,6 +10,8 @@ function make_embed_code(id){
 }
 
 function delete_items(anno_id){
+	var confirmation = confirm("Are you sure you want to delete?");
+	if (confirmation == true){
 	$.ajax({
 		    url: 'http://127.0.0.1:5000/annotations/',
 		    type: 'DELETE',
@@ -32,6 +27,5 @@ function delete_items(anno_id){
 		        console.log( errorThrown );
 		    }
 		});
+	} 
 }
-
-
