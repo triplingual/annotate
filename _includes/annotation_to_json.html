@@ -1,8 +1,4 @@
-<style>
-  .anno{max-width:800;overflow:scroll;padding:10px;margin-top:10px;}
-</style>
-<br>
-<button type="button" id="anno_button">Load All Annotations</button>
+
 <div id="anno_results"></div>
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -11,7 +7,7 @@
 <script type="text/jscript">
   var canvas_regex = /.+canvas\/([^.]+)/;
 
- 
+
   $(document).ready(function(){
     localStorage.clear();
   	{% for annotation in site.annotations %}

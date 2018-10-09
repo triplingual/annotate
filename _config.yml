@@ -20,3 +20,5 @@ webrick:
     "Access-Control-Allow-Origin": "*"
 
 api_server: http://0.0.0.0:5000/annotations/
+
+github_username: ncsu-libraries
