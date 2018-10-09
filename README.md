@@ -1,4 +1,4 @@
-# IIIF-Annotate [![Build Status](https://travis-ci.org/mnyrop/annotate.svg?branch=master)](https://travis-ci.org/mnyrop/annotate)   ![Libraries.io for GitHub](https://img.shields.io/librariesio/github/mnyrop/annotate.svg)
+# IIIF-Annotate
 
 Create/store/load static annotations on IIIF manifests via Jekyll
 
@@ -8,9 +8,11 @@ Create/store/load static annotations on IIIF manifests via Jekyll
 - Ruby >=2.2
 - Jekyll >=3.5
 - Bundler >=1.12
-
+- Python
 ### Installing
 - Clone this repository and navigate into it:<br>
-  `$ git clone https://github.com/mnyrop/annotate.git && cd annotate`
+  `$ git clone https://github.com/dnoneill/annotate.git && cd annotate`
 - Install dependencies:<br>
   `$ bundle install`
+- Create ENV, install Flask in ENV, start Flask and Jekyll
+  `$ ./run.sh`

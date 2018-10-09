@@ -20,7 +20,6 @@ layout: page
 	<div id="{{annoid}}_embedcode" style="display: none;">&lt;iiif-annotation annotationlist="{{url| strip }}"&gt;&lt;iiif-annotation&gt;</div>
 	<button id="{{annoid}}_edit" class="listbutton" onclick="delete_items('{{annoid}}', '{{site.api_server}}')">Delete</button>
 </div>
-</tr>
 {% else %}
 <div class="column anno_left"><iiif-annotation annotationurl="{{url | strip }}"></iiif-annotation></div>
 <div class="column anno_right">
@@ -29,5 +28,5 @@ layout: page
 	<button id="{{annoid}}_edit" class="listbutton" onclick="delete_items('{{annoid}}', '{{site.api_server}}')">Delete</button>
 </div>
 {% endif %}
-</div> 
+</div>
 {% endfor %}
