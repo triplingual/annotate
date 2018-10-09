@@ -15,4 +15,5 @@ Create/store/load static annotations on IIIF manifests via Jekyll
 - Install dependencies:<br>
   `$ bundle install`
 - Create ENV, install Flask in ENV, start Flask and Jekyll
+  
   `$ ./run.sh`
