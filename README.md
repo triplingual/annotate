@@ -10,9 +10,11 @@ Create/store/load static annotations on IIIF manifests via Jekyll
 - Bundler >=1.12
 - Python
 ### Installing
-- Clone this repository and navigate into it:<br>
+- Clone this repository and navigate into it:
+
   `$ git clone https://github.com/dnoneill/annotate.git && cd annotate`
-- Install dependencies:<br>
+- Install dependencies:
+
   `$ bundle install`
 - Create ENV, install Flask in ENV, start Flask and Jekyll
   
