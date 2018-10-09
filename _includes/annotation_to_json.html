@@ -24,31 +24,7 @@
   	{% endfor %}
     $( "#anno_button" ).click(function() {
       $( "#anno_results" ).empty()
-      for(var i =0; i < localStorage.length; i++){
-        var key = localStorage.key(i);
-        var matches = canvas_regex.exec(key);
-        if(matches != null) {
-          var canvas = matches[1];
-          var fileName = canvas + '.json';
-          var fileContent = localStorage.getItem(key);
-          var jsonparse = JSON.parse(fileContent);
-          $.ajax({
-		    url: 'http://127.0.0.1:5000/annotations/',
-		    dataType: 'json',
-		    type: 'POST',
-		    contentType: 'application/json',
-		    data: JSON.stringify(jsonparse),
-		    processData: false,
-		    success: function( data, textStatus, jQxhr ){
-		        $('#response pre').html( JSON.stringify( data ) );
-		    },
-		    error: function( jqXhr, textStatus, errorThrown ){
-		        console.log( errorThrown );
-		    }
-		});
- 
-      }
-  }
+        create_items('{{site.api_server}}')
     });
  });
 </script>

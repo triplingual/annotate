@@ -8,12 +8,12 @@ CORS(app)
 
 annotations = []
 filepath = "_annotations"
-
+	
 @app.route('/annotations/', methods=['POST'])
 def create_anno():
     annotation = json.loads(request.data)
     origin_url = request.headers.get('Referer').strip()
-    id = annotation[0]['on'][0]['full'].split("/")[-1].replace("_", "-")
+    id = annotation[0]['on'][0]['full'].split("/")[-1].replace("_", "-").lower()
     formated_annotation = {"@context":"http://iiif.io/api/presentation/2/context.json",
     "@type": "sc:AnnotationList", "@id": "%s%s/%s-list.json"% (origin_url, filepath[1:], id) } 
     formated_annotation['resources'] = annotation
@@ -34,4 +34,7 @@ def delete_anno():
     delete_path = os.path.join(filepath, request.data) + ".json"
     os.remove(delete_path)
     return "File Removed", 201
-    
+
+
+if __name__ == "__main__":
+    app.run()
