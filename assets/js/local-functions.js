@@ -40,6 +40,7 @@ function create_items(api_url) {
           var fileName = canvas + '.json';
           var fileContent = localStorage.getItem(key);
           var jsonparse = JSON.parse(fileContent);
+          jsonparse = {'json':jsonparse, 'key': key}
           $.ajax({
 		    url: api_url,
 		    dataType: 'json',

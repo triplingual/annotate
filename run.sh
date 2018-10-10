@@ -5,4 +5,4 @@ pip install Flask
 pip install flask_cors
 python flaskserver.py &
 jekyll serve --force_polling
-
+pkill -f flask

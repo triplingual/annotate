@@ -18,14 +18,12 @@ layout: page
 <div class="column anno_right">
 	<button id="{{annoid}}_button" class="listbutton" onclick="make_embed_code('{{annoid}}')">Show embed code</button>
 	<div id="{{annoid}}_embedcode" style="display: none;">&lt;iiif-annotation annotationlist="{{url| strip }}"&gt;&lt;/iiif-annotation&gt;</div>
-	<button id="{{annoid}}_edit" class="listbutton" onclick="delete_items('{{annoid}}', '{{site.api_server}}')">Delete</button>
 </div>
 {% else %}
 <div class="column anno_left"><iiif-annotation annotationurl="{{url | strip }}"></iiif-annotation></div>
 <div class="column anno_right">
 	<button id="{{annoid}}_button" class="listbutton" onclick="make_embed_code('{{annoid}}')">Show embed code</button>
 	<div id="{{annoid}}_embedcode" style="display: none;">&lt;iiif-annotation annotationurl="{{url| strip }}"&gt;&lt;/iiif-annotation&gt;</div>
-	<button id="{{annoid}}_edit" class="listbutton" onclick="delete_items('{{annoid}}', '{{site.api_server}}')">Delete</button>
 </div>
 {% endif %}
 </div>
