@@ -8,6 +8,12 @@ Create/store/load static annotations on IIIF manifests via Jekyll
 
   `$ git clone https://github.com/dnoneill/annotate.git && cd annotate`
 
+- Install Vagrant https://www.vagrantup.com/downloads.html
+
+- Install vagrant plugin
+
+  ` $ vagrant plugin install vagrant-sshfs`
+
 - Start vagrant environment
 
   `$ vagrant up`

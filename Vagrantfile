@@ -12,6 +12,16 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
+  vagrant_plugins = ["vagrant-sshfs"]
+  vagrant_plugins.each do |plugin|
+    unless Vagrant.has_plugin? plugin
+      puts
+      puts "Plugin #{plugin} is not installed. Install it with:"
+      puts "vagrant plugin install #{vagrant_plugins.join(' ')}"
+      puts
+      exit
+    end
+  end
   config.vm.box = "centos/7"
   config.vm.network "forwarded_port", host: 4000, guest: 4000
   config.vm.network "forwarded_port", host: 5000, guest: 5000
