@@ -4,5 +4,6 @@ echo source ENV/bin/activate
 pip install Flask
 pip install flask_cors
 python flaskserver.py &
-jekyll serve --force_polling
+bundle install
+jekyll serve --force_polling --host='0.0.0.0'
 pkill -f flask

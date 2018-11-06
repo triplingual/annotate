@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "bootstrap.sh", privileged: false
   config.vm.network :forwarded_port, guest: 80, host: 4567
   config.vm.network "private_network", type: "dhcp"
-  config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
+  config.vm.synced_folder ".", "/vagrant", type: "sshfs"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs

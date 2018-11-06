@@ -1,3 +1,4 @@
+vagrant plugin install vagrant-sshfs
 sudo yum update
 sudo yum install -y epel-release 
 sudo yum install -y python-pip
@@ -12,13 +13,7 @@ rvm install 2.2.5
 rvm use 2.2.5 --default
 sudo yum install -y rubygems
 sudo gem update
-sudo gem install github-pages
 
-cd /vagrant
-python flaskserver.py &
-bundle install
-echo jekyll serve --force_polling --host 0.0.0.0
-jekyll serve --force_polling --host 0.0.0.0
 
 
 
