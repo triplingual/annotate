@@ -2,14 +2,13 @@
 layout: page
 ---
 
-{% include head.html %}
-
 {% for annotation in site.annotations %}
   	{% assign annoidsplit = annotation.id | split: '/'  %}
 {% assign annoid = annoidsplit.last %}
 {% capture url %}
 {{site.url}}{{site.baseurl}}{{annotation.id}}.json
 {% endcapture %}
+
 <div class="row">
  {% if annotation.id contains 'list' %}
 <div class="column anno_left">
