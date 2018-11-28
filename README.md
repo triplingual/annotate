@@ -58,7 +58,7 @@ Github normally takes a minute to rebuild the site. After the items should be re
 
 - To load a new manifest hover on the "Change number of visible slots button" ![visible slots button]("images/")
 - Click on the replace object button
-- Load manifest url into new object from url slot ![new manifest]("images/new_manifest.png")
+- Load manifest url into new object from url slot ![new manifest]("/images/new_manifest.png")
 - Click on the toggle annotations button in the viewer.
 
 ### Requirements for Development
