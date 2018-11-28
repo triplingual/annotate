@@ -3,7 +3,16 @@
 Create/store/load static annotations on IIIF manifests via Jekyll
 
 ## Getting started
+<!-- TOC depthFrom:3 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
+- [Creating Github site and hosting annotations](#creating-github-site-and-hosting-annotations)
+- [Running Locally](#running-locally)
+- [Create personal Annotations site, create and load new annotations.](#create-personal-annotations-site-create-and-load-new-annotations)
+- [Create Annotations](#create-annotations)
+- [Requirements for Development](#requirements-for-development)
+- [Development](#development)
+
+<!-- /TOC -->
 ### Creating Github site and hosting annotations
 
 - Login into Github account.
