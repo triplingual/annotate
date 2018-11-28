@@ -37,6 +37,8 @@ Create/store/load static annotations on IIIF manifests via Jekyll
 
 - Navigate to http://0.0.0.0:4000/annotate to create annotations
 
+- IMPORTANT!!!!! After creating annotations make sure to click on the "Load All Annotations" button ![load annotations button](images/load_annotations.png) located in the bottom left hand corner of the Mirador viewer. If this is not done, no annotations will be created or deleted. This only has to be done before navigating away from the create annotations page . It does not have to be done when switching between manifests.
+
 ### Create personal Annotations site, create and load new annotations.
 This application allows for the site run locally to be hosted on GitHub pages. Unfortunately new annotations can not be created using GitHub pages, creation has to be done locally, but new annotations can be hosted and viewed on a GitHub pages site. This allows for easy sharing and reuse. The instructions explain how to create a site that works in the same way as https://dnoneill.github.io/annotate/. Creation of this site allows for embed codes like: `<iiif-annotation annotationurl="https://dnoneill.github.io/annotate/annotations/mc00084-001-te0159-000-001-0001-1.json"></iiif-annotation>` to work on other sites.
 
@@ -44,7 +46,7 @@ This application allows for the site run locally to be hosted on GitHub pages. U
 - Scroll down to the GitHub Pages section
 - In the Source dropdown select "master branch"
 - Click "Save"
-- After new annotations have been created or deleted, navigate to the "annotate" folder.
+- After new annotations have been created or deleted, navigate to the "annotate" folder on your device.
 - type in `git status`
 - The window should show a number of annotations in red text.
 - type in `git add _annotations` to add all annotation changes.
@@ -53,13 +55,14 @@ This application allows for the site run locally to be hosted on GitHub pages. U
 Github normally takes a minute to rebuild the site. After the items should be rendered and available for viewing and reuse on the site.
 
 ### Create Annotations
-
+IMPORTANT!!!!! After creating annotations make sure to click on the "Load All Annotations" button ![load annotations button](images/load_annotations.png) located in the bottom left hand corner of the Mirador viewer. If this is not done, no annotations will be created or deleted. This only has to be done before navigating away from the create annotations page . It does not have to be done when switching between manifests.
 - Navigate to the create annotations page. http://0.0.0.0:4000/annotate
-
-- To load a new manifest hover on the "Change number of visible slots button" ![visible slots button]("images/")
-- Click on the replace object button
+- To load a new manifest hover on the "Change number of visible slots button" ![visible slots button](images/slots_button.png)
+- Click on the replace object button ![replace objects](images/replace_object.png)
 - Load manifest url into new object from url slot ![new manifest](images/new_manifest.png)
 - Click on the toggle annotations button in the viewer.
+- Create annotations using tools provided by IIIF viewer.
+- Click on "Load All Annotations" button.
 
 ### Requirements for Development
 - Ruby >=2.2
