@@ -16,9 +16,7 @@ Create/store/load static annotations on IIIF manifests via Jekyll
 ### Creating Github site and hosting annotations
 
 - Login into Github account.
-
 - Navigate to https://github.com/dnoneill/annotate and Fork the repository.
-
 - Follow the directions in "Running Locally" below
 
 ### Running Locally
@@ -27,15 +25,12 @@ Create/store/load static annotations on IIIF manifests via Jekyll
   `$ git clone https://github.com/[username]/annotate.git && cd annotate`
 
 - Install Vagrant https://www.vagrantup.com/downloads.html
-
 - Install vagrant plugin
 
   ` $ vagrant plugin install vagrant-sshfs`
-
 - Start vagrant environment
 
   `$ vagrant up`
-
 - Start Jekyll and Flask
 
   `$ vagrant ssh`
@@ -43,22 +38,21 @@ Create/store/load static annotations on IIIF manifests via Jekyll
   `[vagrant@localhost ~]$ cd /vagrant`
 
   `[vagrant@localhost ~]$ ./run.sh`
-
 - Navigate to http://0.0.0.0:4000/annotate to create annotations
-
 - IMPORTANT!!!!! After creating annotations make sure to click on the "Load All Annotations" button ![load annotations button](images/load_annotations.png) located in the bottom left hand corner of the Mirador viewer. If this is not done, no annotations will be created or deleted. This only has to be done before navigating away from the create annotations page . It does not have to be done when switching between manifests.
 
 ### Create personal Annotations site, create and load new annotations.
-This application allows for the site run locally to be hosted on GitHub pages. Unfortunately new annotations can not be created using GitHub pages, creation has to be done locally, but new annotations can be hosted and viewed on a GitHub pages site. This allows for easy sharing and reuse. The instructions explain how to create a site that works in the same way as https://dnoneill.github.io/annotate/. Creation of this site allows for embed codes like: `<iiif-annotation annotationurl="https://dnoneill.github.io/annotate/annotations/mc00084-001-te0159-000-001-0001-1.json"></iiif-annotation>` to work on other sites.
+This application allows for the site to be hosted on GitHub pages. Unfortunately new annotations can not be created using GitHub pages, creation has to be done locally. But new annotations can be hosted and viewed on a GitHub pages site. This allows for easy sharing and reuse. The instructions explain how to create a site that works in the same way as https://dnoneill.github.io/annotate/. Creation of this site allows for embed codes like: `<iiif-annotation annotationurl="https://dnoneill.github.io/annotate/annotations/mc00084-001-te0159-000-001-0001-1.json"></iiif-annotation>` to work on other sites.
 
-- After forking the site, go to the Settings tab.
-- Scroll down to the GitHub Pages section
-- In the Source dropdown select "master branch"
-- Click "Save"
-- After new annotations have been created or deleted, navigate to the "annotate" folder on your device.
+- Create GitHub Pages site, only needs to be done once.
+  - After forking the site, go to the Settings tab.
+  - Scroll down to the GitHub Pages section
+  - In the Source dropdown select "master branch"
+  - Click "Save"
+- After new annotations have been created or deleted, navigate to the "annotate" folder on your device. See [Create Annotations](#create-annotations) section below on how to create annotations.
 - type in `git status`
-- The window should show a number of annotations in red text.
-- type in `git add _annotations` to add all annotation changes.
+- The window should show a number of annotations in red text, these annotations have been created locally but not on the GitHub site.
+- type in `git add _annotations` to add all new annotations and possible changes.
 - type in `git commit -m "message for commit here, usually can be something simple like 'new images'"`
 - type in `git push origin master`
 Github normally takes a minute to rebuild the site. After the items should be rendered and available for viewing and reuse on the site.
