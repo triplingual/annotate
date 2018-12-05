@@ -5,17 +5,17 @@
     </a>
   </div>
   <div class="right sm-width-full">
+      {% for page in site.pages %}
     <ul class="list-reset mt-lg-1 mb-2 mb-lg-1">
+      {% if page.path contains 'scss' %}
+      {% else %}
        <li class="inline-block">
-          <a class="align-middle link-primary mr-2 mr-lg-0 ml-lg-2" href="{{site.baseurl}}/">
-            Create Annotations
+          <a class="align-middle link-primary mr-2 mr-lg-0 ml-lg-2" href="{{site.baseurl}}{{page.url}}">
+            {{page.title}}
           </a>
         </li>
-        <li class="inline-block">
-          <a class="align-middle link-primary mr-2 mr-lg-0 ml-lg-2" href="{{site.baseurl}}/annotations">
-            List of Annotations
-          </a>
-        </li>
+        {% endif %}
+        {% endfor %}
     </ul>
   </div>
 </header>

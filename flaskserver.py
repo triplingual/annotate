@@ -21,7 +21,7 @@ def create_anno():
         formated_annotation = {"@context":"http://iiif.io/api/presentation/2/context.json",
         "@type": "sc:AnnotationList", "@id": "%s%s/%s-list.json"% (origin_url, filepath[1:], id) } 
         formated_annotation['resources'] = annotation
-        file_path = os.path.join(filepath, id)
+        file_path = os.path.join(filepath, id.replace(".json", ""))
         list_name = "{}-list.json".format(file_path)
         if len(filecounter) - 1 > len(annotation):
             for file in filecounter:
