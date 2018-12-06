@@ -6,13 +6,13 @@ url: "https://dnoneill.github.io"
 markdown: kramdown
 permalink: pretty
 
-theme: jekyll-swiss
+theme: just-the-docs
 
 exclude: [Rakefile, Gemfile*, vendor]
 include: [feed.xml]
 
 collections:
-    annotations: 
+    annotations:
         output: true
         permalink: /annotations/:name
 webrick:
@@ -25,3 +25,7 @@ github_username: ncsu-libraries
 
 exclude:
   - ENV/
+
+aux_links:
+  "Local IIIF Annotation Server on GitHub":
+    - "//github.com/dnoneill/annotate"

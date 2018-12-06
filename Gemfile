@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 gem 'jekyll', '3.8.1'
-gem 'jekyll-swiss'
+gem 'just-the-docs'
 gem 'rake'
 gem 'html-proofer'
 gem 'jekyll-admin'

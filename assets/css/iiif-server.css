@@ -65,4 +65,28 @@
   font-weight: bold;
   cursor: pointer;
 }
-  
+@media (min-width: 46.25rem){
+.side-bar {
+  width: 16%;
+}
+.main-content {
+  margin-left: calc(16%);
+  max-width: none;
+}
+}
+
+#storyboard_viewer > div {
+  width: 100%;
+}
+
+.main-content {
+  padding: 5px;
+}
+
+#container {
+  padding-right: 20px;
+}
+
+.page-header {
+  display: none;
+}

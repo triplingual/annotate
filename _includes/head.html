@@ -1,25 +1,16 @@
-<html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-
-  {% assign user_url = site.url | append: site.baseurl %}
-  {% assign full_base_url = user_url | default: site.github.url %}
-  <script src="https://unpkg.com/vue"></script>
-
-  <script src="{{ '/assets/js/iiif-annotation.js' | prepend: site.baseurl }}"></script>
-    <script src="{{ '/assets/js/local-functions.js' | prepend: site.baseurl }}"></script>
+  <title>{{ page.title }} - {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ "/assets/css/just-the-docs.css" | absolute_url }}">
+  <link rel="stylesheet" href="{{ "/assets/css/iiif-annotation.css" | absolute_url }}">
+  <link rel="stylesheet" href="{{ "/assets/css/iiif-server.css" | absolute_url }}">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-  <link rel="stylesheet" href="{{ '/assets/style.css' | prepend: full_base_url }}" type="text/css">
-  <link rel="stylesheet" href="{{ '/assets/css/iiif-annotation.css' | prepend: full_base_url }}" type="text/css">
-  <link rel="stylesheet" href="{{ '/assets/css/iiif-server.css' | prepend: full_base_url }}" type="text/css">
+  <script src="https://unpkg.com/vue"></script>
+  <script type="text/javascript" src="{{ "/assets/js/just-the-docs.js" | absolute_url }}"></script>
+  <script type="text/javascript" src="{{ "/assets/js/iiif-annotation.min.js" | absolute_url }}"></script>
+  <script type="text/javascript" src="{{ "/assets/js/local-functions.js" | absolute_url }}"></script>
 
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
