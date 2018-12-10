@@ -8,7 +8,7 @@ sudo yum install -y gcc g++ make automake autoconf curl-devel openssl-devel zlib
 curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 curl -L get.rvm.io | bash -s stable
 source /home/vagrant/.rvm/scripts/rvm
-rvm install 2.2.5
-rvm use 2.2.5 --default
+rvm install 2.3.0
+rvm use 2.3.0 --default
 sudo yum install -y rubygems
 sudo gem update

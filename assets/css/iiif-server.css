@@ -106,8 +106,21 @@ button {
   width: 98%;
 }
 
-#sidebar .site-title {
+.site-title {
   font-size: 2.25rem;
+}
+
+@media (min-width: 49rem){
+#sidebar .site-title {
+    font-size: 2.25rem;
+}}
+
+.row {
+  padding-bottom: 2em;
+}
+
+#storyboard_viewer {
+  padding-top: 0px;
 }
 
 img {

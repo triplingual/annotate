@@ -155,6 +155,7 @@ figcaption {
   height: 250px;
   overflow: scroll;
   padding: 2px;
+  word-wrap: break-word;
 }
 
 #annotation_text img {
@@ -163,6 +164,9 @@ figcaption {
     object-fit: scale-down;
 }
 
+#annotation_text {
+  display: inline-block;
+}
 #annotation.inactive {
   display: none;
 }
@@ -171,7 +175,6 @@ figcaption {
 display: block;
 padding-left: 20px;
 width: 87%;
-background-color: white;
 }
 .window {
 display: none;
