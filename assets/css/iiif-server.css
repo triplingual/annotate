@@ -90,3 +90,32 @@
 .page-header {
   display: none;
 }
+
+.container {
+  padding: 20px;
+}
+.container > * {
+  max-width: none;
+}
+
+button {
+  padding: 0px;
+}
+
+.seadragonbox {
+  width: 98%;
+}
+
+#sidebar .site-title {
+  font-size: 2.25rem;
+}
+
+img {
+  display: inline-block;
+  margin: 0;
+}
+
+#annotation.active {
+  left: 20px;
+  width: 18%;
+}
