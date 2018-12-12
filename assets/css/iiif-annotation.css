@@ -147,6 +147,7 @@ figcaption {
 }
 #annotation {
   width: 18%;
+  resize: both;
   border: 2px solid black;
   background: white;
   position: absolute;
