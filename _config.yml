@@ -6,8 +6,8 @@ url: "https://dnoneill.github.io"
 markdown: kramdown
 permalink: pretty
 
-theme: jekyll-theme-hydeout
-remote_theme: fongandrew/hydeout
+theme: just-the-docs
+remote_theme: pmarsceill/just-the-docs
 
 exclude: [Rakefile, Gemfile*, vendor]
 include: [feed.xml]

@@ -1,6 +1,5 @@
 ---
-layout: page
-sidebar_link: true
+layout: default
 title: Create Annotations
 ---
 
