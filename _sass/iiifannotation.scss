@@ -14,14 +14,21 @@ $pin_font: $pin_size + px;
   font-size: 22px;
 }
 
-#storyboard_viewer {
-  padding-top: 50px;
+.storyboard_viewer {
+  padding-bottom: 50px;
+  position: relative;
 }
 
 .seadragonbox {
   width: $seadragon_width;
   display: inline-block;
   height:$seadrgon_height;
+}
+
+.seadragonboxfull {
+  width: 100%;
+  display: inline-block;
+  height: 100vh;
 }
 #annotation {
   width: 10%;
@@ -82,7 +89,7 @@ $pin_font: $pin_size + px;
 }
 
 .fullscreen {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
