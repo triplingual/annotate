@@ -30,6 +30,7 @@ $pin_font: $pin_size + px;
   display: inline-block;
   height: 100vh;
 }
+
 #annotation {
   width: 10%;
   resize: both;
@@ -88,7 +89,7 @@ $pin_font: $pin_size + px;
   left: calc(50% - #{$mid_pin});
 }
 
-.fullscreen {
+.fullpage {
   position: fixed;
   top: 0;
   bottom: 0;
