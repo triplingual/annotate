@@ -20,7 +20,7 @@ webrick:
   headers:
     "Access-Control-Allow-Origin": "*"
 
-api_server: http://0.0.0.0:5000/annotations/
+api_server: https://limitless-plains-74009.herokuapp.com/annotations/
 
 github_username: ncsu-libraries
 
