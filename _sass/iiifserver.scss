@@ -138,5 +138,9 @@ img {
 }
 
 form[method="get"] {
+  display: none!important;
+}
+
+.site-header {
   display: none;
 }
