@@ -3,8 +3,7 @@ layout: page
 title: Create Annotations
 ---
 
-<script src="https://use.fontawesome.com/884e80fbb8.js"></script>
-<div id="1" style="position:absolute;top:0px;"></div>
+IMPORTANT! Do not forget to click the <button type="button" id="anno_button" disabled style="display: inline-block">Load All Annotations</button> button when you are done annotating. You can switch between different objects, using the "<i class="fas fa-sync-alt"></i> Replace Object" and will not lose any annotations. The button does need to clicked before navigating to another page.
 
 Annotations can be viewed and created by toggling the <i class="fa fa-comments" aria-hidden="true"></i> button on the top left of the viewer.
 
