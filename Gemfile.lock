@@ -8,7 +8,6 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
-    backports (3.11.4)
     colorator (1.1.0)
     colorize (0.8.1)
     concurrent-ruby (1.0.5)
@@ -45,17 +44,18 @@ GEM
       pathutil (~> 0.9)
       rouge (>= 1.7, < 4)
       safe_yaml (~> 1.0)
-    jekyll-admin (0.8.1)
-      addressable (~> 2.4)
+    jekyll-feed (0.11.0)
       jekyll (~> 3.3)
-      sinatra (~> 1.4)
-      sinatra-contrib (~> 1.4)
+    jekyll-readthedocs (0.3.2)
+      jekyll (~> 3.5)
+      jekyll-feed (~> 0.11)
+      jekyll-seo-tag (~> 2.5)
     jekyll-sass-converter (1.5.2)
       sass (~> 3.4)
+    jekyll-seo-tag (2.5.0)
+      jekyll (~> 3.3)
     jekyll-watch (2.0.0)
       listen (~> 3.0)
-    just-the-docs (0.1.3)
-      jekyll (~> 3.3)
     kramdown (1.16.2)
     liquid (4.0.0)
     listen (3.1.5)
@@ -65,18 +65,12 @@ GEM
     mercenary (0.3.6)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
-    multi_json (1.13.1)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     parallel (1.12.1)
     pathutil (0.16.1)
       forwardable-extended (~> 2.6)
     public_suffix (3.0.2)
-    rack (1.6.10)
-    rack-protection (1.5.5)
-      rack
-    rack-test (1.1.0)
-      rack (>= 1.0, < 3)
     rake (12.3.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
@@ -89,19 +83,7 @@ GEM
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    sinatra (1.4.8)
-      rack (~> 1.5)
-      rack-protection (~> 1.4)
-      tilt (>= 1.3, < 3)
-    sinatra-contrib (1.4.7)
-      backports (>= 2.0)
-      multi_json
-      rack-protection
-      rack-test
-      sinatra (~> 1.4.0)
-      tilt (>= 1.3, < 3)
     thread_safe (0.3.6)
-    tilt (2.0.8)
     typhoeus (1.3.0)
       ethon (>= 0.9.0)
     tzinfo (1.2.5)
@@ -114,9 +96,8 @@ PLATFORMS
 DEPENDENCIES
   html-proofer
   jekyll (= 3.8.1)
-  jekyll-admin
-  just-the-docs
+  jekyll-readthedocs
   rake
 
 BUNDLED WITH
-   1.17.1
+   1.17.2

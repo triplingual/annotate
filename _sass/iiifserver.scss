@@ -1,6 +1,5 @@
 .column {
     float: left;
-    padding: 10px;
 }
 .row {
 	border-bottom: 1px solid #181818;
@@ -46,7 +45,7 @@
 	width: 100%;
 }
 
-#container > button {
+#mirador_container > button {
   opacity: 1;
   position:relative;
   float: left;
@@ -64,6 +63,7 @@
   border-radius: 12px;
   font-weight: bold;
   cursor: pointer;
+  padding: 8px;
 }
 @media (min-width: 46.25rem){
 .side-bar {
@@ -131,4 +131,12 @@ img {
 #annotation.active {
   left: 20px;
   width: 18%;
+}
+
+.wrapper {
+  max-width: none;
+}
+
+form[method="get"] {
+  display: none;
 }
