@@ -144,3 +144,58 @@ form[method="get"] {
 .site-header {
   display: none;
 }
+
+.site-sidebar {
+  overflow-y: hidden;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  font-size: 12px;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: auto;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 5px;
+  position: absolute;
+  z-index: 1;
+  top: 70%;
+  left: 220%;
+  font-size: 10px;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+textarea {
+  width: 100%;
+}
+
+.copybutton {
+  border: none;
+  background-color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 1px 2px;
+  cursor: pointer;
+}
