@@ -48,8 +48,9 @@ function create_items(api_url) {
 							var match = check[0].replace(/=\\"/g, "='")
 							resource = resource.replace(regex, match)
 						}
-						console.log(resource)
-						console.log(JSON.parse(resource))
+						if (/\\\\"/gm.test(resource)){
+							resource = resource.replace(/\\\\"/gm, "'")
+						}
 						jsonparse[e]['resource'] = JSON.parse(resource)
 					}
           jsonparse = {'json':jsonparse, 'key': key}
