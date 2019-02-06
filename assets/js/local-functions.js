@@ -38,7 +38,18 @@ function create_items(api_url) {
           var canvas = matches[1];
           var fileName = canvas + '.json';
           var fileContent = localStorage.getItem(key);
-          var jsonparse = JSON.parse(fileContent);
+					var jsonparse = JSON.parse(fileContent);
+					for (var e = 0; e< jsonparse.length; e++){
+						resource = _.unescape(JSON.stringify(jsonparse[e]['resource']))
+						var regex = /(annotationurl|annotationlist)=\\"/gm;
+						var check = regex.exec(resource)
+						if (check != null ){
+							resource = resource.replace(/\\"></gm, "'><")
+							var match = check[0].replace(/=\\"/g, "='")
+							resource = resource.replace(regex, match)
+						}
+						jsonparse[e]['resource'] = JSON.parse(resource)
+					}
           jsonparse = {'json':jsonparse, 'key': key}
           $.ajax({
 		    url: api_url,

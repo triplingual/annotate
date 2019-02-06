@@ -12,8 +12,22 @@
     localStorage.clear();
   	{% for annotation in site.annotations %}
   		{% if annotation.path contains 'list' %}
-
-  			var json = JSON.stringify({{annotation}}.resources)
+      var annotationresources = {{annotation}}.resources
+        for (var i=0; i < annotationresources.length; i++){
+          for (var e=0; e < annotationresources[i].resource.length; e++){
+            var new_chars = ""
+            var chars = JSON.stringify(annotationresources[i]['resource'][e]['chars'])
+            var text = _.compact(chars.slice(1,-1).split("</p>"))
+            if (text != null && text.length > 0){
+              for (var j=0; j<text.length; j++){
+                var get_text = text[j].split("<p>")
+                new_chars += "<p>" + _.escape(get_text.slice(-1)) + "</p>"
+              }
+            }
+          annotationresources[i]['resource'][e]['chars'] = new_chars;
+          }
+        }
+  			var json = JSON.stringify(annotationresources)
   			var url = {{annotation}}.resources[0].on[0].full
   			localStorage.setItem(url, json)
   		{% endif %}
