@@ -22,7 +22,7 @@
               if (text != null && text.length > 0){
                 for (var j=0; j<text.length; j++){
                   var get_text = text[j].split("<p>")
-                  new_chars += "<p>" + _.escape(get_text.slice(-1)) + "</p>"
+                  new_chars += "<p>" + get_text.slice(-1).join(' ').replace(/\\"/g, '"').replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</p>"
                 }
               }
               annotationresources[i]['resource'][e]['chars'] = new_chars;

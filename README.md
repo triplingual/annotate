@@ -30,9 +30,7 @@ This application allows for the site to be hosted on GitHub pages. Unfortunately
   `$ git clone https://github.com/[username]/annotate.git && cd annotate`
 
 - Install Vagrant https://www.vagrantup.com/downloads.html
-- Install vagrant plugin
 
-  ` $ vagrant plugin install vagrant-sshfs`
 - Start vagrant environment
 
   `$ vagrant up`
