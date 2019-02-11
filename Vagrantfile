@@ -24,20 +24,15 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  vagrant_plugins = ["vagrant-sshfs"]
-  vagrant_plugins.each do |plugin|
-    unless Vagrant.has_plugin? plugin
-      puts
-      puts "Plugin #{plugin} is not installed. Install it with:"
-      puts "vagrant plugin install #{vagrant_plugins.join(' ')}"
-      puts
-      exit
-    end
+  config.vm.provision "ansible_local" do |ansible|
+    ansible.playbook = "playbook.yml"
+    ansible.galaxy_roles_path = 'imported_roles'
+    ansible.galaxy_role_file = "requirements.yml"
+    ansible.verbose = true
   end
   config.vm.box = "centos/7"
   config.vm.network "forwarded_port", host: 4000, guest: 4000
   config.vm.network "forwarded_port", host: 5000, guest: 5000
-  config.vm.provision "shell", path: "bootstrap.sh", privileged: false
   config.vm.network :forwarded_port, guest: 80, host: 4567
   config.vm.network "private_network", type: "dhcp"
   config.vm.synced_folder ".", "/vagrant", type: "sshfs"
