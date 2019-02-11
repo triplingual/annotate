@@ -24,6 +24,7 @@ api_server: https://limitless-plains-74009.herokuapp.com/annotations/
 
 exclude:
   - ENV/
+  - imported_roles
 
 aux_links:
   "Local IIIF Annotation Server on GitHub":
