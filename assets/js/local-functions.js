@@ -41,16 +41,6 @@ function create_items(api_url) {
 					var jsonparse = JSON.parse(fileContent);
 					for (var e = 0; e< jsonparse.length; e++){
 						resource = _.unescape(JSON.stringify(jsonparse[e]['resource']))
-						var regex = /(annotationurl|annotationlist)=\\"/gm;
-						var check = regex.exec(resource)
-						if (check != null ){
-							resource = resource.replace(/\\"></gm, "'><")
-							var match = check[0].replace(/=\\"/g, "='")
-							resource = resource.replace(regex, match)
-						}
-						if (/\\\\"/gm.test(resource)){
-							resource = resource.replace(/\\\\"/gm, "'")
-						}
 						jsonparse[e]['resource'] = JSON.parse(resource)
 					}
           jsonparse = {'json':jsonparse, 'key': key}
