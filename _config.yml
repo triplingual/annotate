@@ -6,16 +6,19 @@ url: "https://dnoneill.github.io"
 markdown: kramdown
 permalink: pretty
 
-theme: jekyll-readthedocs
-remote_theme: pawamoy/jekyll-readthedocs
+theme: just-the-docs
+remote_theme: pmarsceill/just-the-docs
 
 exclude: [Rakefile, Gemfile*, vendor]
 include: [feed.xml]
 
 collections:
-    annotations:
-        output: true
-        permalink: /annotations/:name
+  annotations:
+    output: true
+    permalink: /annotations/:name
+  docs:
+    output: true
+    permalink: /:path
 webrick:
   headers:
     "Access-Control-Allow-Origin": "*"
@@ -25,7 +28,3 @@ api_server: https://limitless-plains-74009.herokuapp.com/annotations/
 exclude:
   - ENV/
   - imported_roles
-
-aux_links:
-  "Local IIIF Annotation Server on GitHub":
-    - "//github.com/dnoneill/annotate"
