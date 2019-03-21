@@ -1,6 +1,6 @@
 # IIIF-Annotate
 
-Installation instructions are found here: [https://dnoneill.github.io/annotate/help/](https://dnoneill.github.io/annotate/help/)
+Installation instructions are found here: [https://dnoneill.github.io/annotate/help](https://dnoneill.github.io/annotate/help)
 
 ### Requirements for Development
 - Ruby >=2.2
