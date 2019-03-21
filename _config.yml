@@ -16,7 +16,7 @@ collections:
   annotations:
     output: true
     permalink: /annotations/:name
-  docs:
+  helpdocs:
     output: true
     permalink: /:path
 webrick:
