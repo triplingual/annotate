@@ -18,7 +18,7 @@ collections:
     permalink: /annotations/:name
   helpdocs:
     output: true
-    permalink: /:path
+    permalink: /help/:name
 webrick:
   headers:
     "Access-Control-Allow-Origin": "*"
