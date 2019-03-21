@@ -2,7 +2,7 @@
 layout: default
 title: Deploying to Heroku
 parent: Help
-nav_order: 4
+nav_order: 3
 ---
 
 1. Create/login to Heroku Account (signing up is free)

@@ -2,7 +2,7 @@
 layout: default
 title: Creating Annotations
 parent: Help
-nav_order: 3
+nav_order: 4
 ---
 
 IMPORTANT!!!!! After creating annotations make sure to click on the "Create/Update Annotations" button located in the bottom left hand corner of the Mirador viewer. If this is not done, no annotations will be created or deleted. This only has to be done before navigating away from the create annotations page . It does not have to be done when switching between manifests.
