@@ -22,7 +22,19 @@
               if (text != null && text.length > 0){
                 for (var j=0; j<text.length; j++){
                   var get_text = text[j].split("<p>")
-                  new_chars += "<p>" + get_text.slice(-1).join(' ').replace(/\\"/g, '"').replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</p>"
+                  console.log(get_text)
+                  var ignore = ['<span', '</span>', '<em>', '</em>', '<strong>', '</strong>', '<img', '<ol>', '</ol>', '<li>', '</li>']
+                  var new_text = get_text.slice(-1).join(' ').replace(/\\"/g, '"');
+                  match = new_text.match(/<((?=!\-\-)!\-\-[\s\S]*\-\-|((?=\?)\?[\s\S]*\?|((?=\/)\/[^.\-\d][^\/\]'"[!#$%&()*+,;<=>?@^`{|}~ ]*|[^.\-\d][^\/\]'"[!#$%&()*+,;<=>?@^`{|}~ ]*(?:\s[^.\-\d][^\/\]'"[!#$%&()*+,;<=>?@^`{|}~ ]*(?:=(?:"[^"]*"|'[^']*'|[^'"<\s]*))?)*)\s?\/?))>/g)
+                  if (match){
+                    for (var r=0; r<match.length; r++){
+                      if (!ignore.some(substring=>match[j].includes(substring))){
+                        var replace_text = match[r].replace(/</g, "&lt;").replace(/>/g, "&gt;")
+                        new_text = new_text.replace(match[r], replace_text)
+                      }
+                    }
+                  }
+                  new_chars += "<p>" + new_text.replace(/\\n/g, "&nbsp;") + "</p>"
                 }
               }
               annotationresources[i]['resource'][e]['chars'] = new_chars;
