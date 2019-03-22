@@ -37,3 +37,4 @@
       pip:
         name: flask_cors
         state: latest
+        

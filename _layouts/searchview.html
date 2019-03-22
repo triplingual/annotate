@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<table>
+{% if page.tags.length > 0 %}
+<tr>
+<td>Tags</td><td>{{page.tags | join: "; "}}</td>
+</tr>
+{% endif %}
+{% if content %}
+<tr>
+<td>Content</td><td>{{content}}</td>
+</tr>
+{% endif %}
+<tr>
+<td>Embed codes</td><td>
+<code>
+&lt;iiif-annotation annotationurl="{{site.baseurl}}/annotations/{{page.slug}}.json"&gt;&lt;/iiif-annotation&gt;
+<br>
+&lt;iiif-storyboard annotationurl="{{site.baseurl}}/annotations/{{page.slug}}.json"&gt;&lt;/iiif-storyboard&gt;
+<br>
+&lt;iiif-storyboard annotationlist="{{site.baseurl}}/annotations/{{page.listname}}"&gt;&lt;/iiif-storyboard&gt;
+</code>
+</td>
+</tr>
+</table>
+
+<iiif-annotation annotationurl="http://0.0.0.0:4000/annotate/annotations/{{page.slug}}.json"></iiif-annotation>
+
+<iiif-storyboard annotationlist="http://0.0.0.0:4000/annotate/annotations/{{page.listname}}"></iiif-storyboard>

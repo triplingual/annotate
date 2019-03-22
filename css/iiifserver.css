@@ -195,3 +195,7 @@ textarea {
   	margin-left: calc(17%);
   }
 }
+
+.page-content ul li::before {
+	content: "";
+}
