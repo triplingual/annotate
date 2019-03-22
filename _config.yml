@@ -12,7 +12,7 @@ remote_theme: pmarsceill/just-the-docs
 exclude: [Rakefile, Gemfile*, vendor]
 include: [feed.xml]
 
-view_facets: 4
+
 collections:
   annotations:
     output: true

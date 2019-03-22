@@ -10,17 +10,12 @@ title: Search
 
 </div>
 </form>
-<script>
-  var lunr_settings = {{site.lunr_settings| jsonify}}
 
-var view_facets = "{{site.view_facets}}"
-
-var baseurl = "{{site.baseurl}}"
-</script>
-
-<script src="{{site.baseurl}}/js/advanced-search.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
 <script src="{{site.baseurl}}/js/index.js"></script>
-<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/css/advanced-search.css">
+<script src="https://dnoneill.github.io/jekyll-lunr-advanced-js-search/dist/advanced-search.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://dnoneill.github.io/jekyll-lunr-advanced-js-search/dist/advanced-search.css">
 <div id="spinner"><i class="fa fa-spinner fa-spin"></i></div>
 
 <div id="header_info"></div>
