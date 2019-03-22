@@ -13,7 +13,7 @@ title: Search
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
 <script src="{{site.baseurl}}/js/index.js"></script>
-<script src="https://dnoneill.github.io/jekyll-lunr-advanced-js-search/dist/advanced-search.js"></script>
+<script src="{{site.baseurl}}/js/advanced-search.js"></script>
 
 <link rel="stylesheet" type="text/css" href="https://dnoneill.github.io/jekyll-lunr-advanced-js-search/dist/advanced-search.css">
 <div id="spinner"><i class="fa fa-spinner fa-spin"></i></div>
