@@ -1,12 +1,19 @@
 ---
 layout: default
 ---
+<table>
 {% if page.tags.length > 0 %}
-tags: {{page.tags | join: "; "}}
+<tr>
+<td>Tags</td><td>{{page.tags | join: "; "}}</td>
+</tr>
 {% endif %}
-{{content}}
-embed codes: 
-
+{% if content %}
+<tr>
+<td>Content</td><td>{{content}}</td>
+</tr>
+{% endif %}
+<tr>
+<td>Embed codes</td><td>
 <code>
 &lt;iiif-annotation annotationurl="{{site.baseurl}}/annotations/{{page.slug}}.json"&gt;&lt;/iiif-annotation&gt;
 <br>
@@ -14,6 +21,9 @@ embed codes:
 <br>
 &lt;iiif-storyboard annotationlist="{{site.baseurl}}/annotations/{{page.listname}}"&gt;&lt;/iiif-storyboard&gt;
 </code>
+</td>
+</tr>
+</table>
 
 <iiif-annotation annotationurl="http://0.0.0.0:4000/annotate/annotations/{{page.slug}}.json"></iiif-annotation>
 

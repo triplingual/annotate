@@ -12,6 +12,7 @@ remote_theme: pmarsceill/just-the-docs
 exclude: [Rakefile, Gemfile*, vendor]
 include: [feed.xml]
 
+view_facets: 4
 collections:
   annotations:
     output: true
@@ -32,11 +33,9 @@ exclude:
   - ENV/
   - imported_roles
 
-plugins:
-  - jekyll-lunr-advanced-js-search
-
 lunr_settings:
   collections: [annotation_data]
+  atozsortfield: slug
   displayfields:
     - {field: slug, headerfield: true, highlight: false}
   fields:

@@ -10,10 +10,16 @@ title: Search
 
 </div>
 </form>
+<script>
+  var lunr_settings = {{site.lunr_settings| jsonify}}
 
+var view_facets = "{{site.view_facets}}"
 
-<script src="{{site.baseurl}}/js/index.js"></script>
+var baseurl = "{{site.baseurl}}"
+</script>
+
 <script src="{{site.baseurl}}/js/advanced-search.js"></script>
+<script src="{{site.baseurl}}/js/index.js"></script>
 <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/css/advanced-search.css">
 <div id="spinner"><i class="fa fa-spinner fa-spin"></i></div>
 
@@ -30,7 +36,6 @@ title: Search
         <select id="sortSelect" name="sort" onchange="changeSort(event);">
           <option value="">Relevance</option>
           <option value="atoz">Name</option>
-          <option value="born">Birth Year</option>
         </select>
       </span>
     </div>
