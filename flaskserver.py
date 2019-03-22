@@ -4,6 +4,8 @@ from flask_cors import CORS
 import json, os, glob, requests
 import base64 
 from settings import *
+from bs4 import BeautifulSoup
+import yaml
 
 app = Flask(__name__)
 CORS(app)
@@ -59,6 +61,21 @@ def create_anno():
         index = 1
         for anno in annotation:
             if github_repo == "":
+                data = {'tags': [], 'layout': 'searchview', 'listname': list_name.split("/")[-1], 'content': []}
+                for resource in anno['resource']:
+                    chars = BeautifulSoup(resource['chars'], 'html.parser').get_text()
+                    print(type(chars))
+                    if 'tag' in resource['@type'].lower():
+                        data['tags'].append(chars.encode("utf-8"))
+                    else:
+                        data['content'].append(chars.encode("utf-8"))
+                content = '\n'.join(data.pop('content'))
+                filename= "{}-{}.md".format(id.replace(".json", "").replace(":", ""), index)
+                with open(os.path.join("_annotation_data", filename), "w") as outfile:
+                    outfile.write("---\n")
+                    outfile.write(yaml.dump(data))
+                    outfile.write("---\n")
+                    outfile.write(content)
                 with open("{}-{}.json".format(file_path, index), 'w') as outfile:
                     outfile.write("---\nlayout: null\n---\n")
                     outfile.write(json.dumps(anno))

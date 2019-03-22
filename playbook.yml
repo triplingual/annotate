@@ -37,3 +37,8 @@
       pip:
         name: flask_cors
         state: latest
+    - name: git install
+      yum:
+        name: git
+        state: latest
+        

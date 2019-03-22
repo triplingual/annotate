@@ -19,6 +19,9 @@ collections:
   helpdocs:
     output: true
     permalink: /help/:name
+  annotation_data:
+    output: true
+    permalink: /annotations/:name
 webrick:
   headers:
     "Access-Control-Allow-Origin": "*"
@@ -28,3 +31,21 @@ api_server: https://limitless-plains-74009.herokuapp.com/annotations/
 exclude:
   - ENV/
   - imported_roles
+
+plugins:
+  - jekyll-lunr-advanced-js-search
+
+lunr_settings:
+  collections: [annotation_data]
+  displayfields:
+    - {field: slug, headerfield: true, highlight: false}
+  fields:
+  - boost: 10
+    jekyllfields: [content]
+    searchfield: content
+  - boost: 10
+    jekyllfields: [tags]
+    searchfield: tags
+    facetfield: true
+
+  fuzzysearchfields: [content]
