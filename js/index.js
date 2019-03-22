@@ -25,3 +25,5 @@ var liveidx = lunr(function() {
   	{% endfor %}  
 });
 
+var index = JSON.stringify(liveidx);
+

@@ -15,16 +15,16 @@ layout: default
 <tr>
 <td>Embed codes</td><td>
 <code>
-&lt;iiif-annotation annotationurl="{{site.baseurl}}/annotations/{{page.slug}}.json"&gt;&lt;/iiif-annotation&gt;
+&lt;iiif-annotation annotationurl="{{site.url}}{{site.baseurl}}/annotations/{{page.slug}}.json"&gt;&lt;/iiif-annotation&gt;
 <br>
-&lt;iiif-storyboard annotationurl="{{site.baseurl}}/annotations/{{page.slug}}.json"&gt;&lt;/iiif-storyboard&gt;
+&lt;iiif-storyboard annotationurl="{{site.url}}{{site.baseurl}}/annotations/{{page.slug}}.json"&gt;&lt;/iiif-storyboard&gt;
 <br>
-&lt;iiif-storyboard annotationlist="{{site.baseurl}}/annotations/{{page.listname}}"&gt;&lt;/iiif-storyboard&gt;
+&lt;iiif-storyboard annotationlist="{{site.url}}{{site.baseurl}}/annotations/{{page.listname}}"&gt;&lt;/iiif-storyboard&gt;
 </code>
 </td>
 </tr>
 </table>
 
-<iiif-annotation annotationurl="http://0.0.0.0:4000/annotate/annotations/{{page.slug}}.json"></iiif-annotation>
+<iiif-annotation annotationurl="{{site.url}}{{site.baseurl}}/annotations/{{page.slug}}.json"></iiif-annotation>
 
-<iiif-storyboard annotationlist="http://0.0.0.0:4000/annotate/annotations/{{page.listname}}"></iiif-storyboard>
+<iiif-storyboard annotationlist="{{site.url}}{{site.baseurl}}/annotations/{{page.listname}}"></iiif-storyboard>
