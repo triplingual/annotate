@@ -41,8 +41,7 @@ title: Search
 
 <script>
 window.addEventListener("load", function(){
-    var dict = {settingsurl: "{{site.baseurl}}/js/index.js"}
-    loadsearchtemplate(dict)
+    loadsearchtemplate()
     $('#spinner').hide()
 });
 </script>
