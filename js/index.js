@@ -14,7 +14,7 @@ var view_facets = "{{site.view_facets}}"
 
 var baseurl = "{{site.baseurl}}"
 
-var index = lunr(function() {
+var liveidx = lunr(function() {
    this.pipeline.remove(lunr.stemmer);
   this.searchPipeline.remove(lunr.stemmer);
   this.pipeline.remove(lunr.stopWordFilter);
@@ -39,4 +39,6 @@ var index = lunr(function() {
 	this.add(doc)
   {% endfor %}  
 });
+
+var index = JSON.stringify(liveidx)
 
