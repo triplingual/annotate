@@ -23,9 +23,20 @@ var index = lunr(function() {
   for (var l=0; l<lunr_settings['fields'].length; l++){
     this.field(lunr_settings['fields'][l]['searchfield'], {'boost': lunr_settings['fields'][l]['boost']}); 	
   }
-   {% for anno in site.annotation_data %}
-    	var doc = {"id": "{{anno['slug']}}", "content": "{{anno['content'] | strip_html| escape | strip_newlines}}", "tags": "{{anno['tags'] | join: ' ' | strip_html}}"}
-  	  	this.add(doc)
-  	{% endfor %}  
+
+  {% for anno in site.annotation_data %}
+  	var fields = {{site.lunr_settings.fields | jsonify }}
+	var anno_data = {{anno | jsonify}}
+	var doc = {"id": "{{anno['slug']}}"}
+	for (var k =0; k<fields.length; k++){
+		for (var m=0; m<fields[k]['jekyllfields'].length; m++){
+			var field_data = anno_data[fields[k]['jekyllfields'][m]];
+			var cleaned_data = Array.isArray(field_data) ? field_data.join(" ") : field_data;
+			cleaned_data = cleaned_data.replace(/<(?:.|\n)*?>/gm, '').replace(/\n|\r/g, "");
+			doc[fields[k]['searchfield']] = cleaned_data;
+		}
+    }
+	this.add(doc)
+  {% endfor %}  
 });
 
