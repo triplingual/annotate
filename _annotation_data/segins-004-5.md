@@ -1,6 +1,8 @@
 ---
 layout: searchview
 listname: segins-004-list.json
-tags: []
+tags:
+- insects
+- cicada
 ---
 Tozena melanoptera | Indes Or.
