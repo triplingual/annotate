@@ -11,7 +11,6 @@ title: Search
 </div>
 </form>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
 <script src="https://dnoneill.github.io/jekyll-lunr-advanced-js-search/dist/advanced-search.js"></script>
 
 <link rel="stylesheet" type="text/css" href="https://dnoneill.github.io/jekyll-lunr-advanced-js-search/dist/advanced-search.css">
