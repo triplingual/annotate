@@ -2,7 +2,7 @@
 layout: default
 ---
 <table>
-{% if page.tags.length > 0 %}
+{% if page.tags and page.tags.size > 0 %}
 <tr>
 <td>Tags</td><td>{{page.tags | join: "; "}}</td>
 </tr>
@@ -12,6 +12,10 @@ layout: default
 <td>Content</td><td>{{content}}</td>
 </tr>
 {% endif %}
+<tr>
+<td>Annotations</td><td><a href="{{site.url}}{{site.baseurl}}/annotations/{{page.slug}}.json">{{site.url}}{{site.baseurl}}/annotations/{{page.slug}}.json</a><br>
+<a href="{{site.url}}{{site.baseurl}}/annotations/{{page.listname}}">{{site.url}}{{site.baseurl}}/annotations/{{page.listname}}</a></td>
+</tr>
 <tr>
 <td>Embed codes</td><td>
 <code>
