@@ -11,6 +11,7 @@ title: Search
 </div>
 </form>
 
+<script src="https://ncsu-libraries.github.io/iiif-annotation/dist/iiif-annotation.js"></script>
 <script src="https://dnoneill.github.io/jekyll-lunr-advanced-js-search/dist/advanced-search.js"></script>
 
 <link rel="stylesheet" type="text/css" href="https://dnoneill.github.io/jekyll-lunr-advanced-js-search/dist/advanced-search.css">

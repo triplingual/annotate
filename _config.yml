@@ -38,6 +38,7 @@ lunr_settings:
   atozsortfield: slug
   displayfields:
     - {field: slug, headerfield: true, highlight: false}
+    - {field: imagescr, headerimage: true, highlight: false}
   fields:
   - boost: 10
     jekyllfields: [content]

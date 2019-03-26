@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
     ansible.verbose = true
   end
   config.vm.box = "centos/7"
-  config.vm.network "forwarded_port", host: 4000, guest: 4000
+  config.vm.network "forwarded_port", host: 5555, guest: 5555 
   config.vm.network "forwarded_port", host: 5000, guest: 5000
   config.vm.network :forwarded_port, guest: 80, host: 4567
   config.vm.network "private_network", type: "dhcp"
