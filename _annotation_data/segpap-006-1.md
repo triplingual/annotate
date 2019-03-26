@@ -1,5 +1,5 @@
 ---
-imagescr: '<iiif-annotation annotationurl="http://0.0.0.0:5555/annotate/annotations/segpap-006-1.json"
+imagescr: '<iiif-annotation annotationurl="https://dnoneill.github.io/annotate/annotations/segpap-006-1.json"
   styling="{''image_only'': true}"></iiif-annotation>'
 layout: searchview
 listname: segpap-006-list.json
