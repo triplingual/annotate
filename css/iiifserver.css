@@ -199,3 +199,7 @@ textarea {
 .page-content ul li::before {
 	content: "";
 }
+
+.navigation, .site-title, .site-footer {
+  width: auto;
+}
