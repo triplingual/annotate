@@ -30,7 +30,7 @@ function delete_items(anno_id, api_url){
 	}
 }
 
-function create_items(api_url) {
+function create_items(api_url, homeurl) {
 	for(var i =0; i < localStorage.length; i++){
         var key = localStorage.key(i);
         var matches = canvas_regex.exec(key);
@@ -43,7 +43,7 @@ function create_items(api_url) {
 						resource = _.unescape(JSON.stringify(jsonparse[e]['resource']))
 						jsonparse[e]['resource'] = JSON.parse(resource)
 					}
-          jsonparse = {'json':jsonparse, 'key': key}
+          jsonparse = {'json':jsonparse, 'key': key, 'originurl':homeurl}
           $.ajax({
 		    url: api_url,
 		    dataType: 'json',
