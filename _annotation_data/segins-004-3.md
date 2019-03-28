@@ -1,6 +1,6 @@
 ---
-imagescr: '<iiif-annotation annotationurl="https://dnoneill.github.io/annotate/annotations/segins-004-3.json"
-  styling="{''image_only'': true}"></iiif-annotation>'
+imagescr: <iiif-annotation annotationurl="https://dnoneill.github.io/annotate/annotations/segins-004-3.json"
+  styling="image_only:true"></iiif-annotation>
 layout: searchview
 listname: segins-004-list.json
 tags:
