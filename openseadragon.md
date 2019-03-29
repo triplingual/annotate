@@ -48,7 +48,7 @@ viewer.addHandler('open', function(){
     var xywh = annotation.target.id.split("#xywh=").slice(-1)[0].split(",");
     var bounds = viewer.viewport.getBounds(true);
     var currentRect = viewer.viewport.viewportToImageRectangle(bounds);
-    var cords = viewer.world.getItemAt(0).imageToViewportRectangle(parseFloat(xywh[0]), parseFloat(xywh[1]), parseFloat(xywh[2]), parseFloat(xywh[3]))
+    var cords = viewer.world.getItemAt(0).imageToViewportRectangle(parseInt(xywh[0]), parseInt(xywh[1]), parseInt(xywh[2]), parseInt(xywh[3]))
     var id = xywh.map(function (x) {
       return parseInt(x);
     });
