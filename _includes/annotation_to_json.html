@@ -5,43 +5,42 @@
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
 <script type="text/jscript">
-  var canvas_regex = /.+canvas\/([^.]+)/;
-
-
   $(document).ready(function(){
     localStorage.clear();
   	{% for annotation in site.annotations %}
   		{% if annotation.path contains 'list' %}
       var annotationresources = {{annotation}}.resources
         for (var i=0; i < annotationresources.length; i++){
-          for (var e=0; e < annotationresources[i].resource.length; e++){
-            if (annotationresources[i]['resource'][e]['@type'].indexOf('Text') > -1){
-              var new_chars = ""
-              var chars = JSON.stringify(annotationresources[i]['resource'][e]['chars'])
-              var text = _.compact(chars.slice(1,-1).split("</p>"))
-              if (text != null && text.length > 0){
-                for (var j=0; j<text.length; j++){
-                  var get_text = text[j].split("<p>")
-                  var ignore = ['<span', '</span>', '<em>', '</em>', '<strong>', '</strong>', '<img', '<ol>', '</ol>', '<li>', '</li>']
-                  var new_text = get_text.slice(-1).join(' ').replace(/\\"/g, '"');
-                  match = new_text.match(/<((?=!\-\-)!\-\-[\s\S]*\-\-|((?=\?)\?[\s\S]*\?|((?=\/)\/[^.\-\d][^\/\]'"[!#$%&()*+,;<=>?@^`{|}~ ]*|[^.\-\d][^\/\]'"[!#$%&()*+,;<=>?@^`{|}~ ]*(?:\s[^.\-\d][^\/\]'"[!#$%&()*+,;<=>?@^`{|}~ ]*(?:=(?:"[^"]*"|'[^']*'|[^'"<\s]*))?)*)\s?\/?))>/g)
-                  if (match){
-                    for (var r=0; r<match.length; r++){
-                      if (!ignore.some(substring=>match[j].includes(substring))){
-                        var replace_text = match[r].replace(/</g, "&lt;").replace(/>/g, "&gt;")
-                        new_text = new_text.replace(match[r], replace_text)
+          if (annotationresources[i].resources){
+            for (var e=0; e < annotationresources[i].resource.length; e++){
+              if (annotationresources[i]['resource'][e]['@type'].indexOf('Text') > -1){
+                var new_chars = ""
+                var chars = JSON.stringify(annotationresources[i]['resource'][e]['chars'])
+                var text = _.compact(chars.slice(1,-1).split("</p>"))
+                if (text != null && text.length > 0){
+                  for (var j=0; j<text.length; j++){
+                    var get_text = text[j].split("<p>")
+                    var ignore = ['<span', '</span>', '<em>', '</em>', '<strong>', '</strong>', '<img', '<ol>', '</ol>', '<li>', '</li>']
+                    var new_text = get_text.slice(-1).join(' ').replace(/\\"/g, '"');
+                    match = new_text.match(/<((?=!\-\-)!\-\-[\s\S]*\-\-|((?=\?)\?[\s\S]*\?|((?=\/)\/[^.\-\d][^\/\]'"[!#$%&()*+,;<=>?@^`{|}~ ]*|[^.\-\d][^\/\]'"[!#$%&()*+,;<=>?@^`{|}~ ]*(?:\s[^.\-\d][^\/\]'"[!#$%&()*+,;<=>?@^`{|}~ ]*(?:=(?:"[^"]*"|'[^']*'|[^'"<\s]*))?)*)\s?\/?))>/g)
+                    if (match){
+                      for (var r=0; r<match.length; r++){
+                        if (!ignore.some(substring=>match[j].includes(substring))){
+                          var replace_text = match[r].replace(/</g, "&lt;").replace(/>/g, "&gt;")
+                          new_text = new_text.replace(match[r], replace_text)
+                        }
                       }
                     }
+                    new_chars += "<p>" + new_text.replace(/\\n/g, "&nbsp;") + "</p>"
                   }
-                  new_chars += "<p>" + new_text.replace(/\\n/g, "&nbsp;") + "</p>"
                 }
+                annotationresources[i]['resource'][e]['chars'] = new_chars;
               }
-              annotationresources[i]['resource'][e]['chars'] = new_chars;
             }
           }
         }
   			var json = JSON.stringify(annotationresources)
-  			var url = {{annotation}}.resources[0].on[0].full
+  			var url = annotationresources[0].on ? annotationresources[0].on[0].full : annotationresources[0].target.id;
   			localStorage.setItem(url, json)
   		{% endif %}
   	{% endfor %}

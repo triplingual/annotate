@@ -33,15 +33,18 @@ function delete_items(anno_id, api_url){
 function create_items(api_url, homeurl) {
 	for(var i =0; i < localStorage.length; i++){
         var key = localStorage.key(i);
+				var canvas_regex = /(canvas\/(.*))|(.*(?=(\/info.json)))/;
         var matches = canvas_regex.exec(key);
         if(matches != null) {
-          var canvas = matches[1];
+          var canvas = matches[0].split("/").slice(-1)[0];
           var fileName = canvas + '.json';
           var fileContent = localStorage.getItem(key);
 					var jsonparse = JSON.parse(fileContent);
-					for (var e = 0; e< jsonparse.length; e++){
-						resource = _.unescape(JSON.stringify(jsonparse[e]['resource']))
-						jsonparse[e]['resource'] = JSON.parse(resource)
+					if (jsonparse[0]['@context'].indexOf('w3') == -1){
+						for (var e = 0; e< jsonparse.length; e++){
+							resource = _.unescape(JSON.stringify(jsonparse[e]['resource']))
+							jsonparse[e]['resource'] = JSON.parse(resource)
+						}
 					}
           jsonparse = {'json':jsonparse, 'key': key, 'originurl':homeurl}
           $.ajax({
