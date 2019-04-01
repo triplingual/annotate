@@ -1,0 +1,4 @@
+---
+layout: null
+---
+{"@context": "http://www.w3.org/ns/anno.jsonld", "@type": "AnnotationPage", "resources": [{"body": {"type": "TextualBody", "value": "test", "format": "text/html"}, "@context": "http://www.w3.org/ns/anno.jsonld", "type": "Annotation", "target": {"type": "Canvas", "id": "https://dlcs.io/iiif-img/3/2/04fbbb28-d5a7-4408-b7da-800c4e65eda3#xywh=4649,2022,1997,499"}}], "id": "https://dnoneill.github.io/annotateannotations/04fbbb28-d5a7-4408-b7da-800c4e65eda3-list.json"}

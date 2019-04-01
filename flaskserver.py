@@ -26,10 +26,10 @@ def create_anno():
     if len(annotation) > 0:
         if 'w3.org' in annotation[0]['@context']:
             formated_annotation = {"@context":"http://www.w3.org/ns/anno.jsonld",
-            "@type": "AnnotationPage", "id": "%s%s/%s-list.json"% (origin_url, filepath[1:], id) }
+            "@type": "AnnotationPage", "id": "%s/%s/%s-list.json"% (origin_url, filepath[1:], id) }
         else:
             formated_annotation = {"@context":"http://iiif.io/api/presentation/2/context.json",
-            "@type": "sc:AnnotationList", "@id": "%s%s/%s-list.json"% (origin_url, filepath[1:], id) }
+            "@type": "sc:AnnotationList", "@id": "%s/%s/%s-list.json"% (origin_url, filepath[1:], id) }
         formated_annotation['resources'] = annotation
         file_path = os.path.join(filepath, id.replace(".json", "").replace(":", ""))
         list_name = "{}-list.json".format(file_path)
