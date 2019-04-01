@@ -1,4 +1,0 @@
----
-layout: null
----
-{"body": {"type": "TextualBody", "value": "test", "format": "text/html"}, "@context": "http://www.w3.org/ns/anno.jsonld", "type": "Annotation", "target": {"type": "Canvas", "id": "https://dlcs.io/iiif-img/3/2/04fbbb28-d5a7-4408-b7da-800c4e65eda3#xywh=5211.978042855786,1624.7771037739674,534.9875829499657,455.7301632536741"}}
