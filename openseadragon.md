@@ -119,8 +119,6 @@ anno.addHandler('onAnnotationRemoved', function(annotation) {
   anno.removeAnnotation(annotation)
   if (existing.length == 0){
     localStorage.removeItem(tilesource)
-    console.log('testing')
-    console.log(localStorage)
   } else {
     localStorage.setItem(tilesource, JSON.stringify(existing))
   }
