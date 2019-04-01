@@ -33,7 +33,7 @@ function delete_items(anno_id, api_url){
 function create_items(api_url, homeurl) {
 	for(var i =0; i < localStorage.length; i++){
         var key = localStorage.key(i);
-				var canvas_regex = /(canvas\/(.*))|(.*(?=(\/info.json)))/;
+		var canvas_regex = /(canvas\/(.*))|(.*(?=(\/info.json)))/;
         var matches = canvas_regex.exec(key);
         if(matches != null) {
           var canvas = matches[0].split("/").slice(-1)[0];

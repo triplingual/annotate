@@ -2,43 +2,70 @@
 layout: default
 title: Create annotations on IIIF images without a manifest
 ---
-
 <form id="enteriiifitem" style="padding-bottom: 20px">
 <input style="width:100%" type="text" name="iiifurl" id="iiifurl" placeholder="Load image, should be info.json link">
 </form>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/2.4.0/openseadragon.min.js"></script><script src="https://annotorious.github.io/latest/annotorious.min.js"></script>
+<p><b>Example images from other instituions</b></p>
+<a onclick="localStorage.setItem('osviewer', 'https://dlcs.io/iiif-img/3/2/04fbbb28-d5a7-4408-b7da-800c4e65eda3/info.json'); location.reload()">https://dlcs.io/iiif-img/3/2/04fbbb28-d5a7-4408-b7da-800c4e65eda3/info.json</a><br>
+<a onclick="localStorage.setItem('osviewer', 'https://cdm16028.contentdm.oclc.org/digital/iiif/p16028coll4/35582/info.json'); location.reload()">https://cdm16028.contentdm.oclc.org/digital/iiif/p16028coll4/35582/info.json</a><br>
+
+<script src="https://annotorious.github.io/js/openseadragon/openseadragon.min.js"></script>
+<script src="https://annotorious.github.io/latest/annotorious.min.js"></script>
+<script src="https://annotorious.github.io/js/highlight.js"></script>
+<script type="text/javascript" src="https://annotorious.github.io/latest/anno-fancybox.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://annotorious.github.io/css/style.css">
 <link rel="stylesheet" type="text/css" href="https://annotorious.github.io/latest/themes/dark/annotorious-dark.css">
-<div id="viewer" style="display:none">
-<div id="openseadragon" style="height: 100vh; position: relative;" class="viewer"></div>
+<div id="openseadragon" class="viewer"></div>
 <button id="map-annotate-button" onclick="anno.activateSelector();" href="#">
   ADD ANNOTATION
 </button>
-</div>
 
 <script>
 document.getElementById("enteriiifitem").onsubmit= function() {
   localStorage.setItem('osviewer', document.getElementById("iiifurl").value);
   location.reload();
-  loadanno();
   return false;
 }
-document.getElementById("viewer").addEventListener("load", loadanno());
+document.getElementById("openseadragon").addEventListener("load", getUrl());
+function heighwidth (tilesource) {
+$.ajax({
+    type : "get",
+    url : tilesource,
+    success : function(data) {
+        var height = data['height'];
+        var width = data['width'];
+        loadanno(tilesource, height, width)
+    }
+ });
+}
 
-function loadanno() {
-var tilesource = localStorage['osviewer'] ? localStorage['osviewer'] : 'https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee/info.json';
-document.getElementById('viewer').style.display = 'block';
+function getUrl() {
+  var tilesource = localStorage['osviewer'] ? localStorage['osviewer'] : 'https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee/info.json';
+  heighwidth(tilesource)
+
+}
+
+function loadanno(tilesource, height, width) {
+var baseurl = tilesource.split("/info.json")[0]
+var aspect_ratio = width/height;
+var tilesources = {
+  type: 'legacy-image-pyramid',
+  levels: [{
+    url: `${baseurl}/full/full/0/default.jpg`,
+    height: height,
+    width: width
+  }]
+
+}
 var viewer = OpenSeadragon({
   id: "openseadragon",
   prefixUrl: "https://annotorious.github.io/js/openseadragon/images/",
   showNavigator: false,
-  sequenceMode: true,
-  tileSources: [
-    tilesource
-    ]
+  tileSources: tilesources
 });
 anno.makeAnnotatable(viewer);
 var matching = {}
+anno.showAnnotations(viewer)
 viewer.addHandler('open', function(){
   var all_annos = []
 {% for annotation in site.annotations %}
@@ -46,40 +73,37 @@ viewer.addHandler('open', function(){
   if (annotation['@context'].indexOf('w3') > -1 && annotation.target && tilesource.indexOf(annotation.target.id.split("#xywh=")[0]) > -1){
     all_annos.push(annotation)
     var xywh = annotation.target.id.split("#xywh=").slice(-1)[0].split(",");
-    var bounds = viewer.viewport.getBounds(true);
-    var currentRect = viewer.viewport.viewportToImageRectangle(bounds);
-    var cords = viewer.world.getItemAt(0).imageToViewportRectangle(parseInt(xywh[0]), parseInt(xywh[1]), parseInt(xywh[2]), parseInt(xywh[3]))
-    var id = xywh.map(function (x) {
-      return parseInt(x);
-    });
-    matching[id.join(",")] = "{{annotation.slug}}"
+    var cords = viewer.viewport.imageToViewportRectangle(xywh[0], xywh[1], xywh[2], xywh[3]);
+    var id = `${cords['x'].toFixed(2)}${cords['y'].toFixed(2)}${cords['width'].toFixed(2)}${cords['height'].toFixed(2)}`
+    matching[id] = "{{annotation.slug}}"
     var loadanno = {}
     loadanno['src'] = 'dzi://openseadragon/something'
     loadanno['text'] = annotation['body']['value'];
     loadanno['shapes'] = [{"type": "rect", "geometry": cords}]
     anno.addAnnotation(loadanno)
+
   }
 {% endfor %}
   localStorage.setItem(tilesource, JSON.stringify(all_annos))
 });
+
 anno.addHandler('onAnnotationCreated', function(annotation) {
     var annotation_text = buildAnno(annotation, tilesource)
-if (localStorage[tilesource]) {
-  var existing = JSON.parse(localStorage[tilesource])
-  annotation_text = _.uniq(existing.concat(annotation_text))
-}
+    var id = `${annotation['shapes'][0]['geometry']['x'].toFixed(2)}${annotation['shapes'][0]['geometry']['y'].toFixed(2)}${annotation['shapes'][0]['geometry']['width'].toFixed(2)}${annotation['shapes'][0]['geometry']['height'].toFixed(2)}`;
+  if (localStorage[tilesource]) {
+    var existing = JSON.parse(localStorage[tilesource])
+    annotation_text = _.uniq(existing.concat(annotation_text))
+  }
+  matching[id] = baseurl.split("/").slice(-1)[0] + '-' + annotation_text.length;
 localStorage.setItem(tilesource, JSON.stringify(annotation_text))
 create_items('{{site.api_server}}', '{{site.url}}{{site.baseurl}}')
-
 });
 
 anno.addHandler('onAnnotationUpdated', function(annotation) {
     var annotation_text = buildAnno(annotation, tilesource)
     var existing = JSON.parse(localStorage[tilesource])
-    var id = annotation_text[0].target.id.split("#xywh=").slice(-1)[0].split(",").map(function (x) {
-      return parseInt(x);
-    });
-    var position = parseInt(matching[id.join(",")].split("-").slice(-1)[0]) - 1;
+    var id = `${annotation['shapes'][0]['geometry']['x'].toFixed(2)}${annotation['shapes'][0]['geometry']['y'].toFixed(2)}${annotation['shapes'][0]['geometry']['width'].toFixed(2)}${annotation['shapes'][0]['geometry']['height'].toFixed(2)}`;
+    var position = parseInt(matching[id].split("-").slice(-1)[0]) - 1;
     existing[position] = annotation_text[0];
     localStorage.setItem(tilesource, JSON.stringify(existing))
     create_items('{{site.api_server}}', '{{site.url}}{{site.baseurl}}')
@@ -88,20 +112,29 @@ anno.addHandler('onAnnotationUpdated', function(annotation) {
 anno.addHandler('onAnnotationRemoved', function(annotation) {
   var annotation_text = buildAnno(annotation, tilesource)
   var existing = JSON.parse(localStorage[tilesource])
-  var id = annotation_text[0].target.id.split("#xywh=").slice(-1)[0].split(",").map(function (x) {
-    return parseInt(x);
-  });
-  var position = parseInt(matching[id.join(",")].split("-").slice(-1)[0]) - 1;
+  var id = `${annotation['shapes'][0]['geometry']['x'].toFixed(2)}${annotation['shapes'][0]['geometry']['y'].toFixed(2)}${annotation['shapes'][0]['geometry']['width'].toFixed(2)}${annotation['shapes'][0]['geometry']['height'].toFixed(2)}`;
+  var position = parseInt(matching[id].split("-").slice(-1)[0]) - 1;
   existing.splice(position, 1)
-  localStorage.setItem(tilesource, JSON.stringify(existing))
+  delete_items(`${baseurl.split("/").slice(-1)[0]}-${position+1}`, '{{site.api_server}}')
+  console.log(existing.length == 0)
+  if (existing.length == 0){
+    localStorage.removeItem(tilesource)
+    console.log('testing')
+    console.log(localStorage)
+  } else {
+    localStorage.setItem(tilesource, JSON.stringify(existing))
+  }
   create_items('{{site.api_server}}', '{{site.url}}{{site.baseurl}}')
 });
 
+function getexisting(matching, id){
+
+}
 function buildAnno(annotation, tilesource){
   var boundingrect = annotorious['geometry'].getBoundingRect(annotation.shapes[0]).geometry
   var rect =  new OpenSeadragon.Rect(boundingrect['x'], boundingrect['y'], boundingrect['width'], boundingrect['height'])
   var imageitems = viewer.viewport.viewportToImageRectangle(rect)
-  var targetid = tilesource.replace("/info.json", "") + `#xywh=${imageitems['x']},${imageitems['y']},${imageitems['width']},${imageitems['height']}`
+  var targetid = baseurl + `#xywh=${parseInt(imageitems['x'])},${parseInt(imageitems['y'])},${parseInt(imageitems['width'])},${parseInt(imageitems['height'])}`
   var annotation = [{
 "type": "Annotation",
 "@context": "http://www.w3.org/ns/anno.jsonld",
@@ -120,11 +153,16 @@ return annotation
 }
 </script>
 <style>
+      #openseadragon {
+        height: 55em; 
+        width: 97%;
+        position: absolute;
+      }
       #map-annotate-button {
-        position:relative;
-        bottom:100vh;
+        position:absolute;
+        top:15em;
         float: right;
-        right: 10px;
+        right: calc(5%);
         margin-top: 15px;
         background-color:#000;
         color:#fff;
