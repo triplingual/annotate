@@ -1,4 +1,4 @@
 ---
 layout: null
 ---
-{"body": {"type": "TextualBody", "value": "Mvran", "format": "text/html"}, "@context": "http://www.w3.org/ns/anno.jsonld", "type": "Annotation", "target": {"type": "Canvas", "id": "https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee#xywh=18553.33289101203,2098.4787685774904,607.5725406935591,252.6539278131639"}}
+{"@context": "http://www.w3.org/ns/anno.jsonld", "type": "Annotation", "target": {"type": "Canvas", "id": "https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee#xywh=4884.6426043878255,853.2558386411897,360.9341825902335,336.8719037508839"}, "body": {"type": "TextualBody", "format": "text/html", "value": "Testing\n{.mapmarker}"}}
