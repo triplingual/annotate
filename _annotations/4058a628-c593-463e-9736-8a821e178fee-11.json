@@ -1,4 +1,4 @@
 ---
 layout: null
 ---
-{"body": {"type": "TextualBody", "value": "test", "format": "text/html"}, "@context": "http://www.w3.org/ns/anno.jsonld", "type": "Annotation", "target": {"type": "Canvas", "id": "https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee#xywh=22752.16517857146,2711.254464285711,161.46428571428672,94.18750000000011"}}
+{"body": {"type": "TextualBody", "value": "venetian md", "format": "text/html"}, "@context": "http://www.w3.org/ns/anno.jsonld", "type": "Annotation", "target": {"type": "Canvas", "id": "https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee#xywh=2903.3092436974875,693.9798319327823,597.7344537815128,243.14621848739495"}}
