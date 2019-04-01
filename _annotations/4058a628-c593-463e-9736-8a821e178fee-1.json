@@ -1,4 +1,4 @@
 ---
 layout: null
 ---
-{"@context": "http://www.w3.org/ns/anno.jsonld", "type": "Annotation", "target": {"type": "Canvas", "id": "https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee#xywh=12223.637650389242,3006.829794762915,3007.7848549186133,1082.8025477707004"}, "body": {"type": "TextualBody", "format": "text/html", "value": "Venetie MD"}}
+{"@context": "http://www.w3.org/ns/anno.jsonld", "type": "Annotation", "target": {"type": "Canvas", "id": "https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee#xywh=17593.212723658053,5668.477137176939,4482.051689860833,2735.369781312128"}, "body": {"type": "TextualBody", "format": "text/html", "value": "update annotation 2"}}
