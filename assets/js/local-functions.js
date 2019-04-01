@@ -40,7 +40,7 @@ function create_items(api_url, homeurl) {
           var fileName = canvas + '.json';
           var fileContent = localStorage.getItem(key);
 					var jsonparse = JSON.parse(fileContent);
-					if (jsonparse[0]['@context'].indexOf('w3') == -1){
+					if (jsonparse.length > 0 && jsonparse[0]['@context'].indexOf('w3') == -1){
 						for (var e = 0; e< jsonparse.length; e++){
 							resource = _.unescape(JSON.stringify(jsonparse[e]['resource']))
 							jsonparse[e]['resource'] = JSON.parse(resource)
