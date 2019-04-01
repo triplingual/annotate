@@ -116,7 +116,7 @@ anno.addHandler('onAnnotationRemoved', function(annotation) {
   var position = parseInt(matching[id].split("-").slice(-1)[0]) - 1;
   existing.splice(position, 1)
   delete_items(`${baseurl.split("/").slice(-1)[0]}-${position+1}`, '{{site.api_server}}')
-  console.log(existing.length == 0)
+  anno.removeAnnotation(annotation)
   if (existing.length == 0){
     localStorage.removeItem(tilesource)
     console.log('testing')
