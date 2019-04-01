@@ -1,4 +1,0 @@
----
-layout: null
----
-{"body": {"type": "TextualBody", "value": "test", "format": "text/html"}, "@context": "http://www.w3.org/ns/anno.jsonld", "type": "Annotation", "target": {"type": "Canvas", "id": "https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee#xywh=18660.67885313699,3833.6182565550826,653.9081592111376,416.9849131201453"}}
