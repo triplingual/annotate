@@ -1,4 +1,4 @@
 ---
 layout: null
 ---
-{"@context": "http://www.w3.org/ns/anno.jsonld", "@type": "AnnotationPage", "resources": [{"body": {"type": "TextualBody", "value": "test", "format": "text/html"}, "@context": "http://www.w3.org/ns/anno.jsonld", "type": "Annotation", "target": {"type": "Canvas", "id": "https://dlcs.io/iiif-img/3/2/04fbbb28-d5a7-4408-b7da-800c4e65eda3#xywh=4292.577272727272,2654.7272727272716,600.4740259740262,758.4935064935063"}}], "id": "http://0.0.0.0:5555/annotateannotations/04fbbb28-d5a7-4408-b7da-800c4e65eda3-list.json"}
+{"@context": "http://www.w3.org/ns/anno.jsonld", "@type": "AnnotationPage", "resources": [{"body": {"type": "TextualBody", "value": "test", "format": "text/html"}, "@context": "http://www.w3.org/ns/anno.jsonld", "type": "Annotation", "target": {"type": "Canvas", "id": "https://dlcs.io/iiif-img/3/2/04fbbb28-d5a7-4408-b7da-800c4e65eda3#xywh=5025.7876623376615,1558.0720779220765,496.18116883116846,486.70000000000016"}}], "id": "http://0.0.0.0:5555/annotateannotations/04fbbb28-d5a7-4408-b7da-800c4e65eda3-list.json"}
