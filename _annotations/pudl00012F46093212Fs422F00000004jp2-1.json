@@ -1,4 +1,0 @@
----
-layout: null
----
-{"body": {"selector": {"type": "FragmentSelector", "value": "rect"}, "type": "TextualBody", "value": "prolo", "format": "text/html"}, "@context": "http://www.w3.org/ns/anno.jsonld", "type": "Annotation", "target": {"type": "Image", "id": "https://libimages1.princeton.edu/loris/pudl0001%2F4609321%2Fs42%2F00000004.jp2#xywh=2585,219,434,176"}}
