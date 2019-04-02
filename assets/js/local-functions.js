@@ -46,7 +46,9 @@ function create_items(api_url, homeurl) {
 							jsonparse[e]['resource'] = JSON.parse(resource)
 						}
 					}
-          jsonparse = {'json':jsonparse, 'key': key, 'originurl':homeurl}
+		  var clean_key = key.replace("/info.json", "").split("/").slice(-1)[0]
+		  var id = clean_key.replace(/[^\w\-]+/g, '').replace(/_/g, "-")
+          jsonparse = {'json':jsonparse, 'key': id, 'originurl':homeurl}
           $.ajax({
 		    url: api_url,
 		    dataType: 'json',
