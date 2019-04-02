@@ -14,7 +14,7 @@ annotations = []
 @app.route('/annotations/', methods=['POST'])
 def create_anno():
     data_object = json.loads(request.data)
-    id = data_object['key']
+    id = data_object['key'].lower()
     annotation = data_object['json']
     origin_url = data_object['originurl']
     if github_repo == "":
