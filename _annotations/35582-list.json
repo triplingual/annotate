@@ -1,4 +1,0 @@
----
-layout: null
----
-{"resources": [{"target": {"id": "https://cdm16028.contentdm.oclc.org/digital/iiif/p16028coll4/35582#xywh=345,618,537,687", "type": "Image"}, "type": "Annotation", "@context": "http://www.w3.org/ns/anno.jsonld", "body": {"format": "text/html", "value": "Lion", "type": "TextualBody", "selector": {"value": "rect", "type": "FragmentSelector"}}}], "@type": "AnnotationPage", "id": "https://dnoneill.github.io/annotate/annotations/35582-list.json", "@context": "http://www.w3.org/ns/anno.jsonld"}

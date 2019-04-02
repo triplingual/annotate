@@ -19,9 +19,9 @@ def create_anno():
     origin_url = data_object['originurl']
     if github_repo == "":
         filecounter = [name for name in os.listdir(filepath) if id in name]
-    else:
-        existing_github = requests.get(github_url+"{}".format(filepath), headers={'Authorization': 'token {}'.format(github_token)}).json()
-        filecounter = [filedata for filedata in existing_github if id in filedata['name'] ]
+#    else:
+#        existing_github = requests.get(github_url+"{}".format(filepath), headers={'Authorization': 'token {}'.format(github_token)}).json()
+#        filecounter = [filedata for filedata in existing_github if id in filedata['name'] ]
     if len(annotation) > 0:
         if 'w3.org' in annotation[0]['@context']:
             formated_annotation = {"@context":"http://www.w3.org/ns/anno.jsonld",
@@ -121,12 +121,12 @@ def create_anno():
             index += 1
         return jsonify(annotation), 201
     else:
-        for file in filecounter:
-            if github_repo == "":
+        if github_repo == "":
+            for file in filecounter:
                 os.remove(os.path.join(filepath, file))
-            #else:
-            #    data = {'sha': file['sha'], 'message':'delete'}
-            #    response = requests.delete(file['url'], headers={'Authorization': 'token {}'.format(github_token)}, data=json.dumps(data))
+        #else:
+        #    data = {'sha': file['sha'], 'message':'delete'}
+        #    response = requests.delete(file['url'], headers={'Authorization': 'token {}'.format(github_token)}, data=json.dumps(data))
         return jsonify("[]"), 201
 
 @app.route('/annotations/', methods=['DELETE'])
