@@ -162,15 +162,15 @@ function loadanno(tilesource, height, width) {
 <style>
   #openseadragon {
     height: 55em; 
-    width: 97%;
+    width: 93%;
     position: absolute;
   }
+
   #map-annotate-button {
     position:absolute;
-    top:15em;
-    float: right;
-    right: calc(5%);
-    margin-top: 15px;
+    right: 0;
+    margin: 10px;
+    margin-right: calc(6%);
     background-color:#000;
     color:#fff;
     padding:3px 8px;
