@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Create Annotations
+nav_order: 1
 ---
 
 Annotations can be viewed and created by toggling the <i class="fa fa-comments" aria-hidden="true"></i> button on the top left of the viewer.

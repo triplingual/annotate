@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Create annotations on IIIF images without a manifest
+nav_order: 2
 ---
 <form id="enteriiifitem" style="padding-bottom: 20px">
 <input style="width:100%" type="text" name="iiifurl" id="iiifurl" placeholder="Load image, should be info.json link">

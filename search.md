@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Search
+title: Search Annotations
+nav_order: 6
 ---
 <form role="search">
 <div class="search-control" style="display:none;">
