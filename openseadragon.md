@@ -17,7 +17,6 @@ nav_order: 2
 <script src="https://annotorious.github.io/latest/annotorious.min.js"></script>
 <script src="https://annotorious.github.io/js/highlight.js"></script>
 <script type="text/javascript" src="https://annotorious.github.io/latest/anno-fancybox.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://annotorious.github.io/css/style.css">
 <link rel="stylesheet" type="text/css" href="https://annotorious.github.io/latest/themes/dark/annotorious-dark.css">
 <div id="openseadragon" class="viewer"></div>
 <button id="map-annotate-button" onclick="anno.activateSelector();" href="#">
