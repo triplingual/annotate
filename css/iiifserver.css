@@ -204,6 +204,6 @@ textarea {
   width: auto;
 }
 
-.storyboard_viewer.annotation {
+.storyboard_viewer .annotation {
   max-width: 98%;
 }
