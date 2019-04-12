@@ -203,3 +203,7 @@ textarea {
 .navigation, .site-title, .site-footer {
   width: auto;
 }
+
+.annotation {
+  max-width: 98%;
+}
