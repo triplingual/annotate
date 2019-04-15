@@ -207,3 +207,7 @@ textarea {
 .storyboard_viewer .annotation {
   max-width: 98%;
 }
+
+input, select, textarea{
+  color: black;
+}

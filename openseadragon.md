@@ -8,7 +8,7 @@ nav_order: 2
 </form>
 <p><b>Example images from other institutions</b></p>
 <a onclick="localStorage.setItem('osviewer', 'https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee/info.json'); location.reload()">https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee/info.json</a><br>
-<a onclick="localStorage.setItem('osviewer', 'https://libimages.princeton.edu/loris/pudl0076/map_pownall/00000001.jp2/info.json'); location.reload()">https://libimages.princeton.edu/loris/pudl0076/map_pownall/00000001.jp2/info.json</a><br>
+<a onclick="localStorage.saetItem('osviewer', 'https://libimages.princeton.edu/loris/pudl0076/map_pownall/00000001.jp2/info.json'); location.reload()">https://libimages.princeton.edu/loris/pudl0076/map_pownall/00000001.jp2/info.json</a><br>
 <a onclick="localStorage.setItem('osviewer', 'https://dlcs.io/iiif-img/3/2/04fbbb28-d5a7-4408-b7da-800c4e65eda3/info.json'); location.reload()">https://dlcs.io/iiif-img/3/2/04fbbb28-d5a7-4408-b7da-800c4e65eda3/info.json</a><br>
 <a onclick="localStorage.setItem('osviewer', 'https://cdm16028.contentdm.oclc.org/digital/iiif/p16028coll4/35582/info.json'); location.reload()">https://cdm16028.contentdm.oclc.org/digital/iiif/p16028coll4/35582/info.json</a><br>
 <a onclick="localStorage.setItem('osviewer', 'https://libimages1.princeton.edu/loris/pudl0001%2F4609321%2Fs42%2F00000004.jp2/info.json'); location.reload()">https://libimages1.princeton.edu/loris/pudl0001%2F4609321%2Fs42%2F00000004.jp2/info.json</a><br>
@@ -66,6 +66,28 @@ function loadanno(tilesource, height, width) {
     tileSources: tilesources
   });
   anno.makeAnnotatable(viewer);
+  annotorious.plugin.addTags = function() { }
+  annotorious.plugin.addTags.prototype.onInitAnnotator = function(annotator) {
+    annotator.editor.addField(function(annotation) {
+      var tags = annotation ? annotation.tags : '';
+      return 'Tags: <input type="text" name="tags" id="tags" value="' + tags + '">'
+    });
+    annotator.popup.addField(function(annotation) {
+      return '<em style="color: white">Tags: ' + annotation.tags + '</em>';
+    })
+  }
+  anno.addPlugin('addTags', {});
+    annotorious.plugin.selectType = function() { }
+    annotorious.plugin.selectType.prototype.onInitAnnotator = function(annotator) {
+      annotator.editor.addField(function(annotation) {
+        var shapetype = annotation ? annotation.shapetype : 'rect';
+        return 'Type: <input type="text" name="shapetype" id="shapetype" value="' + shapetype + '">'
+      });
+      annotator.popup.addField(function(annotation) {
+        return '<em style="color: white">Type: ' + annotation.shapetype + '</em>';
+      })
+  }
+  anno.addPlugin('selectType', {});
   var matching = {}
   anno.showAnnotations(viewer)
   viewer.addHandler('open', function(){
@@ -80,9 +102,18 @@ function loadanno(tilesource, height, width) {
         matching[id] = "{{annotation.slug}}"
         var loadanno = {}
         loadanno['src'] = 'dzi://openseadragon/something'
-        loadanno['text'] = annotation['body']['value'];
-        loadanno['shapetype'] = annotation['body']['selector'] ? annotation['body']['selector']['value'] : 'rect';
+        body = Array.isArray(annotation['body']) ? annotation['body'] : [annotation['body']];
+        var tags = []
+        for (var jar=0; jar<body.length; jar++){
+          if(body[jar]['purpose'] != 'tagging'){
+            loadanno['text'] = body[jar]['value'];
+            loadanno['shapetype'] = body[jar]['selector'] ? body[jar]['selector']['value'] : 'rect';
+          } else {
+            tags.push(body[jar]['value'])
+          }
+        }
         loadanno['shapes'] = [{"type": "rect", "geometry": cords}]
+        loadanno['tags'] = tags.join(", ");
         anno.addAnnotation(loadanno)
       }
     {% endfor %}
@@ -124,32 +155,32 @@ function loadanno(tilesource, height, width) {
     } else {
       localStorage.setItem(tilesource, JSON.stringify(existing))
     }
-    create_items('{{site.api_server}}', '{{site.url}}{{site.baseurl}}')
     delete_items(`${baseurl.split("/").slice(-1)[0]}-${existing.length+1}`, '{{site.api_server}}', delete_list)
+    create_items('{{site.api_server}}', '{{site.url}}{{site.baseurl}}')
   });
 
   function buildAnno(annotation, tilesource){
     var boundingrect = annotorious['geometry'].getBoundingRect(annotation.shapes[0]).geometry
+    var tags = getTags()
     var rect =  new OpenSeadragon.Rect(boundingrect['x'], boundingrect['y'], boundingrect['width'], boundingrect['height'])
     var imageitems = viewer.viewport.viewportToImageRectangle(rect)
     var targetid = baseurl + `#xywh=${parseInt(imageitems['x'])},${parseInt(imageitems['y'])},${parseInt(imageitems['width'])},${parseInt(imageitems['height'])}`
-    if (annotation.text.indexOf('**pin**') > -1){
-      annotation['shapetype'] = 'pin' 
-    }
-    var shape_type = annotation['shapetype'] ? annotation['shapetype'] : 'rect';
-    var annotation_data = annotation.text.replace("**pin**", "")
+    var shape_type = document.getElementById("shapetype") ? document.getElementById("shapetype").value : "";
+    var annotation_data = annotation.text;
+    var body = [{
+      "value": `${annotation_data}`,
+      "type": "TextualBody",
+      "format": "text/html",
+      "selector": {
+        "type": "FragmentSelector",
+        "value": `${shape_type}`
+      }
+    }]
+    body = body.concat(tags)
     var annotation = [{
       "type": "Annotation",
       "@context": "http://www.w3.org/ns/anno.jsonld",
-      "body": {
-        "value": `${annotation_data}`,
-        "type": "TextualBody",
-        "format": "text/html",
-        "selector": {
-          "type": "FragmentSelector",
-          "value": `${shape_type}`
-        }
-      },
+      "body": body,
       "target": {
         "id": `${targetid}`,
         "type": "Image"
@@ -158,10 +189,27 @@ function loadanno(tilesource, height, width) {
     return annotation
   }
 }
+function getTags() {
+  var tagging_json = [];
+  if(document.getElementById("tags")){
+    var tags =  document.getElementById("tags").value.split(",")
+    for (var i=0; i<tags.length; i++){
+      if (tags[i].trim()){
+        tagging_json.push({
+          "value": tags[i].trim(),
+          "type": "TextualBody",
+          "purpose": "tagging",
+          "format": "text/plain"
+        })
+      }
+    }
+  }
+  return tagging_json;
+}
 </script>
 <style>
   #openseadragon {
-    height: 55em; 
+    height: 55em;
     width: 93%;
     position: absolute;
   }
