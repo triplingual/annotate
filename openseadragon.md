@@ -166,6 +166,9 @@ function loadanno(tilesource, height, width) {
     var imageitems = viewer.viewport.viewportToImageRectangle(rect)
     var targetid = baseurl + `#xywh=${parseInt(imageitems['x'])},${parseInt(imageitems['y'])},${parseInt(imageitems['width'])},${parseInt(imageitems['height'])}`
     var shape_type = document.getElementById("shapetype") ? document.getElementById("shapetype").value : "";
+    var popuptags = document.getElementById("tags") ? document.getElementById("tags").value : "";
+    annotation['shapetype'] = shape_type;
+    annotation['tags'] = popuptags;
     var annotation_data = annotation.text;
     var body = [{
       "value": `${annotation_data}`,
