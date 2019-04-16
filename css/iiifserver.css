@@ -211,3 +211,7 @@ textarea {
 input, select, textarea{
   color: black;
 }
+
+*:not(.classname){
+  box-sizing : content-box;
+}
