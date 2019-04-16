@@ -8,7 +8,7 @@ nav_order: 2
 </form>
 <p><b>Example images from other institutions</b></p>
 <a onclick="localStorage.setItem('osviewer', 'https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee/info.json'); location.reload()">https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee/info.json</a><br>
-<a onclick="localStorage.saetItem('osviewer', 'https://libimages.princeton.edu/loris/pudl0076/map_pownall/00000001.jp2/info.json'); location.reload()">https://libimages.princeton.edu/loris/pudl0076/map_pownall/00000001.jp2/info.json</a><br>
+<a onclick="localStorage.setItem('osviewer', 'https://libimages.princeton.edu/loris/pudl0076/map_pownall/00000001.jp2/info.json'); location.reload()">https://libimages.princeton.edu/loris/pudl0076/map_pownall/00000001.jp2/info.json</a><br>
 <a onclick="localStorage.setItem('osviewer', 'https://dlcs.io/iiif-img/3/2/04fbbb28-d5a7-4408-b7da-800c4e65eda3/info.json'); location.reload()">https://dlcs.io/iiif-img/3/2/04fbbb28-d5a7-4408-b7da-800c4e65eda3/info.json</a><br>
 <a onclick="localStorage.setItem('osviewer', 'https://cdm16028.contentdm.oclc.org/digital/iiif/p16028coll4/35582/info.json'); location.reload()">https://cdm16028.contentdm.oclc.org/digital/iiif/p16028coll4/35582/info.json</a><br>
 <a onclick="localStorage.setItem('osviewer', 'https://libimages1.princeton.edu/loris/pudl0001%2F4609321%2Fs42%2F00000004.jp2/info.json'); location.reload()">https://libimages1.princeton.edu/loris/pudl0001%2F4609321%2Fs42%2F00000004.jp2/info.json</a><br>
