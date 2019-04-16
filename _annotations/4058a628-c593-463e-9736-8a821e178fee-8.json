@@ -1,0 +1,4 @@
+---
+layout: null
+---
+{"target": {"id": "https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee#xywh=3415,5811,637,415", "type": "Image"}, "type": "Annotation", "@context": "http://www.w3.org/ns/anno.jsonld", "body": [{"type": "TextualBody", "format": "text/html", "value": "Church of Corpus Domini", "selector": {"type": "FragmentSelector", "value": "rect"}}, {"purpose": "tagging", "type": "TextualBody", "format": "text/plain", "value": "church"}, {"purpose": "tagging", "type": "TextualBody", "format": "text/plain", "value": "demolished"}]}
