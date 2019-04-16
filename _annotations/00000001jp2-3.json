@@ -1,4 +1,0 @@
----
-layout: null
----
-{"type": "Annotation", "target": {"type": "Image", "id": "https://libimages.princeton.edu/loris/pudl0076/map_pownall/00000001.jp2#xywh=4010,9747,47,59"}, "body": {"value": "Long Island\n", "format": "text/html", "type": "TextualBody", "selector": {"value": "pin", "type": "FragmentSelector"}}, "@context": "http://www.w3.org/ns/anno.jsonld"}

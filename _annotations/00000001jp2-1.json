@@ -1,4 +1,0 @@
----
-layout: null
----
-{"@context": "http://www.w3.org/ns/anno.jsonld", "body": {"format": "text/html", "type": "TextualBody", "selector": {"value": "pin", "type": "FragmentSelector"}, "value": "Salisbury\n"}, "target": {"id": "https://libimages.princeton.edu/loris/pudl0076/map_pownall/00000001.jp2#xywh=4252,4670,86,75", "type": "Image"}, "type": "Annotation"}

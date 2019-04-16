@@ -155,8 +155,13 @@ function loadanno(tilesource, height, width) {
     } else {
       localStorage.setItem(tilesource, JSON.stringify(existing))
     }
-    delete_items(`${baseurl.split("/").slice(-1)[0]}-${existing.length+1}`, '{{site.api_server}}', delete_list)
+    {% if jekyll.environment == "development" %}
+      delete_items(`${baseurl.split("/").slice(-1)[0]}-${existing.length+1}`, '{{site.api_server}}', delete_list)
+    { % endif %}
     create_items('{{site.api_server}}', '{{site.url}}{{site.baseurl}}')
+    {% if jekyll.environment != "development" %}
+    delete_items(`${baseurl.split("/").slice(-1)[0]}-${existing.length+1}`, '{{site.api_server}}', delete_list)
+    {% endif %}
   });
 
   function buildAnno(annotation, tilesource){
