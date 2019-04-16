@@ -148,17 +148,17 @@ def delete_anno():
             requests.delete(github_url+"/{}/{}".format(filepath, listid), headers={'Authorization': 'token {}'.format(github_token)}, data=json.dumps(list_data))
         return "File Removed", 201
     else:
-        delete_path = os.path.join(filepath, id) + ".json"
-        exists = os.path.isfile(delete_path)
-        if exists:
-            os.remove(delete_path)
-        search_path = os.path.join('_annotation_data', id) + ".md"
-        exists = os.path.isfile(search_path)
-        if exists:
-            os.remove(search_path)
-        if request_data['deletelist']:
-            list_path = os.path.join(filepath, listid)
-            os.remove(list_path)
+    #    delete_path = os.path.join(filepath, id) + ".json"
+    #    exists = os.path.isfile(delete_path)
+    #    if exists:
+    #        os.remove(delete_path)
+    #    search_path = os.path.join('_annotation_data', id) + ".md"
+    #    exists = os.path.isfile(search_path)
+    #    if exists:
+    #        os.remove(search_path)
+    #    if request_data['deletelist']:
+    #        list_path = os.path.join(filepath, listid)
+    #        os.remove(list_path)
         return "File Removed", 201
 
 
