@@ -103,10 +103,8 @@ function loadanno(tilesource, height, width) {
   anno.showAnnotations(viewer)
   viewer.addHandler('open', function(){
     var all_annos = []
-    var annotations = {{site.annotations | jsonify}}
-    var currentannos = annotations.filter(element => tilesource.indexOf(element.slug.split("-")[0]) > -1)
-    for (var ca=0; ca<currentannos.length; ca++) {
-      var annotation = JSON.parse(currentannos[ca]['content'])
+    {% for annotation in site.annotations %}
+      var annotation = JSON.parse({{annotation.content | jsonify}})
       if (annotation['@context'].indexOf('w3') > -1 && annotation.target && tilesource.indexOf(annotation.target.id.split("#xywh=")[0]) > -1){
         all_annos.push(annotation)
         var xywh = annotation.target.id.split("#xywh=").slice(-1)[0].split(",");
@@ -131,7 +129,7 @@ function loadanno(tilesource, height, width) {
         loadanno['author'] = creator;
         anno.addAnnotation(loadanno)
       }
-    }
+    {% endfor %}
     localStorage.setItem(tilesource, JSON.stringify(all_annos))
   });
 
