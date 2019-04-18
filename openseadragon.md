@@ -88,6 +88,17 @@ function loadanno(tilesource, height, width) {
       })
   }
   anno.addPlugin('selectType', {});
+  annotorious.plugin.addAuthor = function() { }
+  annotorious.plugin.addAuthor.prototype.onInitAnnotator = function(annotator) {
+    annotator.editor.addField(function(annotation) {
+      var author = annotation ? annotation.author : '';
+      return 'Author: <input type="text" name="author" id="author" value="' + author + '">'
+    });
+    annotator.popup.addField(function(annotation) {
+      return '<em style="color: white">Author: ' + annotation.author + '</em>';
+    })
+  }
+  anno.addPlugin('addAuthor', {});
   var matching = {}
   anno.showAnnotations(viewer)
   viewer.addHandler('open', function(){
@@ -114,6 +125,8 @@ function loadanno(tilesource, height, width) {
         }
         loadanno['shapes'] = [{"type": "rect", "geometry": cords}]
         loadanno['tags'] = tags.join(", ");
+        var creator = annotation.creator ? annotation.creator.join(", ") : "";
+        loadanno['author'] = creator;
         anno.addAnnotation(loadanno)
       }
     {% endfor %}
@@ -167,8 +180,11 @@ function loadanno(tilesource, height, width) {
     var targetid = baseurl + `#xywh=${parseInt(imageitems['x'])},${parseInt(imageitems['y'])},${parseInt(imageitems['width'])},${parseInt(imageitems['height'])}`
     var shape_type = document.getElementById("shapetype") ? document.getElementById("shapetype").value : "";
     var popuptags = document.getElementById("tags") ? document.getElementById("tags").value : "";
+    var author = document.getElementById("author") ? document.getElementById("author").value.split(",") : "";
+    author = author.map(element=>element.trim())
     annotation['shapetype'] = shape_type;
     annotation['tags'] = popuptags;
+    annotation['author'] = author;
     var annotation_data = annotation.text;
     var body = [{
       "value": `${annotation_data}`,
@@ -183,6 +199,7 @@ function loadanno(tilesource, height, width) {
     var annotation = [{
       "type": "Annotation",
       "@context": "http://www.w3.org/ns/anno.jsonld",
+      "creator" : author,
       "body": body,
       "target": {
         "id": `${targetid}`,
