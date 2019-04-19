@@ -7,4 +7,4 @@ tags:
 - insects
 - cicada
 ---
-Polyneura ducalis | Indes Or. 
+Cicada saccata | Australie
