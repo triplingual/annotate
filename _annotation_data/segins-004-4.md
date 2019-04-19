@@ -7,4 +7,4 @@ tags:
 - insects
 - cicada
 ---
-Cicada facialis | Siam
+Tozena melanoptera | Indes Or.
