@@ -4,7 +4,7 @@ imagescr: <iiif-annotation annotationurl="https://dnoneill.github.io/annotate/an
 layout: searchview
 listname: segins-004-list.json
 tags:
-- insects
 - cicada
+- insects
 ---
-Tozena melanoptera | Indes Or.
+Polyneura ducalis | Indes Or.
