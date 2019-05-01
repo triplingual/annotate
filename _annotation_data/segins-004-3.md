@@ -7,4 +7,4 @@ tags:
 - insects
 - cicada
 ---
-Cicada saccata | Australie
+Cicada facialis | Siam
