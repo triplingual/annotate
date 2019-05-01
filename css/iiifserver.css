@@ -216,6 +216,10 @@ input, select, textarea{
   box-sizing : content-box;
 }
 
+iiif-annotation * {
+  white-space: normal !important
+}
+
 .all_results {
   box-sizing: border-box;
 }
