@@ -223,3 +223,10 @@ iiif-annotation * {
 .all_results {
   box-sizing: border-box;
 }
+
+.thumbnail * {
+  height: 50px;
+  width: auto!important;
+  float: left;
+  margin-bottom: 1em;
+}
