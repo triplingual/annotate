@@ -224,9 +224,7 @@ iiif-annotation * {
   box-sizing: border-box;
 }
 
-.thumbnail * {
-  height: 50px;
+.thumbnail svg, .thumbnail img {
+  height: 50px!important;
   width: auto!important;
-  float: left;
-  margin-bottom: 1em;
 }
