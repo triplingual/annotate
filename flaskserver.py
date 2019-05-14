@@ -6,6 +6,7 @@ import base64
 from settings import *
 from bs4 import BeautifulSoup
 import yaml
+import re
 
 app = Flask(__name__)
 CORS(app)
@@ -18,7 +19,7 @@ def create_anno():
     annotation = data_object['json']
     origin_url = data_object['originurl'].replace("http://0.0.0.0:5555", "")
     if github_repo == "":
-        filecounter = [name for name in os.listdir(filepath) if id in name]
+        filecounter = [name for name in os.listdir(filepath) if bool(re.compile(r"^{}".format(id)).match(name))]
 #    else:
 #        existing_github = requests.get(github_url+"{}".format(filepath), headers={'Authorization': 'token {}'.format(github_token)}).json()
 #        filecounter = [filedata for filedata in existing_github if id in filedata['name'] ]
