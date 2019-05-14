@@ -1,5 +1,5 @@
 title: Local IIIF Annotation Server
-description: ""
+description: "Local IIIF annotation server that allows for easy annotation creation."
 baseurl: "/annotate"
 url: "https://dnoneill.github.io"
 
@@ -8,6 +8,8 @@ permalink: pretty
 
 theme: just-the-docs
 remote_theme: pmarsceill/just-the-docs
+plugins:
+  - jekyll-seo-tag
 
 exclude: [Rakefile, Gemfile*, vendor]
 include: [feed.xml]

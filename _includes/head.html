@@ -1,11 +1,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  {% if page.description %}
-  <meta name="Description" content="{{ page.description }}">
-  {% endif %}
-
-  <title>{{ page.title }} - {{ site.title }}</title>
+  {%- seo -%}
     <link rel="stylesheet" href="https://ncsu-libraries.github.io/iiif-annotation/dist/iiif-annotation.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
