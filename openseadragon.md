@@ -18,10 +18,11 @@ nav_order: 2
 <script src="https://annotorious.github.io/js/highlight.js"></script>
 <script type="text/javascript" src="https://annotorious.github.io/latest/anno-fancybox.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://annotorious.github.io/latest/themes/dark/annotorious-dark.css">
-<div id="openseadragon" class="viewer"></div>
+
 <button id="map-annotate-button" onclick="anno.activateSelector();" href="#">
   ADD ANNOTATION
 </button>
+<div id="openseadragon" class="viewer"></div>
 
 <script>
 document.getElementById("enteriiifitem").onsubmit= function() {
@@ -181,7 +182,7 @@ function loadanno(tilesource, height, width) {
     var shape_type = document.getElementById("shapetype") ? document.getElementById("shapetype").value : "";
     var popuptags = document.getElementById("tags") ? document.getElementById("tags").value : "";
     var author = document.getElementById("author") ? document.getElementById("author").value.split(",") : "";
-    author = author.map(element=>element.trim())
+    author = author ? author.map(element=>element.trim()) : '';
     annotation['shapetype'] = shape_type;
     annotation['tags'] = popuptags;
     annotation['author'] = author;
@@ -231,14 +232,14 @@ function getTags() {
   #openseadragon {
     height: 55em;
     width: 93%;
-    position: absolute;
+    position: relative;
   }
 
   #map-annotate-button {
     position:absolute;
     right: 0;
     margin: 10px;
-    margin-right: calc(6%);
+    margin-right: calc(9%);
     background-color:#000;
     color:#fff;
     padding:3px 8px;
