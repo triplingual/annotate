@@ -17,7 +17,7 @@ nav_order: 2
 <script src="https://annotorious.github.io/latest/annotorious.min.js"></script>
 <script src="https://annotorious.github.io/js/highlight.js"></script>
 <script type="text/javascript" src="https://annotorious.github.io/latest/anno-fancybox.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://annotorious.github.io/latest/themes/dark/annotorious-dark.css">
+<link rel="stylesheet" type="text/css" href="https://annotorious.github.io/latest/annotorious.css">
 
 <button id="map-annotate-button" onclick="anno.activateSelector();" href="#">
   ADD ANNOTATION
@@ -77,6 +77,7 @@ function loadanno(tilesource, height, width) {
       return '<em style="color: white">Tags: ' + annotation.tags + '</em>';
     })
   }
+
   anno.addPlugin('addTags', {});
     annotorious.plugin.selectType = function() { }
     annotorious.plugin.selectType.prototype.onInitAnnotator = function(annotator) {
@@ -247,4 +248,9 @@ function getTags() {
     font-size:11px;
     text-decoration:none;
   }
+
+  .annotorious-popup-field > * {
+    color: black!important;
+  }
+
 </style>
