@@ -87,16 +87,19 @@ def delete_anno():
 @app.route('/write_annotation/', methods=['POST'])
 def write_annotation():
     data = json.loads(request.data)
-    json_data = eval(data['json'])
+    json_data = data['json']
+    filename = os.path.join('_annotations', data['filename'])
     if 'list' in json_data['@type'].lower() or 'page' in json_data['@type'].lower():
         for index, anno in enumerate(json_data['resources'], start=1):
-            get_search(anno, data['filename'].replace('-list.json', '-{}.json'.format(index)))
+            single_filename = filename.replace('-list.json', '-{}.json'.format(index))
+            get_search(anno, single_filename)
+            writetogithub(single_filename, anno)
     else:
         get_search(json_data, data['filename'])
     if github_repo == "":
-        filename = os.path.join('_annotations', data['filename'])
         writetofile(filename, data['json'])
-    
+    else:
+        writetogithub(filename, json_data)
     return request.data
 
 def writetogithub(filename, annotation, yaml=False):
@@ -111,8 +114,9 @@ def writetogithub(filename, annotation, yaml=False):
     if sha != '':
         data['sha'] = sha
     if 'content' in existing.keys():
-        existing_anno = json.loads(base64.b64decode(existing['content']).replace("---\nlayout: null\n---\n", ""))
-        if (formated_annotation != existing_anno):
+        decoded_content = base64.b64decode(existing['content']).replace("---\nlayout: null\n---\n", "")
+        existing_anno = decoded_content if yaml else json.loads(decoded_content)
+        if (annotation != existing_anno):
             response = requests.put(full_url, data=json.dumps(data),  headers={'Authorization': 'token {}'.format(github_token), 'charset': 'utf-8'})
     else:
         response = requests.put(full_url, data=json.dumps(data),  headers={'Authorization': 'token {}'.format(github_token), 'charset': 'utf-8'})
