@@ -9,21 +9,7 @@ layout: default
 {{site.url}}{{site.baseurl}}{{annotation.id}}.json
 {% endcapture %}
  {% if annotation.id contains 'list' %}
-<div class="row">
-<div class="column anno_left">
-	<iiif-storyboard annotationlist="{{url | strip }}"></iiif-storyboard>
-</div>
-<div class="column anno_right">
-	<button id="{{annoid}}_button" class="listbutton" onclick="make_embed_code('{{annoid}}')">Show embed code</button>
-  <div id="{{annoid}}_embeditem" style="display: none;">
-    <textarea id="{{annoid}}_embedcode" rows="5">&lt;iiif-storyboard annotationlist="{{url| strip }}"&gt;&lt;/iiif-storyboard&gt;</textarea>
-    <button onclick="copytoclipboard('{{annoid}}_embedcode')" onmouseout="outFunc('{{annoid}}_tooltip')" class="tooltip copybutton">
-    <span class="tooltiptext" id="{{annoid}}_tooltip">Copy to clipboard</span>
-      <i class="fas fa-copy"></i>
-    </button>
-  </div>
-</div>
-</div>
+ {% include embed.html tag="iiif-storyboard" type="annotationlist" %}
 {% endif %}
 
 {% endfor %}

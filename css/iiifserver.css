@@ -23,6 +23,7 @@
 
 .listbutton {
   margin: 0 auto;
+  max-width: 8rem;
   display: flex;
   justify-content: center;
   background-color: #1c00ac;
