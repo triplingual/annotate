@@ -1,0 +1,4 @@
+---
+layout: null
+---
+{"type": "Annotation", "creator": "", "target": {"type": "Image", "id": "https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee#xywh=11896,2159,3474,2292"}, "body": [{"selector": {"type": "FragmentSelector", "value": ""}, "value": "Venetie MD", "type": "TextualBody", "format": "text/html"}], "@context": "http://www.w3.org/ns/anno.jsonld"}
