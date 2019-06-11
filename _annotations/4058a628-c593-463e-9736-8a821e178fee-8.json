@@ -1,4 +1,0 @@
----
-layout: null
----
-{"@context": "http://www.w3.org/ns/anno.jsonld", "type": "Annotation", "target": {"type": "Image", "id": "https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee#xywh=11986,9036,2233,889"}, "body": [{"type": "TextualBody", "language": "", "selector": {"type": "FragmentSelector", "value": "rect"}, "format": "text/html", "value": "Piazza San Marco also known as St Mark's Square. "}, {"type": "TextualBody", "language": "", "purpose": "tagging", "format": "text/plain", "value": "campo"}], "creator": []}
