@@ -32,24 +32,22 @@ function delete_items(anno_id, api_url, deletelist){
 
 function create_items(api_url, homeurl) {
 	for(var i =0; i < localStorage.length; i++){
-        var key = localStorage.key(i);
-		var canvas_regex = /(canvas\/(.*))|(.*(?=(\/info.json)))/;
-        var matches = canvas_regex.exec(key);
-        if(matches != null) {
-          var canvas = matches[0].split("/").slice(-1)[0];
-          var fileName = canvas + '.json';
-          var fileContent = localStorage.getItem(key);
-					var jsonparse = JSON.parse(fileContent);
-					if (jsonparse.length > 0 && jsonparse[0]['@context'].indexOf('w3') == -1){
-						for (var e = 0; e< jsonparse.length; e++){
-							resource = _.unescape(JSON.stringify(jsonparse[e]['resource']))
-							jsonparse[e]['resource'] = JSON.parse(resource)
-						}
-					}
-		  var clean_key = key.replace("/info.json", "").replace(".json", "").split("/").slice(-1)[0]
+		var key = localStorage.key(i);
+		var canvas_regex = /(canvas(.*))|(.*(?=(\/info.json)))/;
+		var matches = canvas_regex.exec(key);
+		if(matches != null) {
+			var fileContent = localStorage.getItem(key);
+			var jsonparse = JSON.parse(fileContent);
+			if (jsonparse.length > 0 && jsonparse[0]['@context'].indexOf('w3') == -1){
+				for (var e = 0; e< jsonparse.length; e++){
+					resource = _.unescape(JSON.stringify(jsonparse[e]['resource']))
+					jsonparse[e]['resource'] = JSON.parse(resource)
+				}
+			}
+		  var clean_key = key.replace("/info.json", "").replace(".json", "").replace(/\?/gm, "/").split("/").slice(-1)[0]
 		  var id = clean_key.replace(/[^\w\-]+/g, '').replace(/_/g, "-")
-          jsonparse = {'json':jsonparse, 'key': id, 'originurl':homeurl}
-          $.ajax({
+			jsonparse = {'json':jsonparse, 'key': id, 'originurl':homeurl}
+			$.ajax({
 		    url: api_url,
 		    dataType: 'json',
 		    type: 'POST',
@@ -62,9 +60,8 @@ function create_items(api_url, homeurl) {
 		    error: function( jqXhr, textStatus, errorThrown ){
 		        console.log( errorThrown );
 		    }
-		});
-
-      }
+			});
+		}
   }
 }
 

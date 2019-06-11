@@ -142,10 +142,12 @@ def get_search(anno, filename, origin_url):
             annodata_data['tags'].append(tags_data.encode("utf-8"))
         elif chars:
             annodata_data['content'].append(chars.encode("utf-8"))
+        elif 'items' in resource.keys():
+            field = 'value' if 'value' in resource['items'][0].keys() else 'chars'
+            fieldvalues = " ".join([item[field].encode("utf-8") for item in resource['items']])
+            annodata_data['content'].append(fieldvalues)
         elif 'value' in resource:
             annodata_data['content'].append(resource['value'])
-        elif 'items' in resource:
-            annodata_data['content'].append(" ".join([i['value'] for i in resource['items'] if i['type'] == 'TextualBody']))
     content = '\n'.join(annodata_data.pop('content'))
     if github_repo == "":
         with open(annodata_filename, "w") as outfile:
