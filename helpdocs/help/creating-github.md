@@ -2,14 +2,14 @@
 layout: default
 title: Creating GitHub website
 parent: Help
-nav_order: 1
+nav_order: 2
 ---
 
 Creating Github site and hosting annotations
 
-This application allows for the site to be hosted on GitHub pages. Unfortunately new annotations can not be created using GitHub pages without deploying the flask application to a remote server. There are instructions on how to do this with Heroku [here](/docs/help/heroku). 
+This application allows for the site to be hosted on GitHub pages. Unfortunately new annotations can not be created using GitHub pages without deploying the flask application to a remote server. There are instructions on how to do this with Heroku [here](/docs/help/heroku).
 
-New annotations can still be created and shared by using the Vagrant instance to create annotations on the local machine and pushing the changes to GitHub. This section give instructions on how to create a GitHub pages site. 
+New annotations can still be created and shared by using the Vagrant instance to create annotations on the local machine and pushing the changes to GitHub. This section give instructions on how to create a GitHub pages site.
 
 # Forking
 1. Login into Github account.
@@ -26,7 +26,7 @@ New annotations can still be created and shared by using the Vagrant instance to
 2. Create new repository on GitHub ()
 3. Remove origin
 `git remote rm origin`
-4. Point to new origin 
+4. Point to new origin
 `git remote add origin https://github.com/<username>/<reponame>.git`
 5. Push to repo
 `git push -u origin master`

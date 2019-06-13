@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Running Locally
+title: Quickstart
 parent: Help
 nav_order: 2
 ---
@@ -10,24 +10,20 @@ nav_order: 2
 
 	`$ git clone https://github.com/[username]/annotate.git && cd annotate`
 
-2. change `api_server` url
+2. Install Vagrant https://www.vagrantup.com/downloads.html and VirtualBox https://www.virtualbox.org/wiki/Downloads
 
-	`api_server: http://0.0.0.0:5000/annotations/`
-
-3. Install Vagrant https://www.vagrantup.com/downloads.html
-
-4. Start vagrant environment
+3. Start vagrant environment
 
 	`$ vagrant up`
 
-5. Start Jekyll and Flask
+4. Start Jekyll and Flask
 	```
 	$ vagrant ssh
 	[vagrant@localhost ~]$ cd /vagrant
 	[vagrant@localhost ~]$ ./run.sh
 	```
 
-Navigate to [http://0.0.0.0:4000/annotate/](http://0.0.0.0:4000/annotate/) to create annotations
+Navigate to [http://0.0.0.0:5555/annotate/](http://0.0.0.0:5555/annotate/) to create annotations
 
 IMPORTANT!!!!! After creating annotations make sure to click on the "Create/Load Annotations" button located in the bottom left hand corner of the Mirador viewer. If this is not done, no annotations will be created or deleted. This only has to be done before navigating away from the create annotations page . It does not have to be done when switching between manifests.
 
