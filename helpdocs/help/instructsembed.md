@@ -2,7 +2,7 @@
 layout: default
 title: How to use "embed code" / Settings
 parent: Help
-nav_order: 6
+nav_order: 5
 ---
 
 # How to use "embed code"
@@ -17,7 +17,7 @@ After this copy and paste as many embed codes as desired into the html page.
 Please visit [https://ncsu-libraries.github.io/iiif-annotation/](https://ncsu-libraries.github.io/iiif-annotation/) for more detailed information about the image viewer and storyboard viewer, more detailed documentation and information on the different settings available.
 
 # Settings for embeddable items
-The default views for the embed codes are changable. Information on the different options and how to implement different settings are located in the links below.
+The default views for the embed codes are changeable. Information on the different options and how to implement different settings are located in the links below.
 
 * [Image viewer settings](https://ncsu-libraries.github.io/iiif-annotation/imageviewer/)
 * [Storyboard viewer settings](https://ncsu-libraries.github.io/iiif-annotation/storyboard/)

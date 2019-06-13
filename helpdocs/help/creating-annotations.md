@@ -2,7 +2,7 @@
 layout: default
 title: Creating Annotations
 parent: Help
-nav_order: 4
+nav_order: 2
 ---
 * TOC
 {:toc}
@@ -42,7 +42,7 @@ Demo video showing the creation of annotations is below.
 - Click and Drag section of image
 - Add annotation.
   - Tags should be separated by a comma.
-  - Type options are **rect** or **pin** 
+  - Type options are **rect** or **pin**
 - Click save.
 
 <video width="100%" controls>

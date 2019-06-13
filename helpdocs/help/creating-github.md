@@ -2,7 +2,7 @@
 layout: default
 title: Creating GitHub website
 parent: Help
-nav_order: 2
+nav_order: 3
 ---
 
 Creating Github site and hosting annotations
