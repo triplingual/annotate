@@ -19,7 +19,12 @@
            loadedManifest: '{{site.data.preloadedmanifests[0]}}',
            bottomPanelVisible: {{ page.bottom_panel | default: 'true' }}
        }],
-       annotationEndpoint: { 'name':'Local Storage', 'module': 'LocalStorageEndpoint' }
+       annotationEndpoint: { 'name':'Local Storage', 'module': 'LocalStorageEndpoint' },
+			 sidePanelOptions : {
+           'tocTabAvailable': true,
+           'layersTabAvailable': true,
+           'searchTabAvailable': true
+         }
      });
    });
 </script>">
