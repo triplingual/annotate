@@ -41,7 +41,7 @@
         }
   			var json = JSON.stringify(annotationresources)
   			var url = annotationresources[0].on ? annotationresources[0].on[0].full : annotationresources[0].target.id;
-  			localStorage.setItem(url, json)
+  			localStorage.setItem(url.split('#xywh')[0], json)
   		{% endif %}
   	{% endfor %}
     $( "#anno_button" ).click(function() {
