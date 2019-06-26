@@ -1,4 +1,0 @@
----
-layout: null
----
-{"type": "Annotation", "@context": "http://www.w3.org/ns/anno.jsonld", "creator": [], "body": [{"language": "", "type": "TextualBody", "value": "Campo Santa Maria Formosa", "selector": {"type": "FragmentSelector", "value": "rect"}, "format": "text/html"}, {"language": "", "type": "TextualBody", "value": "campo", "format": "text/plain", "purpose": "tagging"}], "target": {"type": "Image", "id": "https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee#xywh=15647,7410,433,269"}}
