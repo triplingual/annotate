@@ -5,4 +5,4 @@ layout: searchview
 listname: ba-obj-5005-cons-overlay-list.json
 tags: []
 ---
-Mrs. Abington posing as Miss Prue, a character from Love for Love a play by William Congreve.
+Face

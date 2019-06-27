@@ -42,7 +42,10 @@ function create_items(api_url, homeurl) {
 					jsonparse[e]['resource'] = JSON.parse(resource)
 				}
 			}
-		  	var clean_key = key.replace("/info.json", "").replace(".json", "").replace(/\?/gm, "/").split("/").slice(-1)[0]
+		  	var split = key.replace("/info.json", "").replace(".json", "").replace(/\?/gm, "/").split("/");
+				split = split.filter(element => element != 'iiif' && element.indexOf('http') == -1 && element != '');
+				var numb = split.indexOf('canvas') > 0 ? split[split.indexOf('canvas')-1] : '';
+				var clean_key = numb.match(/\d+/g) ? numb + '-' + split.slice(-1)[0] : split.slice(-1)[0];
 		  	var id = clean_key.replace(/[^\w\-]+/g, '').replace(/_/g, "-")
 			jsonparse = {'json':jsonparse, 'key': id, 'originurl':homeurl}
 			$.ajax({
