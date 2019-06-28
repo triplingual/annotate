@@ -1,4 +1,0 @@
----
-layout: null
----
-{"@context": "http://www.w3.org/ns/anno.jsonld", "@type": "AnnotationPage", "id": "https://dnoneill.github.io/annotate/annotations/8e3d19d335208e49762884ef22f748f105d656f6bff9229e2d45ce0dd18a8fe-list.json", "resources": [{"@context": "http://www.w3.org/ns/anno.jsonld", "target": {"id": "https://theleidencollection.iiifhosting.com/iiif/8e3d19d335208e49762884ef22f748f105d656f6bff9229e2d45ce0dd18a8fe#xywh=3543,664,677,462", "type": "Image"}, "body": [{"format": "text/html", "type": "TextualBody", "value": "Face", "selector": {"value": "rect", "type": "FragmentSelector"}}], "type": "Annotation", "creator": [""]}]}
