@@ -1,4 +1,4 @@
-# IIIF-Annotate
+# Local IIIF Annotation server
 
 Installation instructions are found here: [https://dnoneill.github.io/annotate/help](https://dnoneill.github.io/annotate/help)
 
