@@ -1,0 +1,4 @@
+---
+layout: null
+---
+{"@type": "AnnotationPage", "@context": "http://www.w3.org/ns/anno.jsonld", "resources": [{"body": [{"value": "Dinantes: et: Conan claves por recio hic Willelmi redit ha roldo arma.", "format": "text/html", "type": "TextualBody", "selector": {"value": "rect", "type": "FragmentSelector"}}], "target": {"id": "https://dnoneill.github.io/wax-iiif/img/derivatives/iiif/images/fullBayeux#xywh=20290,118,1072,145", "type": "Image"}, "creator": [""], "type": "Annotation", "@context": "http://www.w3.org/ns/anno.jsonld"}], "id": "https://dnoneill.github.io/annotate/annotations/fullbayeux-list.json"}
