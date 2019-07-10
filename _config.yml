@@ -25,6 +25,8 @@ collections:
   annotation_data:
     output: true
     permalink: /annotations/:name
+  iiifproviders: 
+    permalink: /:path
 webrick:
   headers:
     "Access-Control-Allow-Origin": "*"
