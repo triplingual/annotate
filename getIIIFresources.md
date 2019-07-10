@@ -1,9 +1,10 @@
 ---
 layout: default
 title: Where to find IIIF
-nav_order: 7
+nav_order: 6
 ---
-**Please feel free to contribute to this page!**
+# {{page.title}}
+## Please feel free to contribute to this page by opening an [issue](https://github.com/dnoneill/annotate/issues/new?assignees=dnoneill&labels=&template=add-resource-to--where-to-find-iiif-.md&title=)
 
 # Internet Archive
 
@@ -11,7 +12,7 @@ Images in the Internet Archive accessible through a IIIF endpoint. Instructions 
 
 # Wikipedia
 
-See [{{site.baseurl}}/wikipedia]({{site.baseurl}}/wikipedia) for Information.
+See [{{site.url}}{{site.baseurl}}/wikipedia]({{site.baseurl}}/wikipedia) for Information.
 
 # ContentDM images
 
@@ -21,6 +22,6 @@ Search any image in ContentDM. https://researchworks.oclc.org/iiif-explorer/sear
 
 {% assign insts = site.iiifproviders | sort: "institution" %}
 
-| Institution | Interface | Subjects |
-|---|---|---|{% for inst in insts %}
-| {{inst.institution}} | {% for website in inst.website %}<a href="{{website}}" target="_blank">{{website}}</a><br> {% endfor %} | {{inst.subjects}}  |{% endfor %}
+| Institution | Interface | Types | Notes |
+|---|---|---|---|{% for inst in insts %}
+| {{inst.institution}} | {% for website in inst.website %}<a href="{{website}}" target="_blank">{{website}}</a><br> {% endfor %} | {{inst.subjects}}  | {{inst.notes}}|{% endfor %}
