@@ -13,8 +13,17 @@ nav_order: 6
   }
 </style>
 
+
 # {{page.title}}
+
+* TOC
+{:toc}
+
 ## Please feel free to contribute to this page by opening an [issue](https://github.com/dnoneill/annotate/issues/new?assignees=dnoneill&labels=&template=add-resource-to--where-to-find-iiif-.md&title=)
+
+# Tools
+* [https://github.com/2SC1815J/open-in-iiif-viewer](https://github.com/2SC1815J/open-in-iiif-viewer) is "a Firefox/Chrome extension to open IIIF manifest link in your favorite IIIF viewer".
+
 
 # Internet Archive
 
