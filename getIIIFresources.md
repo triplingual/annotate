@@ -3,6 +3,16 @@ layout: default
 title: Where to find IIIF
 nav_order: 6
 ---
+
+<style>
+  table {
+    width: 100%;
+  }
+  table td {
+    word-break: break-word;
+  }
+</style>
+
 # {{page.title}}
 ## Please feel free to contribute to this page by opening an [issue](https://github.com/dnoneill/annotate/issues/new?assignees=dnoneill&labels=&template=add-resource-to--where-to-find-iiif-.md&title=)
 
