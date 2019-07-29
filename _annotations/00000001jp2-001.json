@@ -1,4 +1,4 @@
 ---
 layout: null
 ---
-{"creator": [""], "type": "Annotation", "target": {"type": "Image", "id": "https://libimages.princeton.edu/loris/pudl0076/map_pownall/00000001.jp2#xywh=1578,-1452,1785,1991"}, "@context": "http://www.w3.org/ns/anno.jsonld", "body": [{"value": "", "selector": {"type": "FragmentSelector", "value": "rect"}, "format": "text/html", "type": "TextualBody"}]}
+{"@context": "http://www.w3.org/ns/anno.jsonld", "type": "Annotation", "body": [{"format": "text/html", "value": "test", "selector": {"value": "rect", "type": "FragmentSelector"}, "type": "TextualBody"}], "creator": [""], "target": {"id": "https://libimages.princeton.edu/loris/pudl0076/map_pownall/00000001.jp2#xywh=1662,75,2035,1873", "type": "Image"}}
