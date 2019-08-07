@@ -1,0 +1,4 @@
+---
+layout: null
+---
+{"@type": "AnnotationPage", "resources": [{"type": "Annotation", "creator": [""], "target": {"type": "Image", "id": "https://dlcs.io/iiif-img/3/2/04fbbb28-d5a7-4408-b7da-800c4e65eda3#xywh=4537,1656,350,417"}, "body": [{"selector": {"type": "FragmentSelector", "value": "rect"}, "value": "Demo", "type": "TextualBody", "format": "text/html"}], "@context": "http://www.w3.org/ns/anno.jsonld"}], "id": "https://dnoneill.github.io/annotate/annotations/04fbbb28-d5a7-4408-b7da-800c4e65eda3-list.json", "@context": "http://www.w3.org/ns/anno.jsonld"}
