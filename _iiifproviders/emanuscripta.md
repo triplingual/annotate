@@ -1,6 +1,6 @@
 ---
 layout: default
 institution: E-manuscripta.ch
-website: ["https://cudl.lib.cam.ac.uk/"]
+website: https://www.e-manuscripta.ch/
 subjects: Texts, Correspondence, Music Notes, Pictures, Maps, Plans, Various
 ---

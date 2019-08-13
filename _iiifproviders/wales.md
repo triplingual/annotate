@@ -1,6 +1,7 @@
 ---
 layout: default
 institution: National Library of Wales
-website: "http://discover.library.wales/primo_library/libweb/action/search.do?fn=search&ct=search&initialSearch=true&mode=Basic&vl%28freeText0%29=%2244NLW_FED*%22"
+website: https://discover.library.wales/primo-explore/search?vid=44WHELF_NLW_NUI&lang=en_US
 subjects: Archives and Manuscripts, Images, Books, Maps, Journals, Audio Visual, Scores.
+notes: Change "In the Library" to "Digitised Items" and search.
 ---
