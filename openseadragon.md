@@ -50,7 +50,7 @@ function getUrl() {
 }
 
 function loadanno(tilesource, height, width) {
-  var baseurl = tilesource.split("/info.json")[0]
+  var baseurl = tilesource.split("/info.json")[0];
   var aspect_ratio = width/height;
   var tilesources = {
     type: 'legacy-image-pyramid',
@@ -132,49 +132,49 @@ function loadanno(tilesource, height, width) {
         anno.addAnnotation(loadanno)
       }
     {% endfor %}
-    localStorage.setItem(tilesource, JSON.stringify(all_annos))
+    localStorage.setItem(baseurl, JSON.stringify(all_annos))
   });
 
   anno.addHandler('onAnnotationCreated', function(annotation) {
-    var annotation_text = buildAnno(annotation, tilesource)
+    var annotation_text = buildAnno(annotation)
     var id = `${annotation['shapes'][0]['geometry']['x'].toFixed(2)}${annotation['shapes'][0]['geometry']['y'].toFixed(2)}${annotation['shapes'][0]['geometry']['width'].toFixed(2)}${annotation['shapes'][0]['geometry']['height'].toFixed(2)}`;
-    if (localStorage[tilesource]) {
-      var existing = JSON.parse(localStorage[tilesource])
+    if (localStorage[baseurl]) {
+      var existing = JSON.parse(localStorage[baseurl])
       annotation_text = _.uniq(existing.concat(annotation_text))
     }
     matching[id] = baseurl.split("/").slice(-1)[0] + '-' + annotation_text.length;
-    localStorage.setItem(tilesource, JSON.stringify(annotation_text))
+    localStorage.setItem(baseurl, JSON.stringify(annotation_text))
     create_items('{{site.api_server}}', '{{site.url}}{{site.baseurl}}')
   });
 
   anno.addHandler('onAnnotationUpdated', function(annotation) {
-    var annotation_text = buildAnno(annotation, tilesource)
-    var existing = JSON.parse(localStorage[tilesource])
+    var annotation_text = buildAnno(annotation)
+    var existing = JSON.parse(localStorage[baseurl])
     var id = `${annotation['shapes'][0]['geometry']['x'].toFixed(2)}${annotation['shapes'][0]['geometry']['y'].toFixed(2)}${annotation['shapes'][0]['geometry']['width'].toFixed(2)}${annotation['shapes'][0]['geometry']['height'].toFixed(2)}`;
     var position = parseInt(matching[id].split("-").slice(-1)[0]) - 1;
     existing[position] = annotation_text[0];
-    localStorage.setItem(tilesource, JSON.stringify(existing))
+    localStorage.setItem(baseurl, JSON.stringify(existing))
     create_items('{{site.api_server}}', '{{site.url}}{{site.baseurl}}')
   });
 
   anno.addHandler('onAnnotationRemoved', function(annotation) {
-    var annotation_text = buildAnno(annotation, tilesource)
-    var existing = JSON.parse(localStorage[tilesource])
+    var annotation_text = buildAnno(annotation)
+    var existing = JSON.parse(localStorage[baseurl])
     var id = `${annotation['shapes'][0]['geometry']['x'].toFixed(2)}${annotation['shapes'][0]['geometry']['y'].toFixed(2)}${annotation['shapes'][0]['geometry']['width'].toFixed(2)}${annotation['shapes'][0]['geometry']['height'].toFixed(2)}`;
     var position = parseInt(matching[id].split("-").slice(-1)[0]) - 1;
     existing.splice(position, 1)
     anno.removeAnnotation(annotation)
     var delete_list = existing.length == 0 ? true : false;
     if (existing.length == 0){
-      localStorage.removeItem(tilesource)
+      localStorage.removeItem(baseurl)
     } else {
-      localStorage.setItem(tilesource, JSON.stringify(existing))
+      localStorage.setItem(baseurl, JSON.stringify(existing))
     }
     create_items('{{site.api_server}}', '{{site.url}}{{site.baseurl}}')
     delete_items(`${baseurl.split("/").slice(-1)[0]}-${existing.length+1}`, '{{site.api_server}}', delete_list)
   });
 
-  function buildAnno(annotation, tilesource){
+  function buildAnno(annotation){
     var boundingrect = annotorious['geometry'].getBoundingRect(annotation.shapes[0]).geometry
     var tags = getTags()
     var rect =  new OpenSeadragon.Rect(boundingrect['x'], boundingrect['y'], boundingrect['width'], boundingrect['height'])
