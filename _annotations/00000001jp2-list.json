@@ -1,0 +1,4 @@
+---
+layout: null
+---
+{"@type": "AnnotationPage", "@context": "http://www.w3.org/ns/anno.jsonld", "id": "https://dnoneill.github.io/annotate/annotations/00000001jp2-list.json", "resources": [{"@context": "http://www.w3.org/ns/anno.jsonld", "type": "Annotation", "body": [{"format": "text/html", "value": "test", "selector": {"value": "rect", "type": "FragmentSelector"}, "type": "TextualBody"}], "creator": [""], "target": {"id": "https://libimages.princeton.edu/loris/pudl0076/map_pownall/00000001.jp2#xywh=1662,75,2035,1873", "type": "Image"}}]}
