@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Where to find IIIF
-nav_order: 6
+nav_order: 8
 ---
 
 <style>

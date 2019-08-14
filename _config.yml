@@ -19,13 +19,16 @@ collections:
   annotations:
     output: true
     permalink: /annotations/:name
+  ranges:
+    output: true
+    permalink: /ranges/:name
   helpdocs:
     output: true
     permalink: /help/:name
   annotation_data:
     output: true
     permalink: /annotations/:name
-  iiifproviders: 
+  iiifproviders:
     permalink: /:path
 webrick:
   headers:

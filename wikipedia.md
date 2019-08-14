@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Wikipedia and IIIF
-nav_order: 6
+nav_order: 7
 ---
 # Full info page
 More information on each of these subjects can be found here: [https://commons.wikimedia.org/wiki/Commons:International_Image_Interoperability_Framework](https://commons.wikimedia.org/wiki/Commons:International_Image_Interoperability_Framework).
