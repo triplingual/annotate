@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Creating GitHub website
-parent: Help
-nav_order: 3
+parent: help.md
+weight: 3
 ---
 
 Creating Github site and hosting annotations

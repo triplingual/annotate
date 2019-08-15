@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Creating Annotations
-parent: Help
-nav_order: 2
+parent: help.md
+weight: 2
 ---
 * TOC
 {:toc}

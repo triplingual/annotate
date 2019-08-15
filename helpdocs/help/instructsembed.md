@@ -1,8 +1,8 @@
 ---
 layout: default
 title: How to use "embed code" / Settings
-parent: Help
-nav_order: 5
+parent: help.md
+weight: 5
 ---
 
 # How to use "embed code"
