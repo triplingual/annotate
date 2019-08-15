@@ -233,5 +233,5 @@ iiif-annotation * {
 }
 
 .js-page-header {
-  display: none;
+  display: none!important;
 }
