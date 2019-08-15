@@ -1,4 +1,0 @@
----
-layout: null
----
-{"@context": "http://www.w3.org/ns/anno.jsonld", "type": "Annotation", "creator": [""], "target": {"id": "https://dlcs.io/iiif-img/3/2/04fbbb28-d5a7-4408-b7da-800c4e65eda3#xywh=3183,960,948,859", "type": "Image"}, "body": [{"value": "test delete", "format": "text/html", "selector": {"type": "FragmentSelector", "value": "rect"}, "type": "TextualBody"}]}
