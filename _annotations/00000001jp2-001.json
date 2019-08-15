@@ -1,4 +1,0 @@
----
-layout: null
----
-{"@context": "http://www.w3.org/ns/anno.jsonld", "type": "Annotation", "rights": [], "target": {"type": "Image", "id": "https://libimages.princeton.edu/loris/pudl0076/map_pownall/00000001.jp2#xywh=1662,75,2035,1873"}, "body": [{"selector": {"type": "FragmentSelector", "value": "rect"}, "type": "TextualBody", "format": "text/html", "value": "A plan of the City of New York", "language": ""}], "creator": []}
