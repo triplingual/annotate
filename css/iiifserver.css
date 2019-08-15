@@ -81,10 +81,6 @@
   padding-right: 20px;
 }
 
-.page-header {
-  display: none;
-}
-
 .container {
   padding: 20px;
 }
@@ -130,11 +126,6 @@ img {
 form[method="get"] {
   display: none!important;
 }
-
-.site-header {
-  display: none;
-}
-
 
 .tooltip {
   position: relative;
@@ -233,4 +224,14 @@ iiif-annotation * {
 .page-content a {
 	text-overflow: unset;
 	white-space: unset;
+}
+
+.site-header {
+	width: 100%;
+	height: auto;
+	max-height: none;
+}
+
+.js-page-header {
+  display: none;
 }
