@@ -1,0 +1,4 @@
+---
+layout: null
+---
+{"body": [{"selector": {"value": "rect", "type": "FragmentSelector"}, "value": "test delete", "format": "text/html", "type": "TextualBody"}], "target": {"id": "https://dlcs.io/iiif-img/3/2/04fbbb28-d5a7-4408-b7da-800c4e65eda3#xywh=2924,1447,802,726", "type": "Image"}, "creator": [""], "type": "Annotation", "@context": "http://www.w3.org/ns/anno.jsonld"}
