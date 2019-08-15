@@ -1,4 +1,0 @@
----
-layout: null
----
-{"creator": [""], "target": {"id": "https://dlcs.io/iiif-img/3/2/04fbbb28-d5a7-4408-b7da-800c4e65eda3#xywh=4405,2234,624,1067", "type": "Image"}, "body": [{"format": "text/html", "value": "Fire", "selector": {"value": "rect", "type": "FragmentSelector"}, "type": "TextualBody"}], "@context": "http://www.w3.org/ns/anno.jsonld", "type": "Annotation"}
