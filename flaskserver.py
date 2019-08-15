@@ -61,13 +61,13 @@ def delete_anno():
     if request.data and github_repo:
         existing_github = requests.get(github_url+"/{}/{}.json".format(filepath, id), headers={'Authorization': 'token {}'.format(github_token)}).json()
         existing_search = requests.get(github_url+"/_annotation_data/{}.md".format(id), headers={'Authorization': 'token {}'.format(github_token)}).json()
-        data = createdatadict(id, 'delete', branch, existing_github['sha'])
-        search_data = createdatadict(id, 'delete', branch, existing_search['sha'])
+        data = createdatadict(id, 'delete', existing_github['sha'])
+        search_data = createdatadict(id, 'delete', existing_search['sha'])
         requests.delete(github_url+"/{}/{}.json".format(filepath, id), headers={'Authorization': 'token {}'.format(github_token)}, data=json.dumps(data))
         requests.delete(github_url+"/_annotation_data/{}.md".format(id), headers={'Authorization': 'token {}'.format(github_token)}, data=json.dumps(search_data))
         if request_data['deletelist']:
             existing_list = requests.get(github_url+"/{}/{}".format(filepath, listid), headers={'Authorization': 'token {}'.format(github_token)}).json()
-            list_data = createdatadict(id, 'delete', branch,existing_list['sha'])
+            list_data = createdatadict(id, 'delete',existing_list['sha'])
             requests.delete(github_url+"/{}/{}".format(filepath, listid), headers={'Authorization': 'token {}'.format(github_token)}, data=json.dumps(list_data))
         return "File Removed", 201
     else:
@@ -110,7 +110,7 @@ def writetogithub(filename, annotation, yaml=False):
     if 'sha' in existing.keys():
         sha = existing['sha']
     anno_text = annotation if yaml else "---\nlayout: null\n---\n" + json.dumps(annotation)
-    data = createdatadict(filename, anno_text, branch, sha)
+    data = createdatadict(filename, anno_text, sha)
     if 'content' in existing.keys():
         decoded_content = base64.b64decode(existing['content']).replace("---\nlayout: null\n---\n", "")
         existing_anno = decoded_content if yaml else json.loads(decoded_content)
@@ -119,10 +119,10 @@ def writetogithub(filename, annotation, yaml=False):
     else:
         response = requests.put(full_url, data=json.dumps(data),  headers={'Authorization': 'token {}'.format(github_token), 'charset': 'utf-8'})
 
-def createdatadict(filename, text, branch, sha):
+def createdatadict(filename, text, sha):
     writeordelete = "write" if text != 'delete' else "delete"
     message = "{} {}".format(writeordelete, filename)
-    data = {"message":message, "content": base64.b64encode(anno_text), "branch" }
+    data = {"message":message, "content": base64.b64encode(text), "branch": github_branch }
     if sha != '':
         data['sha'] = sha
     return data
