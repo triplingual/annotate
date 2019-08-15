@@ -8,14 +8,14 @@ function make_embed_code(id){
   }
 }
 
-function delete_items(anno_id, api_url, deletelist){
+function delete_items(anno_id, api_url, deletelist, deleteid){
 	var confirmation = confirm("Are you sure you want to delete?");
 	if (confirmation == true){
 	$.ajax({
 		    url: api_url,
 		    type: 'DELETE',
 		    contentType: 'application/json',
-		    data: JSON.stringify({'id':anno_id, 'deletelist': deletelist}),
+		    data: JSON.stringify({'id':anno_id, 'deletelist': deletelist, 'deleteid':deleteid }),
 		    processData: false,
 		    async: false,
 		    success: function( data, textStatus, jQxhr ){

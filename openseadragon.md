@@ -171,7 +171,7 @@ function loadanno(tilesource, height, width) {
       localStorage.setItem(baseurl, JSON.stringify(existing))
     }
     create_items('{{site.api_server}}', '{{site.url}}{{site.baseurl}}')
-    delete_items(`${baseurl.split("/").slice(-1)[0]}-${existing.length+1}`, '{{site.api_server}}', delete_list)
+    delete_items(`${baseurl.split("/").slice(-1)[0]}`, '{{site.api_server}}', delete_list, `${existing.length+1}`)
   });
 
   function buildAnno(annotation){
