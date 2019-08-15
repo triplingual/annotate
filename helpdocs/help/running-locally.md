@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Quickstart
-parent: Help
-nav_order: 2
+parent: help.md
+weight: 2
 ---
 
 # Setting up Local Server

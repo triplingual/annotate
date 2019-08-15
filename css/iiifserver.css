@@ -226,12 +226,6 @@ iiif-annotation * {
 	white-space: unset;
 }
 
-.site-header {
-	width: 100%;
-	height: auto;
-	max-height: none;
-}
-
-.js-page-header {
-  display: none!important;
+.content {
+  max-width: none!important;
 }

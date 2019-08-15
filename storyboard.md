@@ -2,5 +2,5 @@
 layout: storyboard
 title: Storyboard Annotations
 permalink: "/storyboard"
-nav_order: 5
+weight: 5
 ---

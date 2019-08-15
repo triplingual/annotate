@@ -1,8 +1,7 @@
 ---
 layout: default
 title: Help
-nav_order: 10
-has_children: true
+weight: 10
 permalink: /help
 ---
 

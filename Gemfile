@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 gem 'jekyll'
-gem 'just-the-docs', '0.2.6'
+gem 'jekyll-materialdocs'
 gem 'rake'
 gem 'html-proofer'
 gem 'jekyll-seo-tag'
