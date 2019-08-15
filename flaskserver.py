@@ -62,7 +62,7 @@ def delete_anno():
         existing_github = requests.get(github_url+"/{}/{}.json".format(filepath, id), headers={'Authorization': 'token {}'.format(github_token)}).json()
         existing_search = requests.get(github_url+"/_annotation_data/{}.md".format(id), headers={'Authorization': 'token {}'.format(github_token)}).json()
         data = createdatadict(id, 'delete', branch, existing_github['sha'])
-        search_data = createdatadict(id, 'delete', branch, 'sha':existing_search['sha'])
+        search_data = createdatadict(id, 'delete', branch, existing_search['sha'])
         requests.delete(github_url+"/{}/{}.json".format(filepath, id), headers={'Authorization': 'token {}'.format(github_token)}, data=json.dumps(data))
         requests.delete(github_url+"/_annotation_data/{}.md".format(id), headers={'Authorization': 'token {}'.format(github_token)}, data=json.dumps(search_data))
         if request_data['deletelist']:
