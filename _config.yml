@@ -30,7 +30,7 @@ webrick:
   headers:
     "Access-Control-Allow-Origin": "*"
 
-api_server: http://0.0.0.0:5000/annotations/
+api_server: http://0.0.0.0:5000/
 endpoint: http://0.0.0.0:5000/write_annotation/
 
 exclude:

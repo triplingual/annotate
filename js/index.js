@@ -8,6 +8,7 @@ var docs =
 {% unless forloop.last %}, {% endunless %}
 {% endfor %}
 }
+
 var lunr_settings = {{site.lunr_settings| jsonify}}
 
 var view_facets = "{{site.view_facets}}"

@@ -127,34 +127,24 @@ function loadanno(tilesource, height, width) {
         }
         loadanno['shapes'] = [{"type": "rect", "geometry": cords}]
         loadanno['tags'] = tags.join(", ");
+        console.log(annotation)
+        loadanno['id'] = annotation['@id'];
         var creator = annotation.creator ? annotation.creator.join(", ") : "";
         loadanno['author'] = creator;
         anno.addAnnotation(loadanno)
       }
     {% endfor %}
-    localStorage.setItem(baseurl, JSON.stringify(all_annos))
   });
 
   anno.addHandler('onAnnotationCreated', function(annotation) {
     var annotation_text = buildAnno(annotation)
-    var id = `${annotation['shapes'][0]['geometry']['x'].toFixed(2)}${annotation['shapes'][0]['geometry']['y'].toFixed(2)}${annotation['shapes'][0]['geometry']['width'].toFixed(2)}${annotation['shapes'][0]['geometry']['height'].toFixed(2)}`;
-    if (localStorage[baseurl]) {
-      var existing = JSON.parse(localStorage[baseurl])
-      annotation_text = _.uniq(existing.concat(annotation_text))
-    }
-    matching[id] = baseurl.split("/").slice(-1)[0] + '-' + annotation_text.length;
-    localStorage.setItem(baseurl, JSON.stringify(annotation_text))
-    create_items('{{site.api_server}}', '{{site.url}}{{site.baseurl}}')
+    write_annotation(annotation_text, annotation_text['@id'], 'create')
   });
 
   anno.addHandler('onAnnotationUpdated', function(annotation) {
     var annotation_text = buildAnno(annotation)
-    var existing = JSON.parse(localStorage[baseurl])
-    var id = `${annotation['shapes'][0]['geometry']['x'].toFixed(2)}${annotation['shapes'][0]['geometry']['y'].toFixed(2)}${annotation['shapes'][0]['geometry']['width'].toFixed(2)}${annotation['shapes'][0]['geometry']['height'].toFixed(2)}`;
-    var position = parseInt(matching[id].split("-").slice(-1)[0]) - 1;
-    existing[position] = annotation_text[0];
-    localStorage.setItem(baseurl, JSON.stringify(existing))
-    create_items('{{site.api_server}}', '{{site.url}}{{site.baseurl}}')
+    console.log(annotation)
+    write_annotation(annotation_text, annotation_text['@id'], 'update')
   });
 
   anno.addHandler('onAnnotationRemoved', function(annotation) {
@@ -170,10 +160,23 @@ function loadanno(tilesource, height, width) {
     } else {
       localStorage.setItem(baseurl, JSON.stringify(existing))
     }
-    create_items('{{site.api_server}}', '{{site.url}}{{site.baseurl}}')
-    delete_items(`${baseurl.split("/").slice(-1)[0]}`, '{{site.api_server}}', delete_list, `${existing.length+1}`)
   });
-
+  function write_annotation(annotation, id, method) {
+    var senddata = {'json': annotation,'id': annotation['@id'], 'origin_url': '{{site.url}}{{site.baseurl}}'}
+    jQuery.ajax({
+      url: '{{site.api_server}}' + method + '_annotations/',
+      type: "POST",
+      dataType: "json",
+      data: JSON.stringify(senddata),
+      contentType: "application/json; charset=utf-8",
+      success: function(data) {
+        console.log('success')
+      },
+      error: function() {
+        returnError();
+      }
+    });
+  }
   function buildAnno(annotation){
     var boundingrect = annotorious['geometry'].getBoundingRect(annotation.shapes[0]).geometry
     var tags = getTags()
@@ -187,6 +190,11 @@ function loadanno(tilesource, height, width) {
     annotation['shapetype'] = shape_type;
     annotation['tags'] = popuptags;
     annotation['author'] = author;
+    var numb = `00${anno.getAnnotations().length}`
+    var annoid = annotation['id'] ? annotation['id'] : baseurl.split("/").slice(-1)[0];
+    var numbid = annotation['id'] ? annotation['id'] : baseurl.split("/").slice(-1)[0] + `-${numb.slice(-3)}`;
+    annotation['id'] = numbid;
+    console.log(numbid)
     var annotation_data = annotation.text;
     var body = [{
       "value": `${annotation_data}`,
@@ -198,16 +206,17 @@ function loadanno(tilesource, height, width) {
       }
     }]
     body = body.concat(tags)
-    var annotation = [{
+    var annotation = {
       "type": "Annotation",
       "@context": "http://www.w3.org/ns/anno.jsonld",
       "creator" : author,
+      "@id": annoid,
       "body": body,
       "target": {
         "id": `${targetid}`,
         "type": "Image"
       }
-    }]
+    }
     return annotation
   }
 }

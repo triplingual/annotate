@@ -12,77 +12,74 @@ app = Flask(__name__)
 CORS(app)
 
 annotations = []
-@app.route('/annotations/', methods=['POST'])
+@app.route('/create_annotations/', methods=['POST'])
 def create_anno():
-    data_object = json.loads(request.data)
-    id = data_object['key'].lower()
-    annotation = data_object['json']
-    origin_url = data_object['originurl'].replace("http://0.0.0.0:5555", "")
-    if github_repo == "":
-        filecounter = [name for name in os.listdir(filepath) if bool(re.compile(r"^{}".format(id)).match(name))]
-    if len(annotation) > 0:
-        if 'w3.org' in annotation[0]['@context']:
-            formated_annotation = {"@context":"http://www.w3.org/ns/anno.jsonld",
-            "@type": "AnnotationPage", "id": "%s/%s/%s-list.json"% (origin_url, filepath[1:], id) }
-        else:
-            formated_annotation = {"@context":"http://iiif.io/api/presentation/2/context.json",
-            "@type": "sc:AnnotationList", "@id": "%s/%s/%s-list.json"% (origin_url, filepath[1:], id) }
-        formated_annotation['resources'] = annotation
-        file_path = os.path.join(filepath, id.replace(".json", "").replace(":", ""))
-        list_name = "{}-list.json".format(file_path)
-        if github_repo == "":
-            if len(filecounter) - 1 > len(annotation):
-                for file in filecounter:
-                    os.remove(os.path.join(filepath, file))
-            writetofile(list_name, formated_annotation)
-        else:
-            writetogithub(list_name, formated_annotation)
-        index = 1
-        for anno in annotation:
-            filename = "{}-{:03}.json".format(file_path, index)
-            annodata_data = get_search(anno, filename, origin_url)
-            if github_repo == "":
-                writetofile(filename, anno)
-            else:
-                writetogithub(filename, anno)
-            index += 1
-        return jsonify(annotation), 201
-    else:
-        if github_repo == "":
-            for file in filecounter:
-                os.remove(os.path.join(filepath, file))
-        return jsonify("[]"), 201
+    response = json.loads(request.data)
+    data_object = response['json']
+    origin_url = response['origin_url']
+    id =  response['id'] if  'id' in response.keys() else data_object['on'][0]['full'].split('/')[-1].replace("_", "-").replace(":", "").replace(".json", "")
+    list_file_path = os.path.join(filepath, "{}-list.json".format(id))
+    index = get_list_data(list_file_path)
+    index = len(index['resources']) if index else 0
+    data_object['@id'] = id + "-{:03}".format(index + 1)
+    updatelistdata(list_file_path, data_object, origin_url)
+    file_path = os.path.join(filepath, data_object['@id']) + '.json'
+    writeannos(file_path, data_object, origin_url)
+    return jsonify(data_object), 201
 
-@app.route('/annotations/', methods=['DELETE'])
-def delete_anno():
-    request_data = json.loads(request.data)
-    id = "{}-{:03}".format(request_data['id'], int(request_data['deleteid']))
-    listid = request_data['id'] + "-list.json"
-    if request.data and github_repo:
-        existing_github = requests.get(github_url+"/{}/{}.json".format(filepath, id), headers={'Authorization': 'token {}'.format(github_token)}).json()
-        existing_search = requests.get(github_url+"/_annotation_data/{}.md".format(id), headers={'Authorization': 'token {}'.format(github_token)}).json()
-        data = createdatadict(id, 'delete', existing_github['sha'])
-        search_data = createdatadict(id, 'delete', existing_search['sha'])
-        requests.delete(github_url+"/{}/{}.json".format(filepath, id), headers={'Authorization': 'token {}'.format(github_token)}, data=json.dumps(data))
-        requests.delete(github_url+"/_annotation_data/{}.md".format(id), headers={'Authorization': 'token {}'.format(github_token)}, data=json.dumps(search_data))
-        if request_data['deletelist']:
-            existing_list = requests.get(github_url+"/{}/{}".format(filepath, listid), headers={'Authorization': 'token {}'.format(github_token)}).json()
-            list_data = createdatadict(id, 'delete',existing_list['sha'])
-            requests.delete(github_url+"/{}/{}".format(filepath, listid), headers={'Authorization': 'token {}'.format(github_token)}, data=json.dumps(list_data))
-        return "File Removed", 201
+@app.route('/update_annotations/', methods=['POST'])
+def update_anno():
+    response = json.loads(request.data)
+    data_object = response['json']
+    file_path = os.path.join(filepath, response['id']) + '.json'
+    list_file_path = file_path.rsplit('-', 1)[0] + '-list.json'
+    writeannos(file_path, data_object, response['origin_url'])
+    newlist = updatelistdata(list_file_path, data_object, response['origin_url'])
+    return jsonify(data_object), 201
+
+def get_list_data(filepath):
+    if github_repo == "":
+        if os.path.exists(filepath):
+            filecontents = open(filepath).read()
+            jsoncontent = json.loads(filecontents.split("---\n")[-1])
+            return jsoncontent
+        else:
+            return False
     else:
-    #    delete_path = os.path.join(filepath, id) + ".json"
-    #    exists = os.path.isfile(delete_path)
-    #    if exists:
-    #        os.remove(delete_path)
-        search_path = os.path.join('_annotation_data', id) + ".md"
-        exists = os.path.isfile(search_path)
-        if exists:
-            os.remove(search_path)
-    #    if request_data['deletelist']:
-    #        list_path = os.path.join(filepath, listid)
-    #        os.remove(list_path)
-        return "File Removed", 201
+        full_url = github_url + "/{}".format(filename)
+        existing = requests.get(full_url, headers={'Authorization': 'token {}'.format(github_token)}).json()
+        return existing
+
+def updatelistdata(list_file_path, newannotation, origin_url):
+    listdata = get_list_data(list_file_path)
+    listindex = 0
+    newannoid = newannotation['@id']
+    if listdata:
+        try:
+            listindex = listdata['resources'].index(filter(lambda n: n['@id'] == newannoid, listdata['resources'])[0])
+            listdata['resources'][listindex] = newannotation
+        except:
+            listdata['resources'].append(newannotation)
+    else:
+        listdata = create_list([newannotation], newannotation['@context'], origin_url, newannoid)
+    writeannos(list_file_path, listdata, '')
+
+def writeannos(file_path, data_object, origin_url):
+    if 'list' not in file_path:
+        get_search(data_object, file_path, origin_url)
+    if github_repo == '':
+        writetofile(file_path, data_object)
+    else:
+        writetogithub()
+
+def create_list(annotation, context, origin_url, id):
+    if 'w3.org' in context:
+        formated_annotation = {"@context":"http://www.w3.org/ns/anno.jsonld",
+        "@type": "AnnotationPage", "id": "%s/%s-list.json"% (origin_url, id), "resources": annotation}
+    else:
+        formated_annotation = {"@context":"http://iiif.io/api/presentation/2/context.json",
+            "@type": "sc:AnnotationList", "@id": "%s/%s-list.json"% (origin_url, id), "resources": annotation }
+    return formated_annotation
 
 @app.route('/write_annotation/', methods=['POST'])
 def write_annotation():
