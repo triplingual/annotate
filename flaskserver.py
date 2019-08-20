@@ -41,9 +41,8 @@ def update_anno():
 def delete_anno():
     response = json.loads(request.data)
     id = response['id']
-    listid = response['listuri'].split("/")[-1]
     deletefiles = [os.path.join(filepath, id) + '.json', os.path.join(search_filepath, id) + '.md']
-    list_file_path = get_list_filepath(listid)
+    list_file_path = get_list_filepath(response['listuri'])
     listlength = updatelistdata(list_file_path, {'@id': id, 'delete':  True}, '')
     if listlength <= 0:
         deletefiles.append(list_file_path)
@@ -86,6 +85,9 @@ def get_list_filepath(data_object):
         targetid = data_object['on'][0]['full']
     else:
         targetid = data_object['target']['id']
+
+    numbitems = [item for item in targetid.split('/') if bool(re.match('(?=.*[0-9]$)', item))]
+    targetid = '-'.join(numbitems)
     targetid = targetid.split("#xywh")[0]
     listid = targetid.split('/')[-1].replace("_", "-").replace(":", "").replace(".json", "")
     listfilename = "{}-list.json".format(listid)
@@ -168,14 +170,14 @@ def createdatadict(filename, text, sha):
         data['sha'] = sha
     return data
 
-def writetofile(filename, annotation):
+def writetofile(filename, annotation, yaml=False):
+    anno_text = annotation if yaml else "---\nlayout: null\n---\n" + json.dumps(annotation)
     with open(filename, 'w') as outfile:
-        outfile.write("---\nlayout: null\n---\n")
-        outfile.write(json.dumps(annotation))
+        outfile.write(anno_text)
 
 def get_search(anno, filename, origin_url):
     imagescr = '<iiif-annotation annotationurl="{}/{}" styling="image_only:true"></iiif-annotation>'.format(origin_url, filename.replace("_", ""))
-    listname = "{}-list.json".format(filename.split("/")[-1].rsplit('-', 1)[0])
+    listname = get_list_filepath(anno).split('/')[-1]
     annodata_data = {'tags': [], 'layout': 'searchview', 'listname': listname, 'content': [], 'imagescr': imagescr}
     annodata_filename = os.path.join(search_filepath, filename.split('/')[-1].replace('.json', '.md'))
     textdata = anno['resource'] if 'resource' in anno.keys() else anno['body']
@@ -198,7 +200,7 @@ def get_search(anno, filename, origin_url):
     content = '\n'.join(annodata_data.pop('content'))
     annodata_yaml = "---\n{}---\n{}".format(yaml.dump(annodata_data), content)
     if github_repo == '':
-        writetofile(annodata_filename, annodata_yaml)
+        writetofile(annodata_filename, annodata_yaml, True)
     else:
         writetogithub(annodata_filename, annodata_yaml, True)
 

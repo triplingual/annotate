@@ -24,7 +24,8 @@
     	var _this = this;
       _this.uri = options.uri;
     	_this.annotationsList = [];
-    	var id = options['uri'].split('/').slice(-1)[0];
+    	var id = options['uri'].split('/');
+      id = id.filter(word => word.match(/(?=.*[0-9]$)/gm)).join("-")
     	for (var key in this.allannotations){
     		var listid = id.replace(/_/g, '-').replace(/:/g, "").replace(".json", "") + '-list';
     		if (listid === key) {
