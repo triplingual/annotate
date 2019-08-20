@@ -6,14 +6,13 @@ url: "https://dnoneill.github.io"
 markdown: kramdown
 permalink: pretty
 
-theme: jekyll-materialdocs
-remote_theme: chromatical/jekyll-materialdocs
 plugins:
   - jekyll-seo-tag
 
 exclude: [Rakefile, Gemfile*, vendor]
 include: [feed.xml]
 
+theme: annotate-theme
 
 collections:
   annotations:
