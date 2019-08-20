@@ -13,7 +13,7 @@ exclude: [Rakefile, Gemfile*, vendor]
 include: [feed.xml]
 
 theme: annotate-theme
-
+remote_theme: dnoneill/annotate-theme
 
 collections:
   annotations:
