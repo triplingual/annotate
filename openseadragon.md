@@ -101,7 +101,7 @@ function loadanno(tilesource, height, width) {
     })
   }
   anno.addPlugin('addAuthor', {});
-  var matching = {}
+
   anno.showAnnotations(viewer)
   viewer.addHandler('open', function(){
     var all_annos = []
@@ -112,7 +112,6 @@ function loadanno(tilesource, height, width) {
         var xywh = annotation.target.id.split("#xywh=").slice(-1)[0].split(",");
         var cords = viewer.viewport.imageToViewportRectangle(xywh[0], xywh[1], xywh[2], xywh[3]);
         var id = `${cords['x'].toFixed(2)}${cords['y'].toFixed(2)}${cords['width'].toFixed(2)}${cords['height'].toFixed(2)}`
-        matching[id] = "{{annotation.slug}}"
         var loadanno = {}
         loadanno['src'] = 'dzi://openseadragon/something'
         body = Array.isArray(annotation['body']) ? annotation['body'] : [annotation['body']];
@@ -127,53 +126,48 @@ function loadanno(tilesource, height, width) {
         }
         loadanno['shapes'] = [{"type": "rect", "geometry": cords}]
         loadanno['tags'] = tags.join(", ");
+        loadanno['id'] = annotation['@id'];
         var creator = annotation.creator ? annotation.creator.join(", ") : "";
         loadanno['author'] = creator;
         anno.addAnnotation(loadanno)
       }
     {% endfor %}
-    localStorage.setItem(baseurl, JSON.stringify(all_annos))
   });
 
   anno.addHandler('onAnnotationCreated', function(annotation) {
     var annotation_text = buildAnno(annotation)
-    var id = `${annotation['shapes'][0]['geometry']['x'].toFixed(2)}${annotation['shapes'][0]['geometry']['y'].toFixed(2)}${annotation['shapes'][0]['geometry']['width'].toFixed(2)}${annotation['shapes'][0]['geometry']['height'].toFixed(2)}`;
-    if (localStorage[baseurl]) {
-      var existing = JSON.parse(localStorage[baseurl])
-      annotation_text = _.uniq(existing.concat(annotation_text))
-    }
-    matching[id] = baseurl.split("/").slice(-1)[0] + '-' + annotation_text.length;
-    localStorage.setItem(baseurl, JSON.stringify(annotation_text))
-    create_items('{{site.api_server}}', '{{site.url}}{{site.baseurl}}')
+    var senddata = {'json': annotation_text, 'origin_url': '{{site.url}}{{site.baseurl}}'}
+    write_annotation(senddata, 'create', annotation)
   });
 
   anno.addHandler('onAnnotationUpdated', function(annotation) {
     var annotation_text = buildAnno(annotation)
-    var existing = JSON.parse(localStorage[baseurl])
-    var id = `${annotation['shapes'][0]['geometry']['x'].toFixed(2)}${annotation['shapes'][0]['geometry']['y'].toFixed(2)}${annotation['shapes'][0]['geometry']['width'].toFixed(2)}${annotation['shapes'][0]['geometry']['height'].toFixed(2)}`;
-    var position = parseInt(matching[id].split("-").slice(-1)[0]) - 1;
-    existing[position] = annotation_text[0];
-    localStorage.setItem(baseurl, JSON.stringify(existing))
-    create_items('{{site.api_server}}', '{{site.url}}{{site.baseurl}}')
+    var senddata = {'json': annotation_text,'id': annotation['id'], 'origin_url': '{{site.url}}{{site.baseurl}}'}
+    write_annotation(senddata, 'update')
   });
 
   anno.addHandler('onAnnotationRemoved', function(annotation) {
-    var annotation_text = buildAnno(annotation)
-    var existing = JSON.parse(localStorage[baseurl])
-    var id = `${annotation['shapes'][0]['geometry']['x'].toFixed(2)}${annotation['shapes'][0]['geometry']['y'].toFixed(2)}${annotation['shapes'][0]['geometry']['width'].toFixed(2)}${annotation['shapes'][0]['geometry']['height'].toFixed(2)}`;
-    var position = parseInt(matching[id].split("-").slice(-1)[0]) - 1;
-    existing.splice(position, 1)
-    anno.removeAnnotation(annotation)
-    var delete_list = existing.length == 0 ? true : false;
-    if (existing.length == 0){
-      localStorage.removeItem(baseurl)
-    } else {
-      localStorage.setItem(baseurl, JSON.stringify(existing))
-    }
-    create_items('{{site.api_server}}', '{{site.url}}{{site.baseurl}}')
-    delete_items(`${baseurl.split("/").slice(-1)[0]}`, '{{site.api_server}}', delete_list, `${existing.length+1}`)
+    var senddata = {'listuri': baseurl, 'id': annotation['id'] }
+    write_annotation(senddata, 'delete')
   });
 
+  function write_annotation(senddata, method, annotation=false) {
+    jQuery.ajax({
+      url: '{{site.api_server}}' + method + '_annotations/',
+      type: "POST",
+      dataType: "json",
+      data: JSON.stringify(senddata),
+      contentType: "application/json; charset=utf-8",
+      success: function(data) {
+        if (annotation) {
+          annotation['id'] = data['@id']
+        }
+      },
+      error: function() {
+        returnError();
+      }
+    });
+  }
   function buildAnno(annotation){
     var boundingrect = annotorious['geometry'].getBoundingRect(annotation.shapes[0]).geometry
     var tags = getTags()
@@ -198,16 +192,17 @@ function loadanno(tilesource, height, width) {
       }
     }]
     body = body.concat(tags)
-    var annotation = [{
+    var annotation = {
       "type": "Annotation",
       "@context": "http://www.w3.org/ns/anno.jsonld",
       "creator" : author,
+      "@id" : `${annotation['id']}`,
       "body": body,
       "target": {
         "id": `${targetid}`,
         "type": "Image"
       }
-    }]
+    }
     return annotation
   }
 }

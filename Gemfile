@@ -1,6 +1,2 @@
 source 'https://rubygems.org'
-gem 'jekyll'
-gem 'jekyll-materialdocs'
-gem 'rake'
-gem 'html-proofer'
-gem 'jekyll-seo-tag'
+gem 'annotate-theme', :git=> "https://github.com/dnoneill/annotate-theme"

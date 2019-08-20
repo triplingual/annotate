@@ -1,2 +1,2 @@
-api_server: http://0.0.0.0:5000/annotations/
+api_server: http://0.0.0.0:5000/
 

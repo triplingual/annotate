@@ -43,7 +43,7 @@ weight: 8
 
 <script>
 window.addEventListener("load", function(){
-    var dict = {settingsurl: "{{site.baseurl}}/js/index.js"}
+    var dict = {settingsurl: "{{site.baseurl}}/assets/js/index.js"}
     loadsearchtemplate(dict)
     $('#spinner').hide()
 });
