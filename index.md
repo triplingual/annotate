@@ -12,5 +12,3 @@ New objects can be loaded by hovering over <i class="fa fa-th-large fa-lg fa-fw"
 
 
 {% include iiif_presentation.html %}
-
-{% include annotation_to_json.html %}

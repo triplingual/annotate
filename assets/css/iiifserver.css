@@ -229,3 +229,7 @@ iiif-annotation * {
 .content {
   max-width: none!important;
 }
+
+.modal {
+  position: relative!important;
+}

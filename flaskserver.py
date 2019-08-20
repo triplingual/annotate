@@ -7,6 +7,7 @@ from settings import *
 from bs4 import BeautifulSoup
 import yaml
 import re
+import string, random
 
 app = Flask(__name__)
 CORS(app)
@@ -17,11 +18,10 @@ def create_anno():
     response = json.loads(request.data)
     data_object = response['json']
     origin_url = response['origin_url']
-    id =  response['id'] if  'id' in response.keys() else data_object['on'][0]['full'].split('/')[-1].replace("_", "-").replace(":", "").replace(".json", "")
-    list_file_path = os.path.join(filepath, "{}-list.json".format(id))
-    index = get_list_data(list_file_path)
-    index = len(index['resources']) if index else 0
-    data_object['@id'] = id + "-{:03}".format(index + 1)
+    list_file_path = get_list_filepath(data_object)
+    lettersAndDigits = string.ascii_letters + string.digits
+    annoid = ''.join(random.choice(lettersAndDigits) for i in range(20))
+    data_object['@id'] = annoid
     updatelistdata(list_file_path, data_object, origin_url)
     file_path = os.path.join(filepath, data_object['@id']) + '.json'
     writeannos(file_path, data_object, origin_url)
@@ -32,10 +32,50 @@ def update_anno():
     response = json.loads(request.data)
     data_object = response['json']
     file_path = os.path.join(filepath, response['id']) + '.json'
-    list_file_path = file_path.rsplit('-', 1)[0] + '-list.json'
+    list_file_path = get_list_filepath(data_object)
     writeannos(file_path, data_object, response['origin_url'])
     newlist = updatelistdata(list_file_path, data_object, response['origin_url'])
     return jsonify(data_object), 201
+
+@app.route('/delete_annotations/', methods=['DELETE', 'POST'])
+def delete_anno():
+    response = json.loads(request.data)
+    id = response['id']
+    listid = response['listuri'].split("/")[-1]
+    deletefiles = [os.path.join(filepath, id) + '.json', os.path.join(search_filepath, id) + '.md']
+    list_file_path = get_list_filepath(listid)
+    listlength = updatelistdata(list_file_path, {'@id': id, 'delete':  True}, '')
+    if listlength <= 0:
+        deletefiles.append(list_file_path)
+    delete_annos(deletefiles)
+    return jsonify({"File Removed": True}), 201
+
+def delete_annos(annolist):
+    for anno in annolist:
+        if github_repo == "":
+            os.remove(anno)
+        else:
+            existing = github_get_existing(anno)
+            data = createdatadict(anno, 'delete', existing['sha'])
+            requests.delete(github_url+"/{}/{}.json".format(filepath, id), headers={'Authorization': 'token {}'.format(github_token)}, data=json.dumps(data))
+
+def get_list_filepath(data_object):
+    if type(data_object) == str or type(data_object) == unicode:
+        targetid = data_object
+    elif 'on' in data_object.keys():
+        targetid = data_object['on'][0]['full']
+    else:
+        targetid = data_object['target']['id']
+    targetid = targetid.split("#xywh")[0]
+    listid = targetid.split('/')[-1].replace("_", "-").replace(":", "").replace(".json", "")
+    listfilename = "{}-list.json".format(listid)
+    list_file_path = os.path.join(filepath, listfilename)
+    return list_file_path
+
+def github_get_existing(filename):
+    full_url = github_url + "/{}".format(filename)
+    existing = requests.get(full_url, headers={'Authorization': 'token {}'.format(github_token)}).json()
+    return existing
 
 def get_list_data(filepath):
     if github_repo == "":
@@ -46,23 +86,31 @@ def get_list_data(filepath):
         else:
             return False
     else:
-        full_url = github_url + "/{}".format(filename)
-        existing = requests.get(full_url, headers={'Authorization': 'token {}'.format(github_token)}).json()
-        return existing
+        existing = github_get_existing(filename)
+        if existing:
+            content = base64.b64decode(existing['content']).split("---\n")[-1]
+            jsoncontent = json.loads(existing)
+            return jsoncontent
+        else:
+            return False
 
 def updatelistdata(list_file_path, newannotation, origin_url):
     listdata = get_list_data(list_file_path)
-    listindex = 0
     newannoid = newannotation['@id']
     if listdata:
         try:
             listindex = listdata['resources'].index(filter(lambda n: n['@id'] == newannoid, listdata['resources'])[0])
-            listdata['resources'][listindex] = newannotation
+            if 'delete' in newannotation.keys():
+                del listdata['resources'][listindex]
+            else:
+                listdata['resources'][listindex] = newannotation
         except:
-            listdata['resources'].append(newannotation)
-    else:
+            if 'delete' not in newannotation.keys():
+                listdata['resources'].append(newannotation)
+    elif 'delete' not in newannotation.keys():
         listdata = create_list([newannotation], newannotation['@context'], origin_url, newannoid)
     writeannos(list_file_path, listdata, '')
+    return len(listdata['resources'])
 
 def writeannos(file_path, data_object, origin_url):
     if 'list' not in file_path:
@@ -70,7 +118,7 @@ def writeannos(file_path, data_object, origin_url):
     if github_repo == '':
         writetofile(file_path, data_object)
     else:
-        writetogithub()
+        writetogithub(file_path, data_object)
 
 def create_list(annotation, context, origin_url, id):
     if 'w3.org' in context:
@@ -81,40 +129,15 @@ def create_list(annotation, context, origin_url, id):
             "@type": "sc:AnnotationList", "@id": "%s/%s-list.json"% (origin_url, id), "resources": annotation }
     return formated_annotation
 
-@app.route('/write_annotation/', methods=['POST'])
-def write_annotation():
-    data = json.loads(request.data)
-    json_data = data['json']
-    file = '_annotations' if data['type'] == 'annotation' else '_ranges'
-    filename = os.path.join(file, data['filename'])
-    if 'list' in json_data['@type'].lower() or 'page' in json_data['@type'].lower():
-        for index, anno in enumerate(json_data['resources'], start=1):
-            single_filename = filename.replace('-list.json', '-{:03}.json'.format(index))
-            get_search(anno, single_filename, '')
-            writetogithub(single_filename, anno)
-    elif data['type'] == 'annotation':
-        get_search(json_data, data['filename'], '')
-    if github_repo == "":
-        writetofile(filename, data['json'])
-    else:
-        writetogithub(filename, json_data)
-    return request.data
-
 def writetogithub(filename, annotation, yaml=False):
     full_url = github_url + "/{}".format(filename)
     sha = ''
-    existing = requests.get(full_url, headers={'Authorization': 'token {}'.format(github_token)}).json()
-    if 'sha' in existing.keys():
+    existing = github_get_existing(file_path)
+    if existing:
         sha = existing['sha']
     anno_text = annotation if yaml else "---\nlayout: null\n---\n" + json.dumps(annotation)
     data = createdatadict(filename, anno_text, sha)
-    if 'content' in existing.keys():
-        decoded_content = base64.b64decode(existing['content']).replace("---\nlayout: null\n---\n", "")
-        existing_anno = decoded_content if yaml else json.loads(decoded_content)
-        if (annotation != existing_anno):
-            response = requests.put(full_url, data=json.dumps(data),  headers={'Authorization': 'token {}'.format(github_token), 'charset': 'utf-8'})
-    else:
-        response = requests.put(full_url, data=json.dumps(data),  headers={'Authorization': 'token {}'.format(github_token), 'charset': 'utf-8'})
+    response = requests.put(full_url, data=json.dumps(data),  headers={'Authorization': 'token {}'.format(github_token), 'charset': 'utf-8'})
 
 def createdatadict(filename, text, sha):
     writeordelete = "write" if text != 'delete' else "delete"
@@ -133,7 +156,7 @@ def get_search(anno, filename, origin_url):
     imagescr = '<iiif-annotation annotationurl="{}/{}" styling="image_only:true"></iiif-annotation>'.format(origin_url, filename.replace("_", ""))
     listname = "{}-list.json".format(filename.split("/")[-1].rsplit('-', 1)[0])
     annodata_data = {'tags': [], 'layout': 'searchview', 'listname': listname, 'content': [], 'imagescr': imagescr}
-    annodata_filename = os.path.join("_annotation_data", filename.split('/')[-1].replace('.json', '.md'))
+    annodata_filename = os.path.join(search_filepath, filename.split('/')[-1].replace('.json', '.md'))
     textdata = anno['resource'] if 'resource' in anno.keys() else anno['body']
     textdata = textdata if type(textdata) == list else [textdata]
     for resource in textdata:
@@ -152,14 +175,10 @@ def get_search(anno, filename, origin_url):
         elif 'value' in resource:
             annodata_data['content'].append(resource['value'])
     content = '\n'.join(annodata_data.pop('content'))
-    if github_repo == "":
-        with open(annodata_filename, "w") as outfile:
-            outfile.write("---\n")
-            outfile.write(yaml.dump(annodata_data))
-            outfile.write("---\n")
-            outfile.write(content)
+    annodata_yaml = "---\n{}---\n{}".format(yaml.dump(annodata_data), content)
+    if github_repo == '':
+        writetofile(annodata_filename, annodata_yaml)
     else:
-        annodata_yaml = "---\n{}---\n{}".format(yaml.dump(annodata_data), content)
         writetogithub(annodata_filename, annodata_yaml, True)
 
 if __name__ == "__main__":

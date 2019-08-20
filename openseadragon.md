@@ -101,7 +101,7 @@ function loadanno(tilesource, height, width) {
     })
   }
   anno.addPlugin('addAuthor', {});
-  var matching = {}
+
   anno.showAnnotations(viewer)
   viewer.addHandler('open', function(){
     var all_annos = []
@@ -112,7 +112,6 @@ function loadanno(tilesource, height, width) {
         var xywh = annotation.target.id.split("#xywh=").slice(-1)[0].split(",");
         var cords = viewer.viewport.imageToViewportRectangle(xywh[0], xywh[1], xywh[2], xywh[3]);
         var id = `${cords['x'].toFixed(2)}${cords['y'].toFixed(2)}${cords['width'].toFixed(2)}${cords['height'].toFixed(2)}`
-        matching[id] = "{{annotation.slug}}"
         var loadanno = {}
         loadanno['src'] = 'dzi://openseadragon/something'
         body = Array.isArray(annotation['body']) ? annotation['body'] : [annotation['body']];
@@ -127,7 +126,6 @@ function loadanno(tilesource, height, width) {
         }
         loadanno['shapes'] = [{"type": "rect", "geometry": cords}]
         loadanno['tags'] = tags.join(", ");
-        console.log(annotation)
         loadanno['id'] = annotation['@id'];
         var creator = annotation.creator ? annotation.creator.join(", ") : "";
         loadanno['author'] = creator;
@@ -138,31 +136,22 @@ function loadanno(tilesource, height, width) {
 
   anno.addHandler('onAnnotationCreated', function(annotation) {
     var annotation_text = buildAnno(annotation)
-    write_annotation(annotation_text, annotation_text['@id'], 'create')
+    var senddata = {'json': annotation_text, 'origin_url': '{{site.url}}{{site.baseurl}}'}
+    write_annotation(senddata, 'create', annotation)
   });
 
   anno.addHandler('onAnnotationUpdated', function(annotation) {
     var annotation_text = buildAnno(annotation)
-    console.log(annotation)
-    write_annotation(annotation_text, annotation_text['@id'], 'update')
+    var senddata = {'json': annotation_text,'id': annotation['id'], 'origin_url': '{{site.url}}{{site.baseurl}}'}
+    write_annotation(senddata, 'update')
   });
 
   anno.addHandler('onAnnotationRemoved', function(annotation) {
-    var annotation_text = buildAnno(annotation)
-    var existing = JSON.parse(localStorage[baseurl])
-    var id = `${annotation['shapes'][0]['geometry']['x'].toFixed(2)}${annotation['shapes'][0]['geometry']['y'].toFixed(2)}${annotation['shapes'][0]['geometry']['width'].toFixed(2)}${annotation['shapes'][0]['geometry']['height'].toFixed(2)}`;
-    var position = parseInt(matching[id].split("-").slice(-1)[0]) - 1;
-    existing.splice(position, 1)
-    anno.removeAnnotation(annotation)
-    var delete_list = existing.length == 0 ? true : false;
-    if (existing.length == 0){
-      localStorage.removeItem(baseurl)
-    } else {
-      localStorage.setItem(baseurl, JSON.stringify(existing))
-    }
+    var senddata = {'listuri': baseurl, 'id': annotation['id'] }
+    write_annotation(senddata, 'delete')
   });
-  function write_annotation(annotation, id, method) {
-    var senddata = {'json': annotation,'id': annotation['@id'], 'origin_url': '{{site.url}}{{site.baseurl}}'}
+
+  function write_annotation(senddata, method, annotation=false) {
     jQuery.ajax({
       url: '{{site.api_server}}' + method + '_annotations/',
       type: "POST",
@@ -170,7 +159,9 @@ function loadanno(tilesource, height, width) {
       data: JSON.stringify(senddata),
       contentType: "application/json; charset=utf-8",
       success: function(data) {
-        console.log('success')
+        if (annotation) {
+          annotation['id'] = data['@id']
+        }
       },
       error: function() {
         returnError();
@@ -190,11 +181,6 @@ function loadanno(tilesource, height, width) {
     annotation['shapetype'] = shape_type;
     annotation['tags'] = popuptags;
     annotation['author'] = author;
-    var numb = `00${anno.getAnnotations().length}`
-    var annoid = annotation['id'] ? annotation['id'] : baseurl.split("/").slice(-1)[0];
-    var numbid = annotation['id'] ? annotation['id'] : baseurl.split("/").slice(-1)[0] + `-${numb.slice(-3)}`;
-    annotation['id'] = numbid;
-    console.log(numbid)
     var annotation_data = annotation.text;
     var body = [{
       "value": `${annotation_data}`,
@@ -210,7 +196,7 @@ function loadanno(tilesource, height, width) {
       "type": "Annotation",
       "@context": "http://www.w3.org/ns/anno.jsonld",
       "creator" : author,
-      "@id": annoid,
+      "@id" : `${annotation['id']}`,
       "body": body,
       "target": {
         "id": `${targetid}`,

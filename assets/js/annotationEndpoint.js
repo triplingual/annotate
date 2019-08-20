@@ -22,35 +22,36 @@
 
     search: function(options) {
     	var _this = this;
-    	this.annotationsList = [];
-    	console.log(options)
+      _this.uri = options.uri;
+    	_this.annotationsList = [];
     	var id = options['uri'].split('/').slice(-1)[0];
     	for (var key in this.allannotations){
-    		var listid = id.replace(/_/g, '-') + '-list';
+    		var listid = id.replace(/_/g, '-').replace(/:/g, "").replace(".json", "") + '-list';
     		if (listid === key) {
-    			console.log(this.allannotations[key].output)
     			var resources = JSON.parse(this.allannotations[key].output).resources;
 	    		resources.forEach(function(a) {
 	              a.endpoint = _this;
 	            });
     			_this.annotationsList = resources;
-    			_this.dfd.resolve(false);
     		}
     	}
-    	
+      _this.dfd.resolve(false);
     },
 
     deleteAnnotation: function(annotationID, returnSuccess, returnError) {
       split = annotationID.split("/");
       ID = split[split.length - 1];
       jQuery.ajax({
-        url: "/annotations/",
+        url: this.server + 'delete_annotations/',
         type: "DELETE",
+        contentType: 'application/json',
+        data: JSON.stringify({'id':ID, 'listuri': this.uri}),
         dataType: "json",
         success: function(data) {
           returnSuccess();
         },
         error: function() {
+          console.log('error')
           returnError();
         }
       });
@@ -100,7 +101,6 @@
     },
 
     set: function(prop, value, options) {
-    	console.log(options)
       if (options) {
         this[options.parent][prop] = value;
       } else {
