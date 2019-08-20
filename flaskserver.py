@@ -53,19 +53,13 @@ def delete_anno():
 def write_annotation():
     data = json.loads(request.data)
     json_data = data['json']
-    file = '_annotations' if data['type'] == 'annotation' else '_ranges'
+    file = filepath if data['type'] == 'annotation' else '_ranges'
     filename = os.path.join(file, data['filename'])
     if 'list' in json_data['@type'].lower() or 'page' in json_data['@type'].lower():
-        for index, anno in enumerate(json_data['resources'], start=1):
-            single_filename = filename.replace('-list.json', '-{:03}.json'.format(index))
-            get_search(anno, single_filename, '')
-            writetogithub(single_filename, anno)
-    elif data['type'] == 'annotation':
-        get_search(json_data, data['filename'], '')
-    if github_repo == "":
-        writetofile(filename, data['json'])
-    else:
-        writetogithub(filename, json_data)
+        for anno in json_data['resources']:
+            single_filename = os.path.join(file, anno['@id'])
+            writeannos(single_filename, anno, '')
+    writeannos(filename, json_data, '')
     return request.data
 
 def delete_annos(annolist):
@@ -136,7 +130,7 @@ def updatelistdata(list_file_path, newannotation, origin_url):
     return len(listdata['resources'])
 
 def writeannos(file_path, data_object, origin_url):
-    if 'list' not in file_path:
+    if 'list' not in file_path and 'ranges' not in file_path:
         get_search(data_object, file_path, origin_url)
     if github_repo == '':
         writetofile(file_path, data_object)
