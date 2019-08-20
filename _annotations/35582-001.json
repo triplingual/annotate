@@ -1,0 +1,4 @@
+---
+layout: null
+---
+{"target": {"id": "https://cdm16028.contentdm.oclc.org/digital/iiif/p16028coll4/35582#xywh=422,135,127,136", "type": "Image"}, "@context": "http://www.w3.org/ns/anno.jsonld", "body": [{"format": "text/html", "type": "TextualBody", "value": "", "selector": {"value": "rect", "type": "FragmentSelector"}}, {"purpose": "tagging", "type": "TextualBody", "value": "county", "format": "text/plain"}], "type": "Annotation", "creator": ["me"]}

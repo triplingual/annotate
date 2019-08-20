@@ -14,6 +14,7 @@ include: [feed.xml]
 
 theme: annotate-theme
 
+
 collections:
   annotations:
     output: true
@@ -21,16 +22,21 @@ collections:
   ranges:
     output: true
     permalink: /ranges/:name
+  helpdocs:
+    output: true
+    permalink: /help/:name
   annotation_data:
     output: true
     permalink: /annotations/:name
+  iiifproviders:
+    permalink: /:path
 
 webrick:
   headers:
     "Access-Control-Allow-Origin": "*"
 
-api_server: http://0.0.0.0:5000/
-endpoint: http://0.0.0.0:5000/write_annotation/
+api_server: https://limitless-plains-74009.herokuapp.com/
+endpoint: https://limitless-plains-74009.herokuapp.com/write_annotation/
 
 exclude:
   - ENV/

@@ -1,0 +1,4 @@
+---
+layout: null
+---
+{"body": [{"language": "", "format": "text/html", "type": "TextualBody", "value": "Church of San Maurizio. Is now a Museum on music of Baroque Venice.", "selector": {"type": "FragmentSelector", "value": "rect"}}, {"language": "", "format": "text/plain", "type": "TextualBody", "value": "church", "purpose": "tagging"}, {"language": "", "format": "text/plain", "type": "TextualBody", "value": "deconsecrated", "purpose": "tagging"}], "target": {"type": "Image", "id": "https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee#xywh=7068,8160,382,245"}, "creator": [], "rights": [], "type": "Annotation", "@context": "http://www.w3.org/ns/anno.jsonld"}

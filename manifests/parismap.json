@@ -1,0 +1,209 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "https://dnoneill.github.io/annotate/manifests/parismap.json",
+  "@type": "sc:Manifest",
+  "attribution": [
+    "",
+    "The Board of Regents of the University of Wisconsin System"
+  ],
+  "label": "Paris, France 1924",
+  "metadata": [
+    {
+      "label": "Title",
+      "value": "Paris, France 1924"
+    },
+    {
+      "label": "Full Title",
+      "value": "Plan commode de Paris du Métropolitain et du Nord-Sud / L. Joly, editeur ; J. Leconte, successeur ; gravé par E. Dufrénoy"
+    },
+    {
+      "label": "Publication Date",
+      "value": "1924"
+    },
+    {
+      "label": "Map Publisher",
+      "value": "Dufrénoy (Firm)"
+    },
+    {
+      "label": "Subject",
+      "value": "Paris (France) -- Maps;"
+    },
+    {
+      "label": "Continent",
+      "value": "Europe;"
+    },
+    {
+      "label": "Country",
+      "value": "France"
+    },
+    {
+      "label": "City",
+      "value": "Paris"
+    },
+    {
+      "label": "Notes",
+      "value": "Shows roads and subway lines.\n Accompanied by index: \"Toutes les rues de Paris et les stations correspondantes du Métropolitain et du Nord-Sud.\"\n In French.\n  \"Acquired by gift, Mar. 16, 1942\" -- stamped in upper left margin; \"From Columbia University\" -- written in black ink in upper left margin."
+    },
+    {
+      "label": "Type (DCMI)",
+      "value": "Still Image"
+    },
+    {
+      "label": "Type (RDA)",
+      "value": "cartographic image"
+    },
+    {
+      "label": "Color/B&W",
+      "value": "Color;"
+    },
+    {
+      "label": "Scale",
+      "value": "1:22,000"
+    },
+    {
+      "label": "Original Collection",
+      "value": "American Geographical Society Library - Maps"
+    },
+    {
+      "label": "Original Item Description",
+      "value": "1 map : color, enscapsulated in Mylar ; 41 x 55 cm, on sheet 44 x 57 cm + 1 index (100 pages ; 15 cm)"
+    },
+    {
+      "label": "Original Item ID",
+      "value": "630-d .P37 D-[1924?]"
+    },
+    {
+      "label": "Language",
+      "value": "fr"
+    },
+    {
+      "label": "Repository",
+      "value": "American Geographical Society Library, University of Wisconsin-Milwaukee Libraries"
+    },
+    {
+      "label": "Digital Publisher",
+      "value": "University of Wisconsin-Milwaukee Libraries"
+    },
+    {
+      "label": "Rights",
+      "value": "The Board of Regents of the University of Wisconsin System"
+    },
+    {
+      "label": "Digital ID",
+      "value": "agsmap023850"
+    },
+    {
+      "label": "Digital Format",
+      "value": "image/tif; Image/jp2"
+    },
+    {
+      "label": "Digital Collection",
+      "value": "American Geographical Society Library Digital Map Collection"
+    },
+    {
+      "label": "Repository",
+      "value": "UWM Libraries Digital Collections"
+    },
+    {
+      "label": "Source",
+      "value": "<span>From: <a href=\"https://collections.lib.uwm.edu/digital/collection/agdm/id/14057\">Paris, France 1924</a></span>"
+    }
+  ],
+  "sequences": [
+    {
+      "@id": "https://cdm17272.contentdm.oclc.org/digital/iiif/agdm/14057/sequence/s0",
+      "@type": "sc:Sequence",
+      "canvases": [
+        {
+          "@id": "https://cdm17272.contentdm.oclc.org/digital/iiif/agdm/14057/canvas/c0",
+          "@type": "sc:Canvas",
+          "height": 7027,
+          "images": [
+            {
+              "@id": "https://cdm17272.contentdm.oclc.org/digital/iiif/agdm/14057/annotation/a0",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://cdm17272.contentdm.oclc.org/digital/iiif/agdm/14057/canvas/c0",
+              "resource": {
+                "@id": "https://cdm17272.contentdm.oclc.org/digital/iiif/agdm/14057/full/full/0/default.jpg",
+				"label": "Plan commode de Paris du Métropolitain et du Nord-Sud / L. Joly, editeur ; J. Leconte, successeur ; gravé par E. Dufrénoy from UWM Libraries Digital Collections",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 7027,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://cdm17272.contentdm.oclc.org/digital/iiif/agdm/14057",
+                  "height": 7027,
+                  "profile": "http://iiif.io/api/image/2/level1.json",
+                  "protocol": "http://iiif.io/api/image",
+                  "tiles": [
+                    {
+                      "scaleFactors": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16
+                      ],
+                      "width": 9225
+                    }
+                  ],
+                  "width": 9225
+                },
+                "width": 9225
+              }
+            },
+            {
+              "@id": "https://cdm16062.contentdm.oclc.org/digital/iiif/p16062coll11/390/annotation/a0",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://cdm16062.contentdm.oclc.org/digital/iiif/p16062coll11/390/canvas/c0#xywh=74,74,9025,7000",
+              "resource": {
+                "@id": "https://cdm16062.contentdm.oclc.org/digital/iiif/p16062coll11/390/full/full/0/default.jpg",
+				"label": "Plan Commode de Paris [France] 1900-1920 from North Carolina Digital Collections",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 2506,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://cdm16062.contentdm.oclc.org/digital/iiif/p16062coll11/390",
+                  "height": 2506,
+                  "profile": "http://iiif.io/api/image/2/level1.json",
+                  "protocol": "http://iiif.io/api/image",
+                  "tiles": [
+                    {
+                      "scaleFactors": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16
+                      ],
+                      "width": 3352
+                    }
+                  ],
+                  "width": 3352
+                },
+                "width": 3352
+              }
+            }
+          ],
+          "label": "Paris, France 1924",
+          "width": 9225
+        }
+      ],
+      "label": "Paris, France 1924"
+    }
+  ],
+  "structures": [
+    {
+      "@id": "https://cdm17272.contentdm.oclc.org/digital/iiif/agdm/14057/range/r0",
+      "@type": "sc:Range",
+      "canvases": [
+        "https://cdm17272.contentdm.oclc.org/digital/iiif/agdm/14057/canvas/c0"
+      ],
+      "label": "Paris, France 1924"
+    }
+  ],
+  "within": "https://dnoneill.github.io/annotate/manifests/parismap.json"
+}
