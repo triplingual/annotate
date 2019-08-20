@@ -50,6 +50,25 @@ def delete_anno():
     delete_annos(deletefiles)
     return jsonify({"File Removed": True}), 201
 
+@app.route('/write_annotation/', methods=['POST'])
+def write_annotation():
+    data = json.loads(request.data)
+    json_data = data['json']
+    file = '_annotations' if data['type'] == 'annotation' else '_ranges'
+    filename = os.path.join(file, data['filename'])
+    if 'list' in json_data['@type'].lower() or 'page' in json_data['@type'].lower():
+        for index, anno in enumerate(json_data['resources'], start=1):
+            single_filename = filename.replace('-list.json', '-{:03}.json'.format(index))
+            get_search(anno, single_filename, '')
+            writetogithub(single_filename, anno)
+    elif data['type'] == 'annotation':
+        get_search(json_data, data['filename'], '')
+    if github_repo == "":
+        writetofile(filename, data['json'])
+    else:
+        writetogithub(filename, json_data)
+    return request.data
+
 def delete_annos(annolist):
     for anno in annolist:
         if github_repo == "":
@@ -57,7 +76,8 @@ def delete_annos(annolist):
         else:
             existing = github_get_existing(anno)
             data = createdatadict(anno, 'delete', existing['sha'])
-            requests.delete(github_url+"/{}/{}.json".format(filepath, id), headers={'Authorization': 'token {}'.format(github_token)}, data=json.dumps(data))
+            payload = {'ref': github_branch}
+            requests.delete("{}/{}".format(github_url, anno), headers={'Authorization': 'token {}'.format(github_token)}, data=json.dumps(data), params=payload)
 
 def get_list_filepath(data_object):
     if type(data_object) == str or type(data_object) == unicode:
@@ -74,7 +94,8 @@ def get_list_filepath(data_object):
 
 def github_get_existing(filename):
     full_url = github_url + "/{}".format(filename)
-    existing = requests.get(full_url, headers={'Authorization': 'token {}'.format(github_token)}).json()
+    payload = {'ref': github_branch}
+    existing = requests.get(full_url, headers={'Authorization': 'token {}'.format(github_token)}, params=payload).json()
     return existing
 
 def get_list_data(filepath):
@@ -86,10 +107,10 @@ def get_list_data(filepath):
         else:
             return False
     else:
-        existing = github_get_existing(filename)
-        if existing:
+        existing = github_get_existing(filepath)
+        if 'content' in existing.keys():
             content = base64.b64decode(existing['content']).split("---\n")[-1]
-            jsoncontent = json.loads(existing)
+            jsoncontent = json.loads(content)
             return jsoncontent
         else:
             return False
@@ -132,8 +153,8 @@ def create_list(annotation, context, origin_url, id):
 def writetogithub(filename, annotation, yaml=False):
     full_url = github_url + "/{}".format(filename)
     sha = ''
-    existing = github_get_existing(file_path)
-    if existing:
+    existing = github_get_existing(filename)
+    if 'sha' in existing.keys():
         sha = existing['sha']
     anno_text = annotation if yaml else "---\nlayout: null\n---\n" + json.dumps(annotation)
     data = createdatadict(filename, anno_text, sha)
