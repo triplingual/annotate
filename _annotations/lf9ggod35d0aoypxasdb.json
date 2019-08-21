@@ -1,4 +1,4 @@
 ---
 layout: null
 ---
-{"@id": "lf9ggod35d0aoypxasdb", "type": "Annotation", "body": [{"type": "TextualBody", "selector": {"type": "FragmentSelector", "value": "rect"}, "value": "test update 3", "format": "text/html"}], "target": {"type": "Image", "id": "https://dlcs.io/iiif-img/3/2/04fbbb28-d5a7-4408-b7da-800c4e65eda3#xywh=4452,601,397,243"}, "modified": "2019-08-21T21:43:57.680Z", "creator": [""], "@context": "http://www.w3.org/ns/anno.jsonld"}
+{"creator": [""], "body": [{"value": "test update 4", "format": "text/html", "type": "TextualBody", "selector": {"value": "rect", "type": "FragmentSelector"}}], "target": {"id": "https://dlcs.io/iiif-img/3/2/04fbbb28-d5a7-4408-b7da-800c4e65eda3#xywh=4452,601,397,243", "type": "Image"}, "@id": "lf9ggod35d0aoypxasdb", "modified": "2019-08-21T21:46:21.556Z", "type": "Annotation", "@context": "http://www.w3.org/ns/anno.jsonld"}
