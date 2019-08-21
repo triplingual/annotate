@@ -1,4 +1,0 @@
----
-layout: null
----
-{"body": [{"language": "", "format": "text/html", "type": "TextualBody", "value": "Santa Maria Gloriosa dei Frari also know as Frari.", "selector": {"type": "FragmentSelector", "value": "rect"}}, {"language": "", "format": "text/plain", "type": "TextualBody", "value": "church", "purpose": "tagging"}, {"language": "", "format": "text/plain", "type": "TextualBody", "value": "standing", "purpose": "tagging"}], "target": {"type": "Image", "id": "https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee#xywh=6609,5718,766,721"}, "creator": [], "rights": [], "type": "Annotation", "@context": "http://www.w3.org/ns/anno.jsonld"}

@@ -1,4 +1,0 @@
----
-layout: null
----
-{"@context": "http://www.w3.org/ns/anno.jsonld", "@type": "AnnotationPage", "resources": [{"body": [{"selector": {"type": "FragmentSelector", "value": "rect"}, "type": "TextualBody", "value": "test", "format": "text/html"}], "target": {"type": "Image", "id": "https://libimages.princeton.edu/loris/pudl0076/map_pownall/00000001.jp2#xywh=2160,2861,2139,1504"}, "creator": [""], "type": "Annotation", "@context": "http://www.w3.org/ns/anno.jsonld", "@id": "3l09xt0v7zxrtm8vh0pa"}], "id": "http://0.0.0.0:5555/annotate/3l09xt0v7zxrtm8vh0pa-list.json"}
