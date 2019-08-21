@@ -1,0 +1,4 @@
+---
+layout: null
+---
+{"@context": "http://www.w3.org/ns/anno.jsonld", "@id": "lf9ggod35d0aoypxasdb", "created": "2019-08-21T21:36:25.424Z", "type": "Annotation", "body": [{"selector": {"value": "rect", "type": "FragmentSelector"}, "format": "text/html", "value": "test", "type": "TextualBody"}], "creator": [""], "target": {"id": "https://dlcs.io/iiif-img/3/2/04fbbb28-d5a7-4408-b7da-800c4e65eda3#xywh=4452,601,397,245", "type": "Image"}}
