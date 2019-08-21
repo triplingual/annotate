@@ -127,6 +127,8 @@ function loadanno(tilesource, height, width) {
         loadanno['shapes'] = [{"type": "rect", "geometry": cords}]
         loadanno['tags'] = tags.join(", ");
         loadanno['id'] = annotation['@id'];
+        loadanno['created'] = annotation['created'];
+        loadanno['modified'] = annotation['modified'];
         var creator = annotation.creator ? annotation.creator.join(", ") : "";
         loadanno['author'] = creator;
         anno.addAnnotation(loadanno)
@@ -135,93 +137,22 @@ function loadanno(tilesource, height, width) {
   });
 
   anno.addHandler('onAnnotationCreated', function(annotation) {
-    var annotation_text = buildAnno(annotation)
-    var senddata = {'json': annotation_text, 'origin_url': '{{site.url}}{{site.baseurl}}'}
-    write_annotation(senddata, 'create', annotation)
+    var annotation_text = buildAnno(annotation, annotorious, viewer, baseurl)
+    var senddata = {'json': annotation_text }
+    write_annotation(senddata, 'create', '{{site.api_server}}', annotation)
   });
 
   anno.addHandler('onAnnotationUpdated', function(annotation) {
-    var annotation_text = buildAnno(annotation)
-    var senddata = {'json': annotation_text,'id': annotation['id'], 'origin_url': '{{site.url}}{{site.baseurl}}'}
-    write_annotation(senddata, 'update')
+    var annotation_text = buildAnno(annotation, annotorious, viewer, baseurl)
+    var senddata = {'json': annotation_text,'id': annotation['id']}
+    write_annotation(senddata, 'update', '{{site.api_server}}')
   });
 
   anno.addHandler('onAnnotationRemoved', function(annotation) {
     var senddata = {'listuri': baseurl, 'id': annotation['id'] }
-    write_annotation(senddata, 'delete')
+    write_annotation(senddata, 'update', '{{site.api_server}}')
   });
 
-  function write_annotation(senddata, method, annotation=false) {
-    jQuery.ajax({
-      url: '{{site.api_server}}' + method + '_annotations/',
-      type: "POST",
-      dataType: "json",
-      data: JSON.stringify(senddata),
-      contentType: "application/json; charset=utf-8",
-      success: function(data) {
-        if (annotation) {
-          annotation['id'] = data['@id']
-        }
-      },
-      error: function() {
-        returnError();
-      }
-    });
-  }
-  function buildAnno(annotation){
-    var boundingrect = annotorious['geometry'].getBoundingRect(annotation.shapes[0]).geometry
-    var tags = getTags()
-    var rect =  new OpenSeadragon.Rect(boundingrect['x'], boundingrect['y'], boundingrect['width'], boundingrect['height'])
-    var imageitems = viewer.viewport.viewportToImageRectangle(rect)
-    var targetid = baseurl + `#xywh=${parseInt(imageitems['x'])},${parseInt(imageitems['y'])},${parseInt(imageitems['width'])},${parseInt(imageitems['height'])}`
-    var shape_type = document.getElementById("shapetype") ? document.getElementById("shapetype").value : "";
-    var popuptags = document.getElementById("tags") ? document.getElementById("tags").value : "";
-    var author = document.getElementById("author") ? document.getElementById("author").value.split(",") : "";
-    author = author ? author.map(element=>element.trim()) : '';
-    annotation['shapetype'] = shape_type;
-    annotation['tags'] = popuptags;
-    annotation['author'] = author;
-    var annotation_data = annotation.text;
-    var body = [{
-      "value": `${annotation_data}`,
-      "type": "TextualBody",
-      "format": "text/html",
-      "selector": {
-        "type": "FragmentSelector",
-        "value": `${shape_type}`
-      }
-    }]
-    body = body.concat(tags)
-    var annotation = {
-      "type": "Annotation",
-      "@context": "http://www.w3.org/ns/anno.jsonld",
-      "creator" : author,
-      "@id" : `${annotation['id']}`,
-      "body": body,
-      "target": {
-        "id": `${targetid}`,
-        "type": "Image"
-      }
-    }
-    return annotation
-  }
-}
-function getTags() {
-  var tagging_json = [];
-  if(document.getElementById("tags")){
-    var tags =  document.getElementById("tags").value.split(",")
-    for (var i=0; i<tags.length; i++){
-      if (tags[i].trim()){
-        tagging_json.push({
-          "value": tags[i].trim(),
-          "type": "TextualBody",
-          "purpose": "tagging",
-          "format": "text/plain"
-        })
-      }
-    }
-  }
-  return tagging_json;
 }
 </script>
 <style>
