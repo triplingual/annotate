@@ -1,0 +1,4 @@
+---
+layout: null
+---
+{"@context": "http://www.w3.org/ns/anno.jsonld", "@type": "AnnotationPage", "resources": [{"created": "2019-08-21T22:11:49.813Z", "creator": [""], "body": [{"format": "text/html", "type": "TextualBody", "value": "face", "selector": {"value": "rect", "type": "FragmentSelector"}}], "@id": "u7zrjupiw1h4cgku8vxr", "target": {"id": "https://dlcs.io/iiif-img/3/2/04fbbb28-d5a7-4408-b7da-800c4e65eda3#xywh=4244,2068,260,312", "type": "Image"}, "@context": "http://www.w3.org/ns/anno.jsonld", "type": "Annotation"}], "id": "https://dnoneill.github.io/annotate/annotations/u7zrjupiw1h4cgku8vxr-list.json"}
