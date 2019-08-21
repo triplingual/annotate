@@ -7,5 +7,6 @@ pyvenv ENV
 echo source ENV/bin/activate
 cd _site/assets/python
 pip install --user -r requirements.txt
-python flaskserver.py
+export FLASK_APP=flaskserver.py
+flask run --host=0.0.0.0 --port=5000
 pkill -f jekyll
