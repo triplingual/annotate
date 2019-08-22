@@ -1,10 +1,10 @@
 ---
 datecreated: '2019-08-21T20:23:39.754Z'
-datemodified: ''
-imagescr: <iiif-annotation annotationurl="/annotate/annotations/uexej6nxm3ziepgf05xj.json"
+datemodified: '2019-08-22T20:22:03.962Z'
+imagescr: <iiif-annotation annotationurl="https://dnoneill.github.io/annotate/annotations/uexej6nxm3ziepgf05xj.json"
   styling="image_only:true"></iiif-annotation>
 layout: searchview
 listname: 4490-canvas-981394-list.json
 tags: []
 ---
-b'Missing Illustration'
+Missing Illustration
