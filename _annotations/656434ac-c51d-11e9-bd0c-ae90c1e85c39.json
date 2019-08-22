@@ -1,4 +1,0 @@
----
-layout: null
----
-{"created": "2019-08-22T20:42:45.620Z", "creator": [""], "target": {"type": "Image", "id": "https://upload.wikimedia.org/wikipedia/commons/4/41/Degas_-_Quatro_Bailarinas_em_Cena.jpg#xywh=441,139,104,88"}, "@id": "656434ac-c51d-11e9-bd0c-ae90c1e85c39", "body": [{"type": "TextualBody", "selector": {"value": "rect", "type": "FragmentSelector"}, "value": "ballerina 3", "format": "text/html"}], "type": "Annotation", "@context": "http://www.w3.org/ns/anno.jsonld"}
