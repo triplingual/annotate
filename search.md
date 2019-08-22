@@ -8,7 +8,7 @@ weight: 8
     <input type="search" id="person-serarch" name="query"
            placeholder="Keyword Search"
            aria-label="Search people using keyword">
-
+    <input type="hidden" name="sort" value="datecreated___desc">
 </div>
 </form>
 
