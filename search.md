@@ -31,6 +31,8 @@ weight: 8
         <select id="sortSelect" name="sort" onchange="changeSort(event);">
           <option value="">Relevance</option>
           <option value="atoz">Name</option>
+          <option value="datecreated___desc">Date Created (Most Recent First)</option>
+          <option value="datemodified___desc">Date Modified (Most Recent First)</option>
         </select>
       </span>
     </div>
