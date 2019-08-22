@@ -1,4 +1,0 @@
----
-layout: null
----
-{"created": "2019-08-22T21:52:10.009Z", "@context": "http://www.w3.org/ns/anno.jsonld", "@id": "179c1438-c527-11e9-a772-02bebf6f4cee", "target": {"id": "https://cdn.pixabay.com/photo/2019/08/08/13/52/elephant-4393034_960_720.jpg#xywh=202,101,680,466", "type": "Image"}, "body": [{"format": "text/html", "value": "Elephant", "selector": {"value": "rect", "type": "FragmentSelector"}, "type": "TextualBody"}], "creator": [""], "type": "Annotation"}
