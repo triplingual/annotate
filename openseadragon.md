@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Create annotations on IIIF images without a manifest
+title: Create annotations any image
 weight: 2
 ---
 
-{% include openseadragon.html %}
+{% include imageeditor.html %}
