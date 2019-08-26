@@ -1,0 +1,4 @@
+---
+layout: null
+---
+{"@context": "http://www.w3.org/ns/anno.jsonld", "id": "https://dnoneill.github.io/annotate/annotations/https://dnoneill.github.io/annotate/annotations/04164152-c844-11e9-a9ba-66f1f3cdec59-list.json", "created": "2019-08-26T20:56:38.484Z", "resources": [{"type": "Annotation", "created": "2019-08-26T20:56:38.484Z", "creator": [""], "target": {"id": "https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee#xywh=994,852,2272,1541", "type": "Image"}, "@id": "https://dnoneill.github.io/annotate/annotations/04164152-c844-11e9-a9ba-66f1f3cdec59", "@context": "http://www.w3.org/ns/anno.jsonld", "body": [{"format": "text/html", "value": "", "selector": {"type": "FragmentSelector", "value": "rect"}, "type": "TextualBody"}]}], "@type": "AnnotationPage"}
