@@ -1,0 +1,4 @@
+---
+layout: null
+---
+{"@id": "https://dnoneill.github.io/annotate/ranges/range.json", "label": "Manuscrit reconstitu\u00e9 : Ch\u00e2teauroux, Biblioth\u00e8que municipale, ms. 5 (Grandes Chroniques de France)", "canvases": [], "viewingDirection": "left-to-right", "contentLayer": {"otherContent": [{"@id": "https://dnoneill.github.io/annotate/annotations/4490-canvas-981394-list.json", "description": "", "label": "f. 033v - 034"}, {"@id": "https://dnoneill.github.io/annotate/annotations/4490-canvas-981395-list.json", "description": "", "label": "f. 034v - 035"}]}, "@type": "sc:Range"}
