@@ -2,7 +2,7 @@
 layout: default
 title: Creating Annotations
 parent: help.md
-weight: 2
+weight: 1
 ---
 * TOC
 {:toc}
