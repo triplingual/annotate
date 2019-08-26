@@ -1,0 +1,4 @@
+---
+layout: null
+---
+{"type": "Annotation", "target": {"type": "Image", "id": "/annotate/assets/images/custom/spencer-davis-7ZpvOE2psxM-unsplash.jpg#xywh=2570,1472,359,825"}, "creator": [""], "body": [{"value": "spire", "type": "TextualBody", "format": "text/html", "selector": {"type": "FragmentSelector", "value": "rect"}}], "@context": "http://www.w3.org/ns/anno.jsonld", "created": "2019-08-26T18:39:57.559Z", "@id": "https://dnoneill.github.io/annotate/annotations/ea6875b2-c830-11e9-85a0-de1dd17e6942"}
