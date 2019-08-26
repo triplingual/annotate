@@ -1,7 +1,6 @@
-title: Local IIIF Annotation Server
-description: "Local IIIF annotation server that allows for easy annotation creation."
+title: Local Annotation Server
+description: "Local annotation server that allows for easy annotation creation."
 baseurl: "/annotate"
-url: "https://dnoneill.github.io"
 
 markdown: kramdown
 permalink: pretty
