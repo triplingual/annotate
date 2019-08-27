@@ -1,4 +1,4 @@
 ---
 layout: null
 ---
-{"created": "2019-08-27T20:32:17.620Z", "@context": "http://www.w3.org/ns/anno.jsonld", "resources": [{"created": "2019-08-27T20:32:17.620Z", "creator": [""], "@id": "https://dnoneill.github.io/annotate/annotations/c31ed4f4-c909-11e9-8833-aa8fb87c5941.json", "type": "Annotation", "body": [{"type": "TextualBody", "format": "text/html", "value": "ball update", "selector": {"value": "rect", "type": "FragmentSelector"}}], "modified": "2019-08-27T20:33:17.554Z", "@context": "http://www.w3.org/ns/anno.jsonld", "target": {"id": "/annotate/assets/images/custom/spencer-davis-7ZpvOE2psxM-unsplash.jpg#xywh=1102,1249,125,132", "type": "Image"}}], "id": "https://dnoneill.github.io/annotate/annotations/c31ed4f4-c909-11e9-8833-aa8fb87c5941.json-list.json", "modified": "2019-08-27T20:33:17.554Z", "@type": "AnnotationPage"}
+{"created": "2019-08-27T20:32:17.620Z", "@context": "http://www.w3.org/ns/anno.jsonld", "resources": [], "modified": "2019-08-27T20:33:17.554Z", "id": "https://dnoneill.github.io/annotate/annotations/c31ed4f4-c909-11e9-8833-aa8fb87c5941.json-list.json", "@type": "AnnotationPage"}
