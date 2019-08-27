@@ -1,4 +1,4 @@
 ---
 layout: null
 ---
-{"id": "https://dnoneill.github.io/annotate/annotations/027b78ca-c908-11e9-ad61-aa8fb87c5941.json-list.json", "@context": "http://www.w3.org/ns/anno.jsonld", "resources": [{"created": "2019-08-27T20:19:36.742Z", "creator": [""], "@id": "https://dnoneill.github.io/annotate/annotations/027b78ca-c908-11e9-ad61-aa8fb87c5941.json", "type": "Annotation", "body": [{"type": "TextualBody", "format": "text/html", "value": "crown", "selector": {"value": "rect", "type": "FragmentSelector"}}], "@context": "http://www.w3.org/ns/anno.jsonld", "target": {"id": "https://cdm16028.contentdm.oclc.org/digital/iiif/p16028coll4/35582#xywh=537,115,129,163", "type": "Image"}}], "created": "2019-08-27T20:19:36.742Z", "@type": "AnnotationPage"}
+{"id": "https://dnoneill.github.io/annotate/annotations/027b78ca-c908-11e9-ad61-aa8fb87c5941.json-list.json", "@type": "AnnotationPage", "resources": [], "created": "2019-08-27T20:19:36.742Z", "@context": "http://www.w3.org/ns/anno.jsonld"}
