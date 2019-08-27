@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/dnoneill/annotate-theme
-  revision: fe786733cfecf4bb3a7ac99c76502856ee03ea57
+  revision: be5f717bb78d208ccf48a24a63fea1d26eeb8b5a
   specs:
     annotate-theme (0.1.0)
       jekyll (~> 3.8)
