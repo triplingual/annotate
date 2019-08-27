@@ -1,6 +1,6 @@
 ---
 datecreated: '2019-08-21T20:25:45.422Z'
-datemodified: '2019-08-27T22:05:47.252Z'
+datemodified: '2019-08-27T22:06:09.667Z'
 imagescr: <iiif-annotation annotationurl="https://dnoneill.github.io/annotate/annotations/k49ls1azdeo2xk2a3nqe.json"
   styling="image_only:true"></iiif-annotation>
 layout: searchview
