@@ -1,0 +1,4 @@
+---
+layout: null
+---
+{"@context": "http://www.w3.org/ns/anno.jsonld", "target": {"id": "https://upload.wikimedia.org/wikipedia/commons/6/62/The_Garden_of_Earthly_Delights_by_Bosch_High_Resolution_2.jpg#xywh=3604,922,701,480", "type": "Image"}, "@id": "https://dnoneill.github.io/annotate/annotations/aabea29e-c8ec-11e9-829b-2e4c2b79c3b3", "type": "Annotation", "creator": [""], "body": [{"selector": {"type": "FragmentSelector", "value": "rect"}, "type": "TextualBody", "format": "text/html", "value": "test"}], "created": "2019-08-27T17:03:52.080Z"}
