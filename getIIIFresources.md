@@ -4,16 +4,6 @@ title: Where to find IIIF
 weight: 8
 ---
 
-<style>
-  table {
-    width: 100%;
-  }
-  table td {
-    word-break: break-word;
-  }
-</style>
-
-
 # {{page.title}}
 
 * TOC
@@ -43,4 +33,4 @@ Search any image in ContentDM. [https://researchworks.oclc.org/iiif-explorer/sea
 
 | Institution | Interface | Types | Notes |
 |---|---|---|---|{% for inst in insts %}
-| {{inst.institution}} | {% for website in inst.website %}<a href="{{website}}" target="_blank">{{website}}</a><br> {% endfor %} | {{inst.subjects}}  | {{inst.notes}}|{% endfor %}
+| {{inst.institution}} | {% for website in inst.website %}<a href="{{website}}" target="_blank" class="iiiflink">{{website}}</a>{% endfor %} | {{inst.subjects}}  | {{inst.notes}}|{% endfor %}
