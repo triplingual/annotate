@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 # Verify and install required plugins
-required_plugins = %s(vagrant-sshfs)
+required_plugins = %s(vagrant-vbguest)
 # TODO: Should we auto-update these?
 if ENV['VAGRANT_PLUGINS_UPDATED']=='true'
    alreadyUpdated = 'true'
@@ -25,9 +25,9 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   config.vm.provision "ansible_local" do |ansible|
-    ansible.playbook = "playbook.yml"
-    ansible.galaxy_roles_path = 'imported_roles'
-    ansible.galaxy_role_file = "requirements.yml"
+    ansible.playbook = "_ansible/playbook.yml"
+    ansible.galaxy_roles_path = '_ansible/imported_roles'
+    ansible.galaxy_role_file = "_ansible/requirements.yml"
     ansible.verbose = true
   end
   config.vm.box = "centos/7"
@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", host: 5000, guest: 5000
   config.vm.network :forwarded_port, guest: 80, host: 4567
   config.vm.network "private_network", type: "dhcp"
-  config.vm.synced_folder ".", "/vagrant", type: "sshfs"
+  config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
