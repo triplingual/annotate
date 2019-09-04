@@ -1,4 +1,0 @@
----
-layout: null
----
-{"body": [{"value": "test active color", "type": "TextualBody", "format": "text/html", "selector": {"type": "FragmentSelector", "value": "rect"}}], "target": {"type": "Image", "id": "https://cdm16028.contentdm.oclc.org/digital/iiif/p16028coll4/35582#xywh=410,183,449,255"}, "@id": "https://dnoneill.github.io/annotate/annotations/d4ae19ae-cf3b-11e9-be4f-96e36dd82d34.json", "@context": "http://www.w3.org/ns/anno.jsonld", "created": "2019-09-04T17:45:41.720Z", "type": "Annotation", "creator": [""]}
