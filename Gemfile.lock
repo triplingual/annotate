@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/dnoneill/annotate-theme
-  revision: 3ba552077fd0e891ff1ca2e3bc28def02c0d841b
+  revision: b9ba681294797fd6f38121d004df7605a76f6575
   specs:
     annotate-theme (0.1.0)
       jekyll (~> 3.8)
@@ -20,6 +20,7 @@ GEM
     eventmachine (1.2.7)
     ffi (1.11.1)
     forwardable-extended (2.6.0)
+    highline (2.0.2)
     http_parser.rb (0.6.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
@@ -49,14 +50,20 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
     mercenary (0.3.6)
+    mini_magick (4.9.5)
+    options (2.3.2)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
+    progress_bar (1.3.0)
+      highline (>= 1.6, < 3)
+      options (~> 2.3.0)
     public_suffix (4.0.1)
+    rainbow (3.0.0)
     rake (12.3.3)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
-    rouge (3.9.0)
+    rouge (3.10.0)
     ruby_dep (1.5.0)
     safe_yaml (1.0.5)
     sass (3.7.4)
@@ -64,12 +71,22 @@ GEM
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
+    wax_iiif (0.1.2)
+      mini_magick (~> 4.8)
+      progress_bar (~> 1.3)
+    wax_tasks (1.0.2)
+      progress_bar (~> 1.3)
+      rainbow (~> 3.0)
+      rake (~> 12.3)
+      safe_yaml (~> 1.0)
+      wax_iiif (>= 0.1.2, < 0.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   annotate-theme!
+  wax_tasks
 
 BUNDLED WITH
-   2.0.2
+   1.17.3

@@ -1,0 +1,16 @@
+---
+layout: none
+---
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "{{ '/' | absolute_url }}img/derivatives/iiif/collection/custom_images.json",
+  "@type": "sc:Collection",
+  "label": "custom_images",
+  "manifests": [
+    {
+      "@id": "{{ '/' | absolute_url }}img/derivatives/iiif/spencer-davis-7ZpvOE2psxM-unsplash/manifest.json",
+      "@type": "sc:Manifest",
+      "label": "Cattedrale di Santa Maria del Fiore"
+    }
+  ]
+}

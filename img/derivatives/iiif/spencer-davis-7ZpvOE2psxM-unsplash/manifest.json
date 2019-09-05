@@ -1,0 +1,68 @@
+---
+layout: none
+---
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "{{ '/' | absolute_url }}img/derivatives/iiif/spencer-davis-7ZpvOE2psxM-unsplash/manifest.json",
+  "@type": "sc:Manifest",
+  "label": "Cattedrale di Santa Maria del Fiore",
+  "attribution": "Photo by Spencer Davis on Unsplash",
+  "metadata": [
+    {
+      "label": "attribution",
+      "value": "Photo by Spencer Davis on Unsplash"
+    },
+    {
+      "label": "original image link",
+      "value": "https://unsplash.com/photos/7ZpvOE2psxM"
+    },
+    {
+      "label": "wikipedia link",
+      "value": "https://en.wikipedia.org/wiki/Florence_Cathedral"
+    },
+    {
+      "label": "collection",
+      "value": "custom_images"
+    }
+  ],
+  "thumbnail": "{{ '/' | absolute_url }}img/derivatives/iiif/images/spencer-davis-7ZpvOE2psxM-unsplash/full/250,/0/default.jpg",
+  "viewingDirection": "left-to-right",
+  "viewingHint": "individuals",
+  "sequences": [
+    {
+      "@id": "{{ '/' | absolute_url }}img/derivatives/iiif/sequence/spencer-davis-7ZpvOE2psxM-unsplash.json",
+      "@type": "sc:Sequence",
+      "canvases": [
+        {
+          "@type": "sc:Canvas",
+          "@id": "{{ '/' | absolute_url }}img/derivatives/iiif/canvas/spencer-davis-7ZpvOE2psxM-unsplash.json",
+          "label": "front",
+          "width": 3454,
+          "height": 4317,
+          "thumbnail": "{{ '/' | absolute_url }}img/derivatives/iiif/images/spencer-davis-7ZpvOE2psxM-unsplash/full/250,/0/default.jpg",
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "@id": "{{ '/' | absolute_url }}img/derivatives/iiif/annotation/spencer-davis-7ZpvOE2psxM-unsplash.json",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "{{ '/' | absolute_url }}img/derivatives/iiif/images/spencer-davis-7ZpvOE2psxM-unsplash/full/full/0/default.jpg",
+                "@type": "dcterms:Image",
+                "format": "image/jpeg",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "{{ '/' | absolute_url }}img/derivatives/iiif/images/spencer-davis-7ZpvOE2psxM-unsplash",
+                  "profile": "http://iiif.io/api/image/2/level0.json"
+                },
+                "width": 3454,
+                "height": 4317
+              },
+              "on": "{{ '/' | absolute_url }}img/derivatives/iiif/canvas/spencer-davis-7ZpvOE2psxM-unsplash.json"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "full": "{{ '/' | absolute_url }}img/derivatives/iiif/images/spencer-davis-7ZpvOE2psxM-unsplash/full/full/0/default.jpg"
+}

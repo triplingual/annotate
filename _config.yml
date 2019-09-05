@@ -30,6 +30,11 @@ collections:
     permalink: /annotations/:name
   iiifproviders:
     permalink: /:path
+  custom_images: 
+    metadata:
+      source: 'objects.csv' # path to the metadata file, must be within '_data'
+    images:
+      source: 'custom' # path to the directory of source images, must be within '_data'
 
 webrick:
   headers:

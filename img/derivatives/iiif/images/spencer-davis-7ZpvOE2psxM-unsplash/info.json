@@ -1,0 +1,41 @@
+---
+layout: none
+---
+{
+  "@context": "http://iiif.io/api/image/2/context.json",
+  "@id": "{{ '/' | absolute_url }}img/derivatives/iiif/images/spencer-davis-7ZpvOE2psxM-unsplash",
+  "protocol": "http://iiif.io/api/image",
+  "width": 3454,
+  "height": 4317,
+  "sizes": [
+    {
+      "width": 3454,
+      "height": 4317
+    },
+    {
+      "width": 250,
+      "height": 312
+    }
+  ],
+  "profile": [
+    "http://iiif.io/api/image/2/level0.json",
+    {
+      "supports": [
+        "cors",
+        "sizeByWhListed",
+        "baseUriRedirect"
+      ]
+    }
+  ],
+  "tiles": [
+    {
+      "width": 512,
+      "scaleFactors": [
+        1,
+        2,
+        4,
+        8
+      ]
+    }
+  ]
+}
