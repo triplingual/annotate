@@ -23,7 +23,7 @@ Installation instructions are found here: [https://dnoneill.github.io/annotate/h
   
 4.5. For hosting on GitHub pages read documentation here: [https://dnoneill.github.io/annotate/helpdocs/help/creating-github/](https://dnoneill.github.io/annotate/helpdocs/help/creating-github/)
 
-6. Navigate to [http://0.0.0.0:5555/annotate/](http://0.0.0.0:5555/annotate/) to create annotations on local computer.
+6. Navigate to [http://localhost:5555/annotate/](http://localhost:5555/annotate/) to create annotations on local computer.
 
 
 ### Requirements for Development

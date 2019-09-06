@@ -22,10 +22,12 @@ weight: 2
 	```
 	$ vagrant ssh
 	[vagrant@localhost ~]$ cd /vagrant
-	[vagrant@localhost ~]$ ./run.sh
+	[vagrant@localhost ~]$ ./maclinux-run.sh #for mac or linux systems
+	[vagrant@localhost ~]$ ./windows-run.bat #for windows machines
+	
 	```
 
-Navigate to [http://0.0.0.0:5555/annotate/](http://0.0.0.0:5555/annotate/) to create annotations
+Navigate to [http://localhost:5555/annotate/](http://localhost:5555/annotate/) to create annotations
 
 # Add new annotations to GitHub Website Locally
 **Note** This should only be done if you have a GitHub website running. See [{{site.baseurl}}/creating-github]({{site.baseurl}}/creating-github) for instructions on how to create website.
