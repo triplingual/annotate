@@ -2,3 +2,5 @@
 _site
 .sass-cache/
 ENV/
+_data/custom
+_ansible/imported_roles/

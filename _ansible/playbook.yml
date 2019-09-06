@@ -4,7 +4,7 @@
   roles:
     - role: rvm.ruby
       tags: ruby
-      rvm1_rubies: ['ruby-2.3.1']
+      rvm1_rubies: ['ruby-2.5.1']
       rvm1_install_flags: '--auto-dotfiles --user-install'
       rvm1_user: vagrant
       rvm1_bundler_install: True
@@ -45,3 +45,4 @@
       pip:
         name: flask_cors
         state: latest
+        
