@@ -1,0 +1,4 @@
+---
+layout: null
+---
+{"created": "2019-09-06T13:39:09.506Z", "@context": "http://www.w3.org/ns/anno.jsonld", "id": "https://dnoneill.github.io/annotate/annotations/b81c27ba-d0ab-11e9-979d-42736bca7578.json-list.json", "@type": "AnnotationPage", "resources": [{"type": "Annotation", "body": [{"format": "text/html", "type": "TextualBody", "value": "Test tablet", "selector": {"value": "rect", "type": "FragmentSelector"}}], "created": "2019-09-06T13:39:09.506Z", "@id": "https://dnoneill.github.io/annotate/annotations/b81c27ba-d0ab-11e9-979d-42736bca7578.json", "target": {"id": "https://libimages1.princeton.edu/loris/pudl0001%2F4609321%2Fs42%2F00000004.jp2#xywh=2581,177,513,242", "type": "Image"}, "@context": "http://www.w3.org/ns/anno.jsonld", "creator": [""]}]}
