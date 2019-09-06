@@ -29,6 +29,10 @@
       yum:
         name: rubygems
         state: latest 
+    - name: ImageMagick
+      yum:
+        name: ImageMagick
+        state: latest
     - name: pip
       yum:
         name: python-pip
