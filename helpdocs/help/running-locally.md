@@ -5,14 +5,16 @@ parent: help.md
 weight: 2
 ---
 
+**Make sure you have [git](https://git-scm.com/downloads) installed before going any further.**
+
 # Setting up Local Server
-1. Clone this repository or clone forked repository:
+1. Open Terminal(Mac/Linux)/Git Bash(Windows). Clone this repository or clone forked repository:
 
 	`$ git clone https://github.com/[username]/annotate.git && cd annotate`
 
-2. Install Vagrant https://www.vagrantup.com/downloads.html and VirtualBox https://www.virtualbox.org/wiki/Downloads
+2. Install [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 
-3. Start vagrant environment
+3. Start vagrant environment in terminal.
 
 	`$ vagrant up`
 
@@ -24,8 +26,6 @@ weight: 2
 	```
 
 Navigate to [http://0.0.0.0:5555/annotate/](http://0.0.0.0:5555/annotate/) to create annotations
-
-IMPORTANT!!!!! After creating annotations make sure to click on the "Create/Load Annotations" button located in the bottom left hand corner of the Mirador viewer. If this is not done, no annotations will be created or deleted. This only has to be done before navigating away from the create annotations page . It does not have to be done when switching between manifests.
 
 # Add new annotations to GitHub Website Locally
 **Note** This should only be done if you have a GitHub website running. See [{{site.baseurl}}/creating-github]({{site.baseurl}}/creating-github) for instructions on how to create website.
