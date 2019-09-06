@@ -30,7 +30,7 @@ collections:
     permalink: /annotations/:name
   iiifproviders:
     permalink: /:path
-  custom_images: 
+  custom_images:
     metadata:
       source: 'objects.csv' # path to the metadata file, must be within '_data'
     images:
