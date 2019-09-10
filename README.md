@@ -17,8 +17,9 @@ Installation instructions are found here: [https://dnoneill.github.io/annotate/h
 4. Start Jekyll and Flask
 	```
 	$ vagrant ssh
-	[vagrant@localhost ~]$ cd /vagrant
-	[vagrant@localhost ~]$ ./run.sh
+	 [vagrant@localhost ~]$ cd /vagrant
+	 [vagrant@localhost ~]$ ./maclinux-run.sh #for mac or linux systems
+	 [vagrant@localhost ~]$ ./windows-run.bat #for windows machines
 	```
   
 4.5. For hosting on GitHub pages read documentation here: [https://dnoneill.github.io/annotate/helpdocs/help/creating-github/](https://dnoneill.github.io/annotate/helpdocs/help/creating-github/)
