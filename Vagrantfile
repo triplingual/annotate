@@ -13,6 +13,10 @@ if alreadyUpdated != 'true' && (ARGV[0] == "up" || ARGV[0] == "provision")
   # Restart vagrant after plugin updates
   exec "vagrant #{ARGV.join(' ')}"
 end
+if Vagrant::Util::Platform.windows?
+  system "vagrant plugin install vagrant-winnfsd"
+  system "vagrant plugin update vagrant-winnfsd"
+end
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
