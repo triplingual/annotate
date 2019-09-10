@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 # Verify and install required plugins
-required_plugins = %s(vagrant-vbguest)
+required_plugins = %s(vagrant-winnfsd vagrant-vbguest)
 # TODO: Should we auto-update these?
 if ENV['VAGRANT_PLUGINS_UPDATED']=='true'
    alreadyUpdated = 'true'
