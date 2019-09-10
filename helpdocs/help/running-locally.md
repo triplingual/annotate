@@ -5,14 +5,18 @@ parent: help.md
 weight: 2
 ---
 
-**Make sure you have [git](https://git-scm.com/downloads) installed before going any further.**
-
 # Setting up Local Server
-1. Open Terminal(Mac/Linux)/Git Bash(Windows). Clone this repository or clone forked repository:
+
+1. Install Dependencies
+- [Vagrant](https://www.vagrantup.com/downloads.html)
+- [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+- [Git](https://git-scm.com/downloads)
+
+2. (Optional). Fork repository and create own website. See [GitHub pages instructions]({{site.baseurl}}/creating-github) for steps. Otherwise use `https://github.com/dnoneill/annotate.git` for step 3.
+
+3. Open Terminal(Mac/Linux)/Git Bash(Windows). Clone this repository or clone forked repository:
 
 	`$ git clone https://github.com/[username]/annotate.git && cd annotate`
-
-2. Install [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 
 3. Start vagrant environment in terminal.
 
@@ -24,7 +28,7 @@ weight: 2
 	[vagrant@localhost ~]$ cd /vagrant
 	[vagrant@localhost ~]$ ./maclinux-run.sh #for mac or linux systems
 	[vagrant@localhost ~]$ ./windows-run.bat #for windows machines
-	
+
 	```
 
 Navigate to [http://localhost:5555/annotate/](http://localhost:5555/annotate/) to create annotations
