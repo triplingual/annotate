@@ -33,6 +33,10 @@
       yum:
         name: ImageMagick
         state: latest
+    - name: dos2unix
+      yum:
+        name: dos2unix
+        state: latest
     - name: pip
       yum:
         name: python-pip
