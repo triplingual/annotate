@@ -13,8 +13,8 @@ This application allows for hosting your own images and annotating them. This is
 
 **Note** High quality images will have slower performance when using the storyboard. This is due to the lack of tiling which IIIF provides. Creating and hosting IIIF images is only an extra couple of steps.
 
-# Creating IIIF images 
-### This is made possible with [minicomp/wax_tasks](https://github.com/minicomp/wax_tasks). 
+# Creating IIIF images
+### This is made possible with [minicomp/wax_tasks](https://github.com/minicomp/wax_tasks).
 1. Copy image (.tiff, .jpeg, .jpg, .png) or PDF into `assets/images/custom` folder.
 2. Open the `objects.csv` spreadsheet in the `_data` folder.
 3. In the `pid` field add the image filename. i.e. `manuscriptpage.jpg` should be entered as `manuscriptpage` in the spreadsheet.
@@ -25,4 +25,4 @@ This application allows for hosting your own images and annotating them. This is
 	```
 	bundle exec rake wax:derivatives:iiif custom_images
 	```
-6. Go to [homepage]({{site.baseurl}}). The manifest should be listed in the mirador viewer after the command has finished running.
+6. Go to [homepage]({{site.baseurl}}/). The manifest should be listed in the mirador viewer after the command has finished running.
