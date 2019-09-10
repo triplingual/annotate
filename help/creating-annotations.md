@@ -32,12 +32,11 @@ Demo video showing the creation of annotations is below.
   Your browser does not support HTML5 video.
 </video>
 
-## Creating Annotations on IIIF images without a manifest
+## Images without a manifest or Non-IIIF images
 
-- Navigate to the create annotations page. [{{site.url}}{{site.baseurl}}/openseadragon]({{site.url}}{{site.baseurl}}/openseadragon)
 
+- Navigate to the create annotations page. [{{site.url}}{{site.baseurl}}/imageditor]({{site.url}}{{site.baseurl}}/imageditor)
 - Load info.json url of image using input
-- Click on "ADD ANNOTATION" button
 - Click and Drag section of image
 - Add annotation.
   - Tags should be separated by a comma.
