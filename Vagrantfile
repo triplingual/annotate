@@ -1,7 +1,12 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 # Verify and install required plugins
-required_plugins = %s(vagrant-winnfsd vagrant-vbguest)
+if Vagrant::Util::Platform.windows?
+  required_plugins = %s(vagrant-winnfsd vagrant-vbguest)
+else
+  required_plugins = %s(vagrant-vbguest)	
+end
+
 # TODO: Should we auto-update these?
 if ENV['VAGRANT_PLUGINS_UPDATED']=='true'
    alreadyUpdated = 'true'
@@ -13,6 +18,7 @@ if alreadyUpdated != 'true' && (ARGV[0] == "up" || ARGV[0] == "provision")
   # Restart vagrant after plugin updates
   exec "vagrant #{ARGV.join(' ')}"
 end
+
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
