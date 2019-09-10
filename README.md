@@ -4,27 +4,35 @@ Installation instructions are found here: [https://dnoneill.github.io/annotate/h
 
 ## Quickstart
 
-1. Clone this repository or clone forked repository:
+1. Install Dependencies
+- [Vagrant](https://www.vagrantup.com/downloads.html)
+- [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+- [Git](https://git-scm.com/downloads)
 
-	`$ git clone https://github.com/[username]/annotate.git && cd annotate`
+2. (Optional). Fork repository and create own website. See [GitHub pages instructions](https://dnoneill.github.io/annotate/helpdocs/help/creating-github/) for steps. Otherwise use `https://github.com/dnoneill/annotate.git` for step 3.
 
-2. Install Vagrant https://www.vagrantup.com/downloads.html and VirtualBox https://www.virtualbox.org/wiki/Downloads
+3. Open Terminal(Mac/Linux)/Git Bash or Command Line(Windows). Clone this repository or clone forked repository and change directory:
 
-3. Start vagrant environment
+	```
+	$ git clone https://github.com/[username]/annotate.git
+	$ cd annotate
+
+	```
+
+3. Start vagrant environment in terminal.
 
 	`$ vagrant up`
 
 4. Start Jekyll and Flask
 	```
 	$ vagrant ssh
-	 [vagrant@localhost ~]$ cd /vagrant
-	 [vagrant@localhost ~]$ ./maclinux-run.sh #for mac or linux systems
-	 [vagrant@localhost ~]$ ./windows-run.bat #for windows machines
-	```
-  
-4.5. For hosting on GitHub pages read documentation here: [https://dnoneill.github.io/annotate/helpdocs/help/creating-github/](https://dnoneill.github.io/annotate/helpdocs/help/creating-github/)
+	[vagrant@localhost ~]$ cd /vagrant
+	[vagrant@localhost ~]$ dos2unix run.sh #windows machines only
+	[vagrant@localhost ~]$ ./run.sh
 
-6. Navigate to [http://localhost:5555/annotate/](http://localhost:5555/annotate/) to create annotations on local computer.
+	```
+
+Navigate to [http://localhost:5555/annotate/](http://localhost:5555/annotate/) to create annotations. **Note** Not all manifests load using Microsoft Edge. Firefox and Chrome are better alternatives.
 
 
 ### Requirements for Development
