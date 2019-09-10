@@ -22,9 +22,6 @@ collections:
   ranges:
     output: true
     permalink: /ranges/:name
-  helpdocs:
-    output: true
-    permalink: /help/:name
   annotation_data:
     output: true
     permalink: /annotations/:name
