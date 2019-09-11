@@ -9,7 +9,7 @@ Installation instructions are found here: [https://dnoneill.github.io/annotate/h
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 - [Git](https://git-scm.com/downloads)
 
-2. (Optional). Fork repository and create own website. See [GitHub pages instructions](https://dnoneill.github.io/annotate/helpdocs/help/creating-github/) for steps. Otherwise use `https://github.com/dnoneill/annotate.git` for step 3.
+2. (Optional). Fork repository and create own website. See [GitHub pages instructions](https://dnoneill.github.io/annotate/help/creating-github/) for steps. Otherwise use `https://github.com/dnoneill/annotate.git` for step 3.
 
 3. Open Terminal(Mac/Linux)/Git Bash or Command Line(Windows). Clone this repository or clone forked repository and change directory:
 
