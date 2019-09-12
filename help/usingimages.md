@@ -23,6 +23,6 @@ This application allows for hosting your own images and annotating them. This is
 5. open command line and type in following command. *Note: make sure you are in top level of the repository.*
 
 	```
-	bundle exec rake wax:derivatives:iiif custom_images
+	[vagrant@localhost vagrant]$ bundle exec rake wax:derivatives:iiif custom_images
 	```
 6. Go to [homepage]({{site.baseurl}}/). The manifest should be listed in the mirador viewer after the command has finished running.
