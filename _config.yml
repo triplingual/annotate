@@ -8,7 +8,7 @@ permalink: pretty
 plugins:
   - jekyll-seo-tag
 
-exclude: [Rakefile, Gemfile*, vendor]
+exclude: [Rakefile, Gemfile*, vendor, ENV, imported_roles]
 include: [feed.xml]
 
 theme: annotate-theme
@@ -35,10 +35,6 @@ webrick:
 
 api_server: http://localhost:5000/
 endpoint: http://localhost:5000/write_annotation/
-
-exclude:
-  - ENV/
-  - imported_roles
 
 lunr_settings:
   collections: [annotation_data]
