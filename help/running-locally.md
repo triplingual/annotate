@@ -19,7 +19,6 @@ weight: 2
 	```
 	$ git clone https://github.com/[username]/annotate.git
 	$ cd annotate
-
 	```
 
 3. Start vagrant environment in terminal.
@@ -30,9 +29,8 @@ weight: 2
 	```
 	$ vagrant ssh
 	[vagrant@localhost ~]$ cd /vagrant
-	[vagrant@localhost ~]$ dos2unix run.sh #windows machines only
-	[vagrant@localhost ~]$ ./run.sh
-
+	[vagrant@localhost vagrant]$ dos2unix run.sh #windows machines only
+	[vagrant@localhost vagrant]$ ./run.sh
 	```
 
 Navigate to [http://localhost:5555/annotate/](http://localhost:5555/annotate/) to create annotations. **Note** Not all manifests load using Microsoft Edge. Firefox and Chrome are better alternatives.
