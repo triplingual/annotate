@@ -7,4 +7,3 @@ This editor works on any JPEG/JPG, PNG, GIF or SVG images.  **Make sure the file
 
 ### To use `embed tags` copy tag and feed into [html escape](https://www.freeformatter.com/html-escape.html). Click `escape` button and copy output into text box.
 
-{% include imageeditor.html %}
