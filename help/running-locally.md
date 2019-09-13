@@ -12,14 +12,13 @@ weight: 2
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 - [Git](https://git-scm.com/downloads)
 
-2. (Optional). Fork repository and create own website. See [GitHub pages instructions]({{site.baseurl}}/helpdocs/help/creating-github/) for steps. Otherwise use `https://github.com/dnoneill/annotate.git` for step 3.
+2. (Optional). Fork repository and create own website. See [GitHub pages instructions]({{site.baseurl}}/help/creating-github/) for steps. Otherwise use `https://github.com/dnoneill/annotate.git` for step 3.
 
 3. Open Terminal(Mac/Linux)/Git Bash or Command Line(Windows). Clone this repository or clone forked repository and change directory:
 
 	```
 	$ git clone https://github.com/[username]/annotate.git
 	$ cd annotate
-
 	```
 
 3. Start vagrant environment in terminal.
@@ -30,9 +29,8 @@ weight: 2
 	```
 	$ vagrant ssh
 	[vagrant@localhost ~]$ cd /vagrant
-	[vagrant@localhost ~]$ dos2unix run.sh #windows machines only
-	[vagrant@localhost ~]$ ./run.sh
-
+	[vagrant@localhost vagrant]$ dos2unix run.sh #windows machines only
+	[vagrant@localhost vagrant]$ ./run.sh
 	```
 
 Navigate to [http://localhost:5555/annotate/](http://localhost:5555/annotate/) to create annotations. **Note** Not all manifests load using Microsoft Edge. Firefox and Chrome are better alternatives.
