@@ -27,8 +27,8 @@ Installation instructions are found here: [https://dnoneill.github.io/annotate/h
 	```
 	$ vagrant ssh
 	[vagrant@localhost ~]$ cd /vagrant
-	[vagrant@localhost ~]$ dos2unix run.sh #windows machines only
-	[vagrant@localhost ~]$ ./run.sh
+	[vagrant@localhost vagrant]$ dos2unix run.sh #windows machines only
+	[vagrant@localhost vagrant]$ ./run.sh
 
 	```
 
