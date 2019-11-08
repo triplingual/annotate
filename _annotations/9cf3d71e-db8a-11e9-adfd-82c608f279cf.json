@@ -1,4 +1,0 @@
----
-layout: null
----
-{"target": {"id": "https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee#xywh=19658,4642,2986,1420", "type": "Image"}, "@id": "https://dnoneill.github.io/annotate/annotations/9cf3d71e-db8a-11e9-adfd-82c608f279cf.json", "body": [{"selector": {"type": "FragmentSelector", "value": "rect"}, "value": "jena", "format": "text/html", "type": "TextualBody"}], "created": "2019-09-20T09:39:59.242Z", "@context": "http://www.w3.org/ns/anno.jsonld", "creator": [""], "type": "Annotation"}
