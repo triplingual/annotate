@@ -1,4 +1,4 @@
 ---
 layout: null
 ---
-{"body": [{"selector": {"type": "FragmentSelector", "value": "rect"}, "type": "TextualBody", "value": "Alchemist", "format": "text/html"}], "target": {"type": "Image", "id": "https://dlcs.io/iiif-img/3/2/04fbbb28-d5a7-4408-b7da-800c4e65eda3#xywh=5094,1602,445,484"}, "creator": [""], "type": "Annotation", "created": "2019-10-01T19:30:37.463Z", "@context": "http://www.w3.org/ns/anno.jsonld", "@id": "https://dnoneill.github.io/annotate/annotations/f213a2b0-e481-11e9-bb9b-88e9fe7026e8.json"}
+{"modified": "2019-11-12T23:05:06.591Z", "type": "Annotation", "@context": "http://www.w3.org/ns/anno.jsonld", "creator": [""], "@id": "https://dnoneill.github.io/annotate/annotations/f213a2b0-e481-11e9-bb9b-88e9fe7026e8.json", "body": [{"format": "text/html", "type": "TextualBody", "value": "John_Dee", "selector": {"value": "rect", "type": "FragmentSelector"}}], "created": "2019-10-01T19:30:37.463Z", "target": {"id": "https://dlcs.io/iiif-img/3/2/04fbbb28-d5a7-4408-b7da-800c4e65eda3#xywh=5094,1602,445,484", "type": "Image"}}
