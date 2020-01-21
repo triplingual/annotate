@@ -1,0 +1,4 @@
+---
+layout: null
+---
+{"created": "2020-01-21T05:42:12.167Z", "type": "Annotation", "body": [{"selector": {"type": "FragmentSelector", "value": "rect"}, "type": "TextualBody", "value": "", "format": "text/html"}, {"type": "TextualBody", "purpose": "tagging", "value": "Enoch", "format": "text/plain"}], "target": {"type": "Image", "id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b105325870/f22/1638,780,859,1144/pct:70/0/native.jpg#xywh=245,162,110,200"}, "creator": ["jdh"], "@context": "http://www.w3.org/ns/anno.jsonld", "@id": "https://dnoneill.github.io/annotate/annotations/9188a27a-3c0f-11ea-88ed-528fb03202e6.json"}
