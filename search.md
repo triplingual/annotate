@@ -12,7 +12,7 @@ weight: 8
 </div>
 </form>
 
-<script src="https://ncsu-libraries.github.io/iiif-annotation/dist/iiif-annotation.js"></script>
+<script src="https://ncsu-libraries.github.io/annona/dist/annona.js"></script>
 <script src="https://dnoneill.github.io/jekyll-lunr-js-custom-search/dist/custom-search.js"></script>
 
 <link rel="stylesheet" type="text/css" href="https://dnoneill.github.io/jekyll-lunr-js-custom-search/dist/custom-search.css">
