@@ -1,6 +1,6 @@
 ---
 layout: default
 institution: University of Texas Libraries
-website: https://collections.lib.utexas.edu/?utf8=✓&search_field=search&q=&search=
+website: ["https://collections.lib.utexas.edu/?utf8=✓&search_field=search&q=&search="]
 subjects: Images, Text, Periodicals, Broadsheet/sides, Maps and more.
 ---
