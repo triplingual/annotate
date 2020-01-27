@@ -1,0 +1,4 @@
+---
+layout: null
+---
+{"target": {"type": "Image", "id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b105325870/f22/1638,780,859,1144/pct:70/0/native.jpg#xywh=233,164,120,193"}, "creator": [], "@id": "https://dnoneill.github.io/annotate/annotations/ccf1dade-3c0f-11ea-88ed-528fb03202e6.json", "created": "2020-01-21T05:43:59.193Z", "type": "Annotation", "rights": [], "body": [{"type": "TextualBody", "selector": {"type": "FragmentSelector", "value": "rect"}, "language": "", "format": "text/html", "value": "This is Enoch. BNF Fr166, fol. 4v"}, {"type": "TextualBody", "language": "", "format": "text/plain", "purpose": "tagging", "value": "Enoch"}], "@context": "http://www.w3.org/ns/anno.jsonld"}

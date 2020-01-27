@@ -1,0 +1,16 @@
+---
+layout: none
+---
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "{{ '/' | absolute_url }}img/derivatives/iiif/collection/custom_images.json",
+  "@type": "sc:Collection",
+  "label": "custom_images",
+  "manifests": [
+    {
+      "@id": "{{ '/' | absolute_url }}img/derivatives/iiif/unicorn/manifest.json",
+      "@type": "sc:Manifest",
+      "label": "The Hunt of the Unicorn"
+    }
+  ]
+}

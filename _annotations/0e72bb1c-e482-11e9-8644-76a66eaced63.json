@@ -1,0 +1,4 @@
+---
+layout: null
+---
+{"modified": "2019-11-12T23:04:48.992Z", "type": "Annotation", "@context": "http://www.w3.org/ns/anno.jsonld", "creator": [""], "@id": "https://dnoneill.github.io/annotate/annotations/0e72bb1c-e482-11e9-8644-76a66eaced63.json", "body": [{"format": "text/html", "type": "TextualBody", "value": "Queen Elizabeth I\n", "selector": {"value": "rect", "type": "FragmentSelector"}}], "created": "2019-10-01T19:31:18.520Z", "target": {"id": "https://dlcs.io/iiif-img/3/2/04fbbb28-d5a7-4408-b7da-800c4e65eda3#xywh=2156,1721,603,405", "type": "Image"}}

@@ -1,0 +1,4 @@
+---
+layout: null
+---
+{"creator": [""], "target": {"id": "https://repository.duke.edu/iipsrv/iipsrv.fcgi?IIIF=/srv/perkins/repo_deriv/multires_image/40/58/a6/28/4058a628-c593-463e-9736-8a821e178fee#xywh=26988,9325,578,310", "type": "Image"}, "body": [{"format": "text/html", "value": "Demolished Church of San Daniele Profeta", "type": "TextualBody", "selector": {"value": "pin", "type": "FragmentSelector"}}, {"format": "text/plain", "value": "demolished", "purpose": "tagging", "type": "TextualBody"}, {"format": "text/plain", "value": "church", "purpose": "tagging", "type": "TextualBody"}], "modified": "2019-11-13T19:20:10.184Z", "@id": "https://dnoneill.github.io/annotate/annotations/6ba96a8f-026b-11ea-8490-88e9fe7026e8.json", "@context": "http://www.w3.org/ns/anno.jsonld", "created": "2019-11-08T21:04:57.874Z", "type": "Annotation"}

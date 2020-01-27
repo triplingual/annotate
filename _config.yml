@@ -1,6 +1,7 @@
 title: Local Annotation Server
 description: "Local annotation server that allows for easy annotation creation."
 baseurl: "/annotate"
+url: "https://dnoneill.github.io"
 
 markdown: kramdown
 permalink: pretty
@@ -24,7 +25,9 @@ collections:
   annotation_data:
     output: true
     permalink: /annotations/:name
-  custom_images: 
+  iiifproviders:
+    permalink: /:path
+  custom_images:
     metadata:
       source: 'objects.csv' # path to the metadata file, must be within '_data'
     images:
@@ -34,8 +37,8 @@ webrick:
   headers:
     "Access-Control-Allow-Origin": "*"
 
-api_server: http://localhost:5000/
-endpoint: http://localhost:5000/write_annotation/
+api_server: https://limitless-plains-74009.herokuapp.com/
+endpoint: https://limitless-plains-74009.herokuapp.com/write_annotation/
 
 lunr_settings:
   collections: [annotation_data]
@@ -53,3 +56,17 @@ lunr_settings:
     facetfield: true
 
   fuzzysearchfields: [content]
+
+creatorpopup: true
+popupinformation: |
+  Please enter this your name in this field.
+  <br>
+  You do not have enter your full name, a GitHub username is preferred.
+  <br>
+  Your affiliation would be much appreciated if you do not want to enter your name.
+  <br>
+  This information will give me a better idea of how many people are interested in the tool.
+  <br>
+  <b>Please feel free to remain anonymous.
+  If you don't want to enter any information leave blank and hit enter.</b>
+  <br>
