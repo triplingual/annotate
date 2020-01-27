@@ -7,6 +7,12 @@ else
   required_plugins = %s(vagrant-vbguest)	
 end
 
+class VagrantPlugins::ProviderVirtualBox::Action::Network
+  def dhcp_server_matches_config?(dhcp_server, config)
+    true
+  end
+end
+
 # TODO: Should we auto-update these?
 if ENV['VAGRANT_PLUGINS_UPDATED']=='true'
    alreadyUpdated = 'true'
